@@ -48,7 +48,7 @@ set(BUILD_opencv_apps OFF CACHE BOOL "" FORCE)
 
 set(DEP_LIST ${DEP_LIST} dep_opencv)
 set(DEP_SOURCE_DIR ${DEP_SOURCE_DIR} ${OpenCV_SOURCE_DIR}/include) # opencv_world 옵션 활성화: 모든 모듈을 하나의 통합 라이브러리로 빌드
-set(OPENCV_EXTRA_MODULES_PATH ../opencv_contrib/modules CACHE PATH "" FORCE)
+set(OPENCV_EXTRA_MODULES_PATH "${CMAKE_SOURCE_DIR}/../opencv_contrib/modules" CACHE PATH "" FORCE)
 
 FetchContent_MakeAvailable(${DEP_LIST})
 
@@ -85,3 +85,5 @@ target_compile_definitions(${PROJECT_NAME}
 PUBLIC
     WINDOW_NAME="${WINDOW_NAME}"
 )
+
+message(STATUS "OPENCV_EXTRA_MODULES_PATH" ${OPENCV_EXTRA_MODULES_PATH})

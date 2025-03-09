@@ -13,3 +13,5 @@
 # 본인의 경우 다음과 같이 생성함
 sh GNU_DirectoryStructure.sh OpenCV-With-CMake
 ```
+
+https://blog.naver.com/91blacksheep/221492188605
