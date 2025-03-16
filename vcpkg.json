@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "opencv-project",
+  "version": "0.0.1",
+  "dependencies": [
+    "fmt",
+    "nlohmann-json",
+    "spdlog",
+    "opencv4"
+  ],
+  "builtin-baseline": "f33868e7ae76724b12559f1ff26720c9996c71c2"
+}
