@@ -35,6 +35,17 @@ vscode에서 파일이 열릴때, 등등 이벤트에 수행할 커맨드를 추
 </div>
 
 
+> ### 📄 CMake 세팅
+
+##### 1). XXX_SOURCE_DIR의 생성 순서
+
+FetchContent_MakeAvailable 이후에 생긴다.
+
+```txt
+FetchContent_MakeAvailable(${DEP_LIST})
+set(DEP_SOURCE_DIR ${DEP_SOURCE_DIR} "${spdlog_SOURCE_DIR}/include") # spdlog 헤더 (필요에 따라 경로 수정)
+set(DEP_SOURCE_DIR ${DEP_SOURCE_DIR} "${OpenCV_SOURCE_DIR}/include") # opencv_world 옵션 활성화: 모든 모듈을 하나의 통합 라이브러리로 빌드
+```
 
 > ### 📄 참고
 

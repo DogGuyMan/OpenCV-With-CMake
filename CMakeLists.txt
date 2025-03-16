@@ -24,33 +24,76 @@ FetchContent_Declare(dep_spdlog
 )
 
 set(DEP_LIST ${DEP_LIST} dep_spdlog)
-set(DEP_LIBS ${DEP_LIBS} spdlog::spdlog) # spdlog 라이브러리 (타겟 이름은 해당 프로젝트의 CMake 설정에 따라 다를 수 있음)
-set(DEP_SOURCE_DIR ${DEP_SOURCE_DIR} ${spdlog_SOURCE_DIR}/include) # spdlog 헤더 (필요에 따라 경로 수정)
-
 # ─── OpenCV 의존성 구성 ─────────────────────────────
 FetchContent_Declare( dep_opencv
   GIT_REPOSITORY https://github.com/opencv/opencv.git
   GIT_TAG        4.x
   GIT_SHALLOW TRUE
+  OVERRIDE_FIND_PACKAGE
 )
 
-set(BUILD_opencv_world ON CACHE BOOL "" FORCE)
-set(BUILD_opencv_contrib_world OFF CACHE BOOL "" FORCE)
-set(OPENCV_ENABLE_NONFREE ON CACHE BOOL "" FORCE)
-set(BUILD_SHARED_LIBS ON CACHE BOOL "" FORCE)
-set(BUILD_WITH_STATIC_CRT OFF CACHE BOOL "" FORCE)
+# set(BUILD_opencv_world ON CACHE BOOL "" FORCE)
+    # CMake Error at build/_deps/dep_opencv-build/modules/core/cmake_install.cmake:62 (file):
+    #   file INSTALL cannot find "~/Develop Projects/CXXProject/OpenCV-With-CMake/build/_deps/dep_opencv-build/lib/libopencv_core.dylib":
+    #   No such file or directory.
+    # Call Stack (most recent call first):
+    #   build/_deps/dep_opencv-build/cmake_install.cmake:191 (include)
+    #   build/cmake_install.cmake:47 (include)
+# set(BUILD_opencv_contrib_world OFF CACHE BOOL "" FORCE)
+# set(OPENCV_ENABLE_NONFREE ON CACHE BOOL "" FORCE)
+# set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+    # CMake Error at build/_deps/dep_opencv-build/modules/core/cmake_install.cmake:62 (file):
+    #   file INSTALL cannot find "~/Develop Projects/CXXProject/OpenCV-With-CMake/build/_deps/dep_opencv-build/lib/libopencv_core.dylib":
+    #   No such file or directory.
+    # Call Stack (most recent call first):
+    #   build/_deps/dep_opencv-build/cmake_install.cmake:191 (include)
+    #   build/cmake_install.cmake:47 (include)
+# set(BUILD_WITH_STATIC_CRT ON CACHE BOOL "" FORCE)
+    # CMake Error at build/_deps/dep_opencv-build/modules/core/cmake_install.cmake:62 (file):
+    # file INSTALL cannot find "~/Develop
+    # Projects/CXXProject/OpenCV-With-CMake/build/_deps/dep_opencv-build/lib/libopencv_core.dylib":
+    # No such file or directory.
+    # Call Stack (most recent call first):
+    # build/_deps/dep_opencv-build/cmake_install.cmake:191 (include)
+    # build/cmake_install.cmake:47 (include)
 
-set(BUILD_EXAMPLES ON CACHE BOOL "" FORCE)
-set(BUILD_PERF_TESTS OFF CACHE BOOL "" FORCE)
-set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(BUILD_PACKAGE OFF CACHE BOOL "" FORCE)
-set(BUILD_opencv_apps OFF CACHE BOOL "" FORCE)
+# set(BUILD_EXAMPLES ON CACHE BOOL "" FORCE)
+    # CMake Error at build/_deps/dep_opencv-build/modules/core/cmake_install.cmake:62 (file):
+    #   file INSTALL cannot find "~/Develop Projects/CXXProject/OpenCV-With-CMake/build/_deps/dep_opencv-build/lib/libopencv_core.dylib":
+    #   No such file or directory.
+    # Call Stack (most recent call first):
+    #   build/_deps/dep_opencv-build/cmake_install.cmake:191 (include)
+    #   build/cmake_install.cmake:47 (include)
 
-set(DEP_LIST ${DEP_LIST} dep_opencv)
-set(DEP_SOURCE_DIR ${DEP_SOURCE_DIR} ${OpenCV_SOURCE_DIR}/include) # opencv_world 옵션 활성화: 모든 모듈을 하나의 통합 라이브러리로 빌드
-set(OPENCV_EXTRA_MODULES_PATH "${CMAKE_SOURCE_DIR}/../opencv_contrib/modules" CACHE PATH "" FORCE)
+# set(BUILD_PACKAGE ON CACHE BOOL "" FORCE)
+# CMake Error at build/_deps/dep_opencv-build/modules/core/cmake_install.cmake:62 (file):
+#   file INSTALL cannot find "/Users/escatrgot/Develop
+#   Projects/CXXProject/OpenCV-With-CMake/build/_deps/dep_opencv-build/lib/libopencv_core.dylib":
+#   No such file or directory.
+# Call Stack (most recent call first):
+#   build/_deps/dep_opencv-build/cmake_install.cmake:130 (include)
+#   build/cmake_install.cmake:47 (include)
 
+# set(BUILD_opencv_apps ON CACHE BOOL "" FORCE)
+# CMake Error at build/_deps/dep_opencv-build/3rdparty/zlib/cmake_install.cmake:41 (file):
+#   file INSTALL cannot find "~/Develop
+#   Projects/CXXProject/OpenCV-With-CMake/build/_deps/dep_opencv-build/3rdparty/lib/libzlib.a":
+#   No such file or directory.
+# Call Stack (most recent call first):
+#   build/_deps/dep_opencv-build/cmake_install.cmake:107 (include)
+#   build/cmake_install.cmake:47 (include)
+
+# set(DEP_LIST ${DEP_LIST} dep_opencv)
+
+# ─── 의존 사용하기 ─────────────────────────────
 FetchContent_MakeAvailable(${DEP_LIST})
+
+set(DEP_LIBS ${DEP_LIBS} spdlog::spdlog) # spdlog 라이브러리 (타겟 이름은 해당 프로젝트의 CMake 설정에 따라 다를 수 있음)
+set(DEP_SOURCE_DIR ${DEP_SOURCE_DIR} "${spdlog_SOURCE_DIR}/include") # spdlog 헤더 (필요에 따라 경로 수정)
+set(DEP_SOURCE_DIR ${DEP_SOURCE_DIR} "${OpenCV_SOURCE_DIR}/include") # opencv_world 옵션 활성화: 모든 모듈을 하나의 통합 라이브러리로 빌드
+find_package(OpenCV REQUIRED)
+
+message(STATUS "DEP_SOURCE_DIR ${DEP_SOURCE_DIR}")
 
 # ─── 실행 파일 생성 및 설정 ──────────────────────────
 # Executable에 사용하는 Source들과 Header 모음
@@ -65,6 +108,7 @@ set(PROJECT_HEADERS
 )
 
 add_executable(${PROJECT_NAME} app/main.cpp)
+
 
 # 의존성 헤더 경로 추가
 # OpenCV의 경우, 헤더 구조에 따라 opencv4 디렉토리 하위에 헤더가 존재할 수 있습니다.
@@ -85,5 +129,3 @@ target_compile_definitions(${PROJECT_NAME}
 PUBLIC
     WINDOW_NAME="${WINDOW_NAME}"
 )
-
-message(STATUS "OPENCV_EXTRA_MODULES_PATH" ${OPENCV_EXTRA_MODULES_PATH})
