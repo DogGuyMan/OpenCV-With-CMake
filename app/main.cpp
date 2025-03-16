@@ -1,8 +1,9 @@
-#include <iostream>
+#include <fmt/core.h>
+#include <config.hpp>
+#include <opencv2/opencv.hpp>
 
-using namespace std;
-
-int main() {
-    cout << WINDOW_NAME << '\n';
-
+int main()
+{
+    fmt::print("Hello %s!\n", project_name);
+    return 0;
 }
