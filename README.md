@@ -49,6 +49,8 @@ set(DEP_SOURCE_DIR ${DEP_SOURCE_DIR} "${OpenCV_SOURCE_DIR}/include") # opencv_wo
 
 #### 2). VCPKG 사용
 
+#### FetchContent는 버리자! 화난다 진짜 VCPKG 쓰자.
+
 ##### ① 환경 변수 설정
 ```shell
 # ~/.zshrc
@@ -86,6 +88,9 @@ sh ./bootstrap-vcpkg.sh
     vcpkg add port nlohmann-json
     vcpkg add port spdlog
     vcpkg add port opencv4
+    ```
+    ```bash
+    vcpkg integrate install
     ```
 
 * Add port 결과
@@ -154,6 +159,13 @@ cmake --build build
     <h5>include path를 잘 찾아온다.</h5>
 </div>
 
+---
+
+> ### 📄 실행
+<div align=center>
+    <img src="image/2025-03-16-23-23-41.png">
+    <h5>FetchContent를 버리니 병이 나았습니다. 🥰</h5>
+</div>
 
 ---
 
@@ -171,4 +183,6 @@ cmake --build build
   1. 컴퓨터 비전 이론 익히기
   2. C++을 통한 컴퓨터 비전 프로젝트 만들기
 
-#### 3) [OpenCL CMake Cache 설정](https://blog.naver.com/91blacksheep/221492188605)
+#### 3) OpenCL CMake Cache 설정
+* https://blog.naver.com/91blacksheep/221492188605
+* https://joonwooson.gitbooks.io/opencv/content/
