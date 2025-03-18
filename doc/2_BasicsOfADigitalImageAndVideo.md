@@ -1,10 +1,10 @@
-## 2 Basics of a Digital ImageAndVideo.md
+## 2 Basics of a Digital Image And Video
 
 > ### 📄 디지털 이미지와 영상 기초
 
 #### Pixel
 <div align=center>
-    <img src="image/2025-03-08-16-29-04.png" width=80%>
+    <img src="image/2025-03-08-16-29-04.png" width=800px height=500px>
     <h5></h5>
 </div>
 
@@ -13,20 +13,18 @@
   * 이미지와 비디오를 구성하는 가장 작은 단위의 정보를 저장하는 요소임.
   * 2차원 좌표애 Color 구조체 RGB를 담는다.
 
-
 #### Frame Rate
 <div align=center>
-    <img src="image/2025-03-08-16-31-44.png" width=80%>
+    <img src="image/2025-03-08-16-31-44.png" width=800px height=500px>
     <h5></h5>
 </div>
 
 * Frame Rate란?
   * Frame per Second간 촬영된 이미지 수
 
-
 #### Intensity Level
 <div align=center>
-    <img src="image/2025-03-08-16-35-00.png" width=80%>
+    <img src="image/2025-03-08-16-35-00.png" width=800px height=500px>
     <h5></h5>
 </div>
 
@@ -35,9 +33,10 @@
     * 이 수치가 더 높다면 디테일을 더 정교하게 촬영이 가능하다
     * $(L = 2^{k}, 0 \le k \le 8)$
 
+
 #### Pixel Resolution
 <div align=center>
-    <img src="image/2025-03-08-16-38-02.png" width=80%>
+    <img src="image/2025-03-08-16-38-02.png" width=800px height=500px>
     <h5></h5>
 </div>
 
@@ -46,9 +45,15 @@
 #### Total number of bits to store digital image
 하나의 영상을 구성하는데 필요한 비트수
 <div align=center>
-    <img src="image/2025-03-08-16-39-29.png" width=80%>
+    <img src="image/2025-03-08-16-39-29.png" width=800px height=500px>
     <h5></h5>
 </div>
+
+#### 정리
+##### ① Pixel : 2차원 좌표애 Color 구조체 RGB를 담음으로 가장 단위의 시각정보를 저장하는 요소
+##### ② Frame Rate : Frame per Second간 촬영된 이미지 수
+##### ③ Intensity Level : 하나의 픽셀이 가질 수 있는 값의 Range 값의 개수 $2^{0}$~$2^{8}$
+##### ④ Resolution : 한 이미지를 구성하는 픽셀 수를 의미함
 
 #### 숙제
 컬러 비디오이기 떄문에 rgba 값을 가질것이고 : 8x8x8x8

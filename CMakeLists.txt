@@ -45,7 +45,6 @@ message(STATUS "OpenCV_LIBS ${CMAKE_TOOLCHAIN_FILE}")
 find_package(spdlog REQUIRED)
 set(DEP_LIBS ${DEP_LIBS} spdlog::spdlog)
 
-
 # ─── 실행 파일 생성 및 설정 ──────────────────────────
 # Executable에 사용하는 Source들과 Header 모음
 set(PROJECT_SOURCES
