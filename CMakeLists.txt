@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_BUILD_TYPE Debug)
 
 # VCPKG_INSTALLED_DIR:PATH=~/Develop Projects/CXXProject/OpenCV-With-CMake/build/vcpkg_installed
+message(STATUS "VCPKG_DEFAULT_TRIPLET" $ENV{VCPKG_DEFAULT_TRIPLET}) # 환경 변수를 가져오려면 $ENV{VAL}
 set(VCPKG_INCLUDE_DIR ${VCPKG_INSTALLED_DIR}/arm64-osx/include)
 set(VCPKG_LIB_DIR ${VCPKG_INSTALLED_DIR}/arm64-osx/lib)
 set(CONFIG_INCLUDE_DIR ${CMAKE_BINARY_DIR}/configured_files/include)
@@ -16,12 +17,14 @@ set(CMAKE_INSTALL_PREFIX ${DEP_INSTALL_DIR})
 
 find_package(fmt REQUIRED)
 set(DEP_LIBS ${DEP_LIBS} fmt::fmt)
+message(STATUS "fmt Json ${fmt_DIR}")
 
 find_package(nlohmann_json REQUIRED)
 set(DEP_LIBS ${DEP_LIBS} nlohmann_json::nlohmann_json)
+message(STATUS "nlohmann json ${nlohmann_json_DIR}")
 
 set(OPENCV_ENABLE_NONFREE ON CACHE BOOL "Enable nonfree algorithms" FORCE)
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries" FORCE)
+set(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libraries" FORCE)
 set(BUILD_WITH_STATIC_CRT OFF CACHE BOOL "Use dynamic CRT instead of static" FORCE)
 set(BUILD_PACKAGE OFF CACHE BOOL "Build package" FORCE)
 set(BUILD_EXAMPLES ON CACHE BOOL "Build examples" FORCE)
@@ -38,9 +41,10 @@ set(WITH_OPENCL ON CACHE BOOL "Enable OpenCL support" FORCE)
 set(WITH_OPENCLAMDBLAS ON CACHE BOOL "Enable OpenCL AMD BLAS support" FORCE)
 set(WITH_OPENCLAMDFFT ON CACHE BOOL "Enable OpenCL AMD FFT support" FORCE)
 set(WITH_OPENGL OFF CACHE BOOL "Enable OpenGL support" FORCE)
+set(WITH_FFMPEG ON CACHE BOOL "Enable FFMPEG support" FORCE)
+set(OpenCV_ROOT "${VCPKG_INSTALLED_DIR}/arm64-osx/share/opencv4")
 find_package(OpenCV REQUIRED)
 set(DEP_LIBS ${DEP_LIBS} ${OpenCV_LIBS})
-message(STATUS "OpenCV_LIBS ${CMAKE_TOOLCHAIN_FILE}")
 
 find_package(spdlog REQUIRED)
 set(DEP_LIBS ${DEP_LIBS} spdlog::spdlog)
@@ -48,16 +52,28 @@ set(DEP_LIBS ${DEP_LIBS} spdlog::spdlog)
 # ─── 실행 파일 생성 및 설정 ──────────────────────────
 # Executable에 사용하는 Source들과 Header 모음
 set(PROJECT_SOURCES
+    src/my_demo_opencv.cpp
+
     # src/buffer.cpp src/common.cpp src/context.cpp src/image.cpp src/program.cpp
     # src/shader.cpp src/vertex_layout.cpp src/texture.cpp
 )
 
 set(PROJECT_HEADERS
+    src/my_demo_opencv.hpp
     # src/buffer.h src/common.h src/context.h src/image.h src/program.h
     # src/shader.h src/vertex_layout.h src/texture.h
 )
+add_subdirectory(config)
+add_subdirectory(src/chapter4)
 
-add_executable(${PROJECT_NAME} app/main.cpp)
+message(STATUS "PROJECT_SOURCES " ${PROJECT_SOURCES})
+message(STATUS "PROJECT_HEADERS " ${PROJECT_HEADERS})
+
+add_executable(${PROJECT_NAME}
+    app/main.cpp
+    ${PROJECT_SOURCES} ${CHAPTER4_SOURCES}
+    ${PROJECT_HEADERS} ${CHAPTER4_HEADERS}
+)
 
 # 의존성 헤더 경로 추가
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -72,5 +88,3 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_link_libraries(${PROJECT_NAME} PUBLIC
     ${DEP_LIBS}
 )
-
-add_subdirectory(config)

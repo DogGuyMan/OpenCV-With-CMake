@@ -1,1 +1,1 @@
-./build/OpenGLProject
+./build/opencv-project
