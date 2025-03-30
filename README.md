@@ -138,9 +138,26 @@ https://learn.microsoft.com/ko-kr/vcpkg/commands/install
       "builtin-baseline": "782ccc18d8b819cdef6794a6c03eb3d9f7cd04aa"
     }
     ```
+* feature 추가
+  * `opencv4` 대신 좀더 늘려 쓰자.
+    ```json
+    "dependencies": [
+        {
+            "name":"opencv4",
+            "features": ["ffmpeg", "opencl"]
+        },
+    ]
+    ```
+* manifest에서 install
+
 ##### ⑤ CMake `find_package()`
 
 * `find_package()` **이전에 선언**해야 하는 변수가 있고, **이후에 선언**해야 하는 변수가 있다.
+* 만약 mac에 패키지 매니저인 brew와 vcpkg를 사용중이라면
+두 패키지 매니저 두가지 중 어느 곳에 깔린 패키지를 가져와야 하느냐.
+  > Fair point. Suppose if you have set a toolchain to use vcpkg. Now you want to use apache-arrow from the brew installation. so a solution would be the set the brew path in find_package(Arrow CONFIG REQUIRED PATHS /usr/local/lib/cmake/arrow NO_DEFAULT_PATH). This one loads the dependencies of the arrow package by looking into packages installed by vcpkg, which is not what we want. Then you end up by writing find_package recursively for all the dependencies.
+  * 결론은 명시적으로 `find_package`를 사용할 수 있다.
+
 ```txt
 ...
 
@@ -166,6 +183,8 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     ${DEP_LIBS}
 )
 ```
+
+
 ##### ⑥ 툴체인 연결 & 빌드
 
 ```bash
