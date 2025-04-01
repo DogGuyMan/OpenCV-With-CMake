@@ -1,20 +1,20 @@
-## 4. OpenCV Drawing Function
+## 6. OpenCV Drawing Function
 
 > ### 📄 4각형을 그리는 함수
 
 ![](image/2025-03-08-17-07-39.png)
 ```cpp
-void rectangle( Mat& img, 
-                Point pt1, Point pt2, 
-                const Scalar& color, 
-                int thickness=1, 
+void rectangle( Mat& img,
+                Point pt1, Point pt2,
+                const Scalar& color,
+                int thickness=1,
                 int lineType=8, int shift=0
 );
 
-void rectangle( Mat& img, 
+void rectangle( Mat& img,
                 Rect rec,
-                const Scalar& color, 
-                int thickness=1, 
+                const Scalar& color,
+                int thickness=1,
                 int lineType=8, int shift=0
 );
 ```

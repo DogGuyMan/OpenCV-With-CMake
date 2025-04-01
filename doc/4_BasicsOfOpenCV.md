@@ -1,4 +1,4 @@
-## 4. Mat
+## 4. BasicsOfOpenCV
 > ### 📄 1. Mat
 
 #### 1). OpenCV에서 이미지를 표현하기 위한 기본 데이터 타입
@@ -220,6 +220,5 @@ int PlayWithVideoCapture() {
 4. ##### `CAP_PROP_FRAME_COUNT`
    * 비디오 파일의 총 프레임 수
 
-<!-- ![](image/2025-03-19-01-07-27.png) -->
 
-<!-- ![](image/2025-03-19-01-09-37.png) -->
+![](image/2025-03-19-01-09-37.png)
