@@ -7,9 +7,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+message(STATUS "CMAKE_TOOLCHAIN_FILE" ${CMAKE_TOOLCHAIN_FILE}) # 환경 변수를 가져오려면 $ENV{VAL}
 
 # VCPKG_INSTALLED_DIR:PATH=~/Develop Projects/CXXProject/OpenCV-With-CMake/build/vcpkg_installed
-message(STATUS "VCPKG_DEFAULT_TRIPLET" $ENV{VCPKG_DEFAULT_TRIPLET}) # 환경 변수를 가져오려면 $ENV{VAL}
 set(VCPKG_INCLUDE_DIR ${VCPKG_INSTALLED_DIR}/arm64-osx/include)
 set(VCPKG_LIB_DIR ${VCPKG_INSTALLED_DIR}/arm64-osx/lib)
 set(CONFIG_INCLUDE_DIR ${CMAKE_BINARY_DIR}/configured_files/include)
@@ -65,6 +66,7 @@ set(PROJECT_HEADERS
 )
 add_subdirectory(config)
 add_subdirectory(src/chapter4)
+add_subdirectory(src/chapter5)
 
 message(STATUS "PROJECT_SOURCES " ${PROJECT_SOURCES})
 message(STATUS "PROJECT_HEADERS " ${PROJECT_HEADERS})
