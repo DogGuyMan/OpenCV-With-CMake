@@ -1,5 +1,21 @@
 # OpenCV With CMake
 
+
+## 실습
+
+### 📄 목차
+
+1. [Intro](./doc/1_Intro.md)
+2. [BasicsOfADigitalImageAndVideo](./doc/2_BasicsOfADigitalImageAndVideo.md)
+3. [BasicsOfColor](./doc/3_BasicsOfColor.md)
+4. [BasicsOfOpenCV](./doc/4_BasicsOfOpenCV.md)
+5. [MatOperator](./doc/5_MatOperator.md)
+6. [OpenCVDrawingFunction](./doc/6_OpenCVDrawingFunction.md)
+
+---
+
+## 세팅
+
 > ### 📄 1. CLI로 CMake GNU 파일 제작 Shell 스크립트 실행하기
 
 
