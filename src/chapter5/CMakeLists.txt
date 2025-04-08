@@ -1,4 +1,4 @@
-set(CHAPTER4_SOURCES
+set(CHAPTER5_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/color_space_conversion_cvt.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/split_and_merge.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/roi_image_mask.cpp
@@ -7,7 +7,7 @@ set(CHAPTER4_SOURCES
     PARENT_SCOPE
 )
 
-set(CHAPTER4_HEADERS
+set(CHAPTER5_HEADERS
     ${PROJECT_HEADERS}
     ${CMAKE_CURRENT_SOURCE_DIR}/color_space_conversion_cvt.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/split_and_merge.hpp

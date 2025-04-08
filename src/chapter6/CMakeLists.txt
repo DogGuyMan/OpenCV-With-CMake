@@ -1,0 +1,10 @@
+set(CHAPTER6_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_rectangle.cpp
+    PARENT_SCOPE
+)
+
+set(CHAPTER6_HEADERS
+    ${PROJECT_HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_rectangle.hpp
+    PARENT_SCOPE
+)

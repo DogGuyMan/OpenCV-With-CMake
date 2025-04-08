@@ -7,22 +7,21 @@
 
 ![](image/2025-04-07-23-56-26.png)
 
-#### 1). `void rectangle()`
+#### 1). `void rectangle(Mat& img, <represent_rectangle>, const Scalar& color, int thickness, int linetype, int shift = 0)`
 
 ##### 공통 패러미터.
 1. `Mat& img` : 4각형을 그릴 이미지(캔버스)의 레퍼런스
-2. *사각형을 나타내는 자료형*
+2. ***사각형을 나타내는 자료형***
 3. `const Scalar& color` : 상수 컬러를 의미하고, 혹은 GrayScale을 사용하는 brightness를 기입할 수 있다.
-4. `int thickness` : 선의 굵기
-   양수면 밖으로 그리고, 음수면 내부로 그린다.
-5. `int linetype` : 선의 타입
+4. `int thickness` : 선의 굵기, 양수면 밖으로 그리고, 음수면 내부로 그린다.
+1. `int linetype` : 선의 타입
    <img src="image/2025-04-08-00-32-09.png" width=60%>
    1. LINE_4, LINE_8 파라미터를 전달하면 픽셀이 깨져 보입니다.
       * 8 (Omitted) : 8 connected line
       * 4 : 4 connected line
    2. LINE_AA : 픽셀이 깨져서 발생하는 계단 현상을 최소화하는 연결 선을 그려줍니다.
       * Antialiased line
-6. `int shift = 0` : 디폴트는 0, 사각형을 정교하게 그릴 때, 사용한다.
+2. `int shift = 0` : 디폴트는 0, 사각형을 정교하게 그릴 때, 사용한다.
 
 #### 2).`Point`를 사용하는 오버로딩
 ```cpp

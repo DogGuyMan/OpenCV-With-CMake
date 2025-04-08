@@ -55,6 +55,65 @@ vscode에서 파일이 열릴때, 등등 이벤트에 수행할 커맨드를 추
     <h5></h5>
 </div>
 
+#### 3). CMake Debug vcpkg 환경에서 사용하기
+
+#### 만약 VCPKG 를 사용했다면, 특수한 설정을 하지 않으면 디버깅을 할 수 없다.
+* 왜냐하면 VCPKG를 사용한 이상 앞으로 다음과 같은 쉘을 사용해서 Configure 해줘야 하기 떄문이다.
+  ```shell
+  cmake -B build -DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake
+  ```
+* 문제는 아무런 설정 없이는 이와 같은 CMakeCache를 Argument로 넘겨줄 수 없다는 것이 문제다.
+    따라서 다음과 같은 절차가 필요하다.
+
+##### ① `CMakePreset.json` 설정하기
+```json
+/* 최상단 루트 현재 디렉토리에 CMakePreset.json 만들기*/
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "opencv-project",
+            "displayName": "도구 체인 파일을 사용하여 사전 설정 구성",
+            "description": "Unix Makefiles 생성기, 빌드 및 설치 디렉터리 설정",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${workspaceFolder}/build/",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_INSTALL_PREFIX": "$ENV{VCPKG_ROOT}/installed/arm64-osx"
+            }
+        }
+    ]
+}
+```
+
+##### ② CMake : 디버그
+
+<div align=center>
+    <img src="image/2025-04-09-00-46-51.png" width=80%>
+    <h5></h5>
+</div>
+
+##### ③ setting.json 설정
+
+* [CMake DebugConfig 설정하기](https://github.com/microsoft/vscode-cmake-tools/issues/3908)
+*  만약 127 GDB를 찾지 못했다는 등, 디버거가 실행이 되지 않고 종료 되었다면. 확인해 볼 것!
+    ```bash
+    ...XcodeDefault.xctoolchain/usr/bin/lldb --version code 127과(와) 함께 종료되었습니다.
+    ```
+* cmake.debugConfig를 setting.json에 설정하는 것이다.
+    ```json
+    /* .vscode/setting.json */
+    ...
+    "cmake.debugConfig": {
+        "cwd": "${workspaceFolder}",
+        "MIMode": "lldb"
+    },
+    ...
+    ```
+
+##### ④ 결과
+
 ---
 
 > ### 3. 📄 VSCode에서 라이브러리를 못찾아 올떄,

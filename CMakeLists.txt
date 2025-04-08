@@ -67,14 +67,17 @@ set(PROJECT_HEADERS
 add_subdirectory(config)
 add_subdirectory(src/chapter4)
 add_subdirectory(src/chapter5)
+add_subdirectory(src/chapter6)
 
 message(STATUS "PROJECT_SOURCES " ${PROJECT_SOURCES})
 message(STATUS "PROJECT_HEADERS " ${PROJECT_HEADERS})
 
 add_executable(${PROJECT_NAME}
     app/main.cpp
-    ${PROJECT_SOURCES} ${CHAPTER4_SOURCES}
-    ${PROJECT_HEADERS} ${CHAPTER4_HEADERS}
+    ${PROJECT_SOURCES} ${PROJECT_HEADERS}
+    ${CHAPTER4_SOURCES} ${CHAPTER4_HEADERS}
+    ${CHAPTER5_SOURCES} ${CHAPTER5_HEADERS}
+    ${CHAPTER6_SOURCES} ${CHAPTER6_HEADERS}
 )
 
 # 의존성 헤더 경로 추가

@@ -9,23 +9,40 @@
 #include "chapter5/roi_image_mask.hpp"
 #include "chapter5/addition_and_subtraction.hpp"
 #include "chapter5/threshold_operations.hpp"
+#include "chapter6/drawing_rectangle.hpp"
 
+int Chapter4() {
+    chapter4::ReadAnImageInOpenCV();
+    chapter4::PlayWithVideoCapture();
+    chapter4::ReadAVideoFromAFile();
+    chapter4::ReadAVideoFromAWebcam();
+    return 1;
+}
+
+int Chapter5() {
+    chapter5::ColorSpaceConversionCvt();
+    chapter5::SplitAndMerge();
+    chapter5::RectROIImageMask(); chapter5::PolygonROIImageMask();
+    chapter5::MatOriginal();
+    chapter5::MatAdd();
+    chapter5::MatScaleadd();
+    chapter5::MatAbsdiff();
+    chapter5::MatSubtract();
+    chapter5::Threshold();
+    chapter5::AdaptiveThreshold();
+    chapter5::InRange();
+    return 1;
+}
+
+int Chapter6() {
+    chapter6::DrawingRectangleWithPoints();
+    chapter6::DrawingRectangleWithRect();
+    return 1;
+}
 int main()
 {
-    // chapter4::ReadAnImageInOpenCV();
-    // chapter4::PlayWithVideoCapture();
-    // chapter4::ReadAVideoFromAFile();
-    // chapter4::ReadAVideoFromAWebcam();
-    // chapter5::ColorSpaceConversionCvt();
-    // chapter5::SplitAndMerge();
-    // chapter5::RectROIImageMask(); chapter5::PolygonROIImageMask();
-    // chapter5::MatOriginal();
-    // chapter5::MatAdd();
-    // chapter5::MatScaleadd();
-    // chapter5::MatAbsdiff();
-    // chapter5::MatSubtract();
-
-    // chapter5::Threshold();
-    // chapter5::AdaptiveThreshold();
-    chapter5::InRange();
+    // Chapter4();
+    // Chapter5();
+    Chapter6();
+    return 1;
 }
