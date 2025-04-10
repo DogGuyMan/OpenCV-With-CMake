@@ -1,10 +1,18 @@
 set(CHAPTER6_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/drawing_rectangle.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_line.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_circle.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_polygon.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_text.cpp
     PARENT_SCOPE
 )
 
 set(CHAPTER6_HEADERS
     ${PROJECT_HEADERS}
     ${CMAKE_CURRENT_SOURCE_DIR}/drawing_rectangle.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_line.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_circle.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_polygon.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_text.hpp
     PARENT_SCOPE
 )

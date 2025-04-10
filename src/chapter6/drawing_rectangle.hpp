@@ -4,6 +4,7 @@
 namespace chapter6 {
     int DrawingRectangleWithPoints();
     int DrawingRectangleWithRect();
+    int FillRectangleWithRect();
 }
 
 #endif//__DRAWING_RECTANGLE__

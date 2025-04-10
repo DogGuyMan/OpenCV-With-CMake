@@ -46,17 +46,48 @@ void rectangle( Mat& img,
 #### 4). 예제 코드
 
 ```cpp
-int main() {
-    Mat image = imread("lena.jpg");
-    Rect rect = Rect(10, 10, 100, 100); // LT position, width, height 크기와 위치가 정해진 rect
-    rectangle(image, rect, Scalar(255,0,0), 4, 8, 0); // Scalar BGR 순서로 기입한다.
-    imshow("image", image);
+int chapter6::DrawingRectangleWithRect() {
+    Mat image = imread("./data/lena.jpg");
+    Rect rect1 = Rect(10, 10, 100, 100);
+    Rect rect2 = Rect(200, 10, 100, 100);
+    Rect rect3 = Rect(10, 200, 100, 100);
+    rectangle(image, rect1, Scalar(255,0,0), 4, LINE_4, 0);
+    rectangle(image, rect2, Scalar(0,255,0), 4, LINE_8, 0);
+    rectangle(image, rect3, Scalar(0,0,255), 4, LINE_AA, 0);
+    imshow("DrawingRectangleWithRect", image);
     waitKey(0);
-    return 0;
+    return 1;
 }
+
+int chapter6::DrawingRectangleWithPoints() {
+    Mat image = imread("./data/lena.jpg");
+    Point points1[1][2] = {Point(10, 10), Point(100, 100)};
+    Point points2[1][2] = {Point(200, 10), Point(100, 100)};
+    Point points3[1][2] = {Point(10, 200), Point(100, 100)};
+    rectangle(image, points1[0][0], points1[0][1], Scalar(255,0,0), 4, LINE_4, 0);
+    rectangle(image, points2[0][0], points2[0][1], Scalar(0,255,0), 4, LINE_8, 0);
+    rectangle(image, points3[0][0], points3[0][1], Scalar(0,0,255), 4, LINE_AA, 0);
+    imshow("DrawingRectangleWithPoints", image);
+    waitKey(0);
+    return 1;
+}
+
+int chapter6::FillRectangleWithRect() {
+    Mat image = imread("./data/lena.jpg");
+    Point points1[1][2] = {Point(10, 10), Point(100, 100)};
+    Point points2[1][2] = {Point(200, 10), Point(100, 100)};
+    Point points3[1][2] = {Point(10, 200), Point(100, 100)};
+    rectangle(image, points1[0][0], points1[0][1], Scalar(255,0,0), -1, LINE_4);
+    rectangle(image, points2[0][0], points2[0][1], Scalar(0,255,0), -1, LINE_8);
+    rectangle(image, points3[0][0], points3[0][1], Scalar(0,0,255), -1, LINE_AA);
+    imshow("FillRectangleWithPoints", image);
+    waitKey(0);
+    return 1;
+}
+
 ```
 
-![](image/2025-04-07-23-58-06.png)
+![](image/2025-04-11-00-36-07.png)
 
 ---
 
@@ -78,29 +109,47 @@ int main() {
 3. `int radius` : 원의 반지름.
 4. 나머지는 이하 동일...
 
-<!--
-![](image/2025-04-07-23-58-15.png)
-![](image/2025-04-07-23-59-42.png)
-
-1. 원을 그릴 이밎
-2. 원의 중점
-3. 원의 반지름
-4. 나머지는 이하 동일. -->
-
 #### 3). 예제 코드
+
 ##### p1, p2를 사용해서 선분의 시작점, 끝점 정의
   ```cpp
-  int main() {
-      Mat image = imread("lena.jpg");
-      Point p1(25,25), p2(100, 50);
-      line(image, p1, p2, Scalar(255,0,0), 3, 8, 0);
-      imshow("image", image);
-      waitKey(0);
-      return 0;
-  }
+   int chapter6::DrawingLine() {
+       Mat image = imread("./data/lena.jpg");
+
+       Point p1(25,25), p2(100, 50);
+       line(image, p1, p2, Scalar(0,255,255), 8, 4, 0);
+       imshow("line on image", image);
+       waitKey(0);
+       return 0;
+   }
   ```
 
-![](image/2025-04-08-00-00-41.png)
+##### center와, radious를 사용해 원을 그리고, 채움
+   ```cpp
+   int chapter6::DrawingCircle() {
+       Mat image = imread("./data/lena.jpg");
+
+       Point center(100,60);
+       int radius = 40;
+       circle(image, center, radius, Scalar(0,255,255), 8, 4, 0);
+       imshow("circle on image", image);
+       waitKey(0);
+       return 0;
+   }
+
+   int chapter6::FillCircle() {
+       Mat image = imread("./data/lena.jpg");
+
+       Point center(image.size().width / 2, image.size().height / 2);
+       int radius = 150;
+       circle(image, center, radius, Scalar(0,255,255), -1, 4, 0);
+       imshow("fiil circle on image", image);
+       waitKey(0);
+       return 0;
+   }
+   ```
+
+![](image/2025-04-11-00-38-45.png)
 
 
 ---
@@ -131,24 +180,26 @@ int main() {
 * `const Point* ppt[1] = trapezoid[0]` = 0 세로 인덱스는 하나의 도형을 의미한다.
 그리고 npt를 통해 꼭짓점이 몇개 있는지 의미.
   ```cpp
-  int main() {
-      Mat image = Mat::zeros(400, 400, CV_8UC3);
-      int w = 400;
-
-      Point trapezoid[1][4] {
-          Point(w*2 / 6, w/ 4), Point(w*4 / 6 , w / 4), Point(w * 5 / 6 , w * 3 / 4), Point(w /6 , w*3 / 4),
-      }
+  int chapter6::DrawingPolygon() {
+      Mat image = Mat::zeros(400,400, CV_8UC3);
+      int w = 400, h = 400;
+      Point trapezoid[1][4] = {
+          Point(w*2/6, w/4),
+          Point(w*4/6, w/4),
+          Point(w*5/6, w*3/4),
+          Point(w/6,   w*3/4),
+      };
 
       const Point* ppt[1] = {trapezoid[0]};
       int npt[] = {4};
-
       fillPoly(image, ppt, npt, 1, Scalar(255,255,255), 8);
-      imshow("image", image);
-
+      imshow("drawing polygon", image);
       waitKey(0);
+      return 0;
   }
   ```
-![](image/2025-04-08-00-05-20.png)
+
+![](image/2025-04-11-01-03-19.png)
 
 * 이 코드를 응용해서 2개 이상의 도형을 그릴 수 있습니다.
 
@@ -180,17 +231,18 @@ int main() {
 
 #### 3). 예제 코드
 ```cpp
-int main() {
-    // 배경이 검은색인 이미지 생성
+int chapter6::DrawingText() {
     Mat image = Mat::zeros(400, 600, CV_8UC3);
-    int w = image.cols; int h = image.rows; // Row가 높이가 되고, Col가 가로입니다.
 
-    putText(image, format("width: %d, height: %d", w, h), Point(50, 80),
-            FONT_HERSHEY_SIMPLEX, 1, Scalar(0,200,200), 4);
-    imshow("image", image);
+    int w = image.cols, h = image.rows;
+    putText(image, format("width : %d, height : %d", w, h), Point(50, 80),
+        FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 200,200), 4
+    );
+
+    imshow("text on image", image);
     waitKey(0);
     return 0;
 }
 ```
 
-![](image/2025-04-08-00-09-06.png)
+![](image/2025-04-11-01-04-06.png)

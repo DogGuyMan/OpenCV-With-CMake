@@ -10,6 +10,10 @@
 #include "chapter5/addition_and_subtraction.hpp"
 #include "chapter5/threshold_operations.hpp"
 #include "chapter6/drawing_rectangle.hpp"
+#include "chapter6/drawing_line.hpp"
+#include "chapter6/drawing_circle.hpp"
+#include "chapter6/drawing_polygon.hpp"
+#include "chapter6/drawing_text.hpp"
 
 int Chapter4() {
     chapter4::ReadAnImageInOpenCV();
@@ -35,8 +39,14 @@ int Chapter5() {
 }
 
 int Chapter6() {
-    chapter6::DrawingRectangleWithPoints();
-    chapter6::DrawingRectangleWithRect();
+    // chapter6::DrawingRectangleWithPoints();
+    // chapter6::DrawingRectangleWithRect();
+    // chapter6::FillRectangleWithRect();
+    // chapter6::DrawingLine();
+    // chapter6::DrawingCircle();
+    // chapter6::FillCircle();
+    // chapter6::DrawingPolygon();
+    chapter6::DrawingText();
     return 1;
 }
 int main()
