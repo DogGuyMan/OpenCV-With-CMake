@@ -11,7 +11,7 @@ s(output)이 다른 intensity값으로 리턴 되는데.
 이 밝기값 변환은 하양, 회색 부분의 강조를 위해 사용될 수 있다.
 ```cpp
 int INTENSITY_MAX = L-1
-NagTransform(r) {return INTENSITY_MAX - r;}
+NegTransform(r) {return INTENSITY_MAX - r;}
 ```
 
 ```cpp
@@ -30,6 +30,8 @@ int main() {
     waitKey(0);
 }
 ```
+
+![](image/2025-04-13-02-22-44.png)
 
 #### 로그 변환
 
@@ -59,6 +61,8 @@ int main() {
     waitKey(0);
 }
 ```
+
+![](image/2025-04-13-02-23-29.png)
 
 #### 지수(감마) 변환
 ![](image/2025-04-12-16-47-17.png)
@@ -98,6 +102,8 @@ int main() {
 감마 지수값에 따라,
 * 값이 크면 어두운 픽셀 디테일을 강조 (어지간히 밝지 않으면 계속 어둡게)
 * 값이 작으면 밝게 픽셀의 디테일을 강조 (어지간히 어둡지 않으면 계속 밝게)
+
+![](image/2025-04-13-02-23-55.png)
 
 #### Piecewise 선형 변환
 ![](image/2025-04-12-16-52-33.png)

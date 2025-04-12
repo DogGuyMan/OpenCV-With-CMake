@@ -16,6 +16,10 @@
 #include "chapter6/drawing_text.hpp"
 #include "chapter7/deepcopy_vs_shallowcopy.hpp"
 #include "chapter7/pixel_access.hpp"
+#include "chapter8/gamma_transformation.hpp"
+#include "chapter8/log_transformation.hpp"
+#include "chapter8/negative_transformation.hpp"
+#include "chapter8/piecewise_transformation.hpp"
 
 int Chapter4() {
     chapter4::ReadAnImageInOpenCV();
@@ -63,11 +67,20 @@ int Chapter7() {
     return 1;
 }
 
+int Chapter8() {
+    // chapter8::NegativeTransformation();
+    // chapter8::LogTransformation();
+    chapter8::GammaTransformation();
+    // chapter8::PiecewiseTransformation();
+    return 1;
+}
+
 int main()
 {
     // Chapter4();
     // Chapter5();
     // Chapter6();
-    Chapter7();
+    // Chapter7();
+    Chapter8();
     return 1;
 }

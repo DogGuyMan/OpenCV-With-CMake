@@ -69,6 +69,7 @@ add_subdirectory(src/chapter4)
 add_subdirectory(src/chapter5)
 add_subdirectory(src/chapter6)
 add_subdirectory(src/chapter7)
+add_subdirectory(src/chapter8)
 
 message(STATUS "PROJECT_SOURCES " ${PROJECT_SOURCES})
 message(STATUS "PROJECT_HEADERS " ${PROJECT_HEADERS})
@@ -80,6 +81,7 @@ add_executable(${PROJECT_NAME}
     ${CHAPTER5_SOURCES} ${CHAPTER5_HEADERS}
     ${CHAPTER6_SOURCES} ${CHAPTER6_HEADERS}
     ${CHAPTER7_SOURCES} ${CHAPTER7_HEADERS}
+    ${CHAPTER8_SOURCES} ${CHAPTER8_HEADERS}
 )
 
 # 의존성 헤더 경로 추가
