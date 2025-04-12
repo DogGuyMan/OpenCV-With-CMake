@@ -46,7 +46,10 @@ int Chapter6() {
     // chapter6::DrawingCircle();
     // chapter6::FillCircle();
     // chapter6::DrawingPolygon();
+    // chapter6::DrawingMultiplePoly();
+    // chapter6::DrawingPolyLine();
     chapter6::DrawingText();
+    // chapter6::DrawingDateTime();
     return 1;
 }
 int main()

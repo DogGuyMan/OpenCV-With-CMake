@@ -176,9 +176,16 @@ int chapter6::FillRectangleWithRect() {
 
 #### 2). 코드 예제
 
-* 트레파 조이드 2차원 어레이 = 각각의 어레이 위치에 Point를 넣는다.
+##### ① trapezoid : 사다리꼴
+* 적분에서도 사다리꼴 적분이라고, 잘개 쪼개서 사다리꼴의 넓이로 적분을 할 수 있다는 의미.
+
+##### ② Polygon Draw
+* Polygon 즉, 하나듸 다각형은 하나의 Point Array로 표현 될 수 있다.
+
 * `const Point* ppt[1] = trapezoid[0]` = 0 세로 인덱스는 하나의 도형을 의미한다.
 그리고 npt를 통해 꼭짓점이 몇개 있는지 의미.
+* 마지막으로 ncountours을 사용해야 여러개의 다각형을 실제로 그릴 수 있다.
+  $|npt| \not ={ncountours}$ 이지만, 만약 ncountour크기가 작으면 다각형이 하나만 그려진다.
   ```cpp
   int chapter6::DrawingPolygon() {
       Mat image = Mat::zeros(400,400, CV_8UC3);
@@ -198,11 +205,58 @@ int chapter6::FillRectangleWithRect() {
       return 0;
   }
   ```
+  ```cpp
+  int chapter6::DrawingMultiplePoly() {
+      Mat image = Mat::zeros(400,400, CV_8UC3);
+      int w = 400, h = 400;
+      Point triagnle[1][3] = {Point(80, 10), Point(20, 140), Point(120, 140)};
+      Point trapezium[1][4] = {Point(80, w-30), Point(200, w-10), Point(180, w-120),Point(80, w-120)};
+      Point pentaogn[1][5] = {Point(300, 180), Point(350, 180), Point(380, 120),Point(325, 40), Point(270, 80)};
+      const Point* ppt[3] = {triagnle[0], trapezium[0], pentaogn[0]};
+      int npt[] = {3,4,5};
+      fillPoly(image, ppt, npt, 3, Scalar(255,255,255), 8);
+      imshow("drawing multiple poly", image);
+      waitKey(0);
+      return 0 ;
+  }
+  ```
 
-![](image/2025-04-11-01-03-19.png)
+<div align=center>
+    <img src="image/2025-04-11-01-03-19.png" width=40%>
+    <img src="image/2025-04-12-13-37-41.png" width=40%>
+    <h5>하나 뿐만 아니라 2개 이상도 그릴 수 있습니다.</h5>
+</div>
 
-* 이 코드를 응용해서 2개 이상의 도형을 그릴 수 있습니다.
+##### ② Polyline Draw
+* 거희 비슷함
+  ```cpp
+  int chapter6::DrawingPolyLine() {
+    Mat imageClosed = Mat::zeros(400,400, CV_8UC3);
+    Mat imageOpened = Mat::zeros(400,400, CV_8UC3);
+    int w = 400, h = 400;
+    Point trapezoid[1][4] = {
+        Point(w*2/6, h/4),
+        Point(w*4/6, h/4),
+        Point(w*5/6, h*3/4),
+        Point(w/6,   h*3/4),
+    };
 
+    const Point* ppt[1] = {trapezoid[0]};
+    int npt[] = {4};
+    polylines(imageClosed, ppt, npt,1, true, Scalar(255,255,255), 4, LINE_AA);
+    polylines(imageOpened, ppt, npt,1, false, Scalar(255,255,255), 4, LINE_AA);
+    imshow("drawing close polyline", imageClosed);
+    imshow("drawing open polyline", imageOpened);
+    waitKey(0);
+    return 0;
+  }
+  ```
+
+<div align=center>
+    <img src="image/2025-04-12-13-57-13.png" width=40%>
+    <img src="image/2025-04-12-14-00-30.png" width=40%>
+    <h5>다각형을 라인만 그릴 수도 있습니다.</h5>
+</div>
 
 
 ---
@@ -245,4 +299,54 @@ int chapter6::DrawingText() {
 }
 ```
 
-![](image/2025-04-11-01-04-06.png)
+```cpp
+
+int chapter6::DrawingDateTime() {
+    // 화면에 표시할 빈 이미지 생성
+    Mat canvas(400, 600, CV_8UC3, Scalar(30, 30, 30));
+    const double fps = 30;
+    // 창 생성
+    namedWindow("Timer", WINDOW_AUTOSIZE);
+
+    while (true) {
+        // 이미지 초기화
+        canvas.setTo(Scalar(30, 30, 30));
+
+        // 현재 시간 측정
+        // time_t로 변환하여 tm 구조체 생성
+        auto now = chrono::system_clock::now();
+        time_t now_time_t = chrono::system_clock::to_time_t(now);
+        tm now_tm = *localtime(&now_time_t);
+        auto duration = now.time_since_epoch();
+
+        // 시간 문자열 생성 (예: "Time: 123456789 ms")
+        auto ms = chrono::duration_cast<chrono::milliseconds>(duration).count() % 1000;
+        ostringstream time_text_ss;
+        time_text_ss << put_time(&now_tm, "%Y-%m-%d %H:%M:%S")
+        << '.' << setfill('0') << setw(3) << ms;
+
+        // 텍스트 출력
+        putText(canvas, time_text_ss.str(), Point(30, 100),
+                    FONT_HERSHEY_SIMPLEX, 1.0,
+                    Scalar(0, 255, 0), 2);
+
+        // 이미지 표시
+        imshow("Timer", canvas);
+
+        // 키 입력 대기 (1ms)
+        int key = waitKey(1000 / fps);
+        if (key == 13 || key == 32) { // Enter(13) 또는 Space(32) 키
+            break;
+        }
+    }
+
+    destroyAllWindows();
+    return 0;
+}
+```
+
+<div align=center>
+    <img src="image/2025-04-12-14-27-38.png" width=45%>
+    <img src="image/2025-04-12-14-23-44.gif" width=45%>
+    <h5></h5>
+</div>

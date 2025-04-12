@@ -4,6 +4,7 @@
 
 namespace chapter6 {
     int DrawingPolygon();
+    int DrawingMultiplePoly();
     int DrawingPolyLine();
 }
 
