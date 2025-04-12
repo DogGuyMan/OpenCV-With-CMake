@@ -14,6 +14,8 @@
 #include "chapter6/drawing_circle.hpp"
 #include "chapter6/drawing_polygon.hpp"
 #include "chapter6/drawing_text.hpp"
+#include "chapter7/deepcopy_vs_shallowcopy.hpp"
+#include "chapter7/pixel_access.hpp"
 
 int Chapter4() {
     chapter4::ReadAnImageInOpenCV();
@@ -39,23 +41,33 @@ int Chapter5() {
 }
 
 int Chapter6() {
-    // chapter6::DrawingRectangleWithPoints();
-    // chapter6::DrawingRectangleWithRect();
-    // chapter6::FillRectangleWithRect();
-    // chapter6::DrawingLine();
-    // chapter6::DrawingCircle();
-    // chapter6::FillCircle();
-    // chapter6::DrawingPolygon();
-    // chapter6::DrawingMultiplePoly();
-    // chapter6::DrawingPolyLine();
+    chapter6::DrawingRectangleWithPoints();
+    chapter6::DrawingRectangleWithRect();
+    chapter6::FillRectangleWithRect();
+    chapter6::DrawingLine();
+    chapter6::DrawingCircle();
+    chapter6::FillCircle();
+    chapter6::DrawingPolygon();
+    chapter6::DrawingMultiplePoly();
+    chapter6::DrawingPolyLine();
     chapter6::DrawingText();
-    // chapter6::DrawingDateTime();
+    chapter6::DrawingDateTime();
     return 1;
 }
+
+int Chapter7() {
+    chapter7::DeepCopyVsShallowCopy();
+    chapter7::PixelAccessByAt();
+    chapter7::PixelAccessByPointer();
+    chapter7::PixelAccessByIterator();
+    return 1;
+}
+
 int main()
 {
     // Chapter4();
     // Chapter5();
-    Chapter6();
+    // Chapter6();
+    Chapter7();
     return 1;
 }
