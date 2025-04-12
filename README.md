@@ -11,6 +11,10 @@
 4. [BasicsOfOpenCV](./doc/4_BasicsOfOpenCV.md)
 5. [MatOperator](./doc/5_MatOperator.md)
 6. [OpenCVDrawingFunction](./doc/6_OpenCVDrawingFunction.md)
+7. [MemoryManagementAndPixelAccess](./doc/7_MemoryManagementAndPixelAccess.md)
+8. [IntensityTransformation](./doc/8_IntensityTransformation.md)
+9. [HistogramEqualization](./doc/9_HistogramEqualization.md)
+10. [SpatialFiltering](./doc/10_SpatialFiltering.md)
 
 ---
 
