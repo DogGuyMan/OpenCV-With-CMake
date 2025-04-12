@@ -218,11 +218,11 @@ int main() {
 
 * **공식**
     ```cpp
-    if(mask(<Intencity>) != 0) {
-        dst(<Intencity>) = saturate(src1(<Intencity>)+src2(<Intencity>))
+    if(mask(<Intensity>) != 0) {
+        dst(<Intensity>) = saturate(src1(<Intensity>)+src2(<Intensity>))
     }
     ```
-  * `saturate(<intencity)`는 인텐시티가 INF를 가지더라도,
+  * `saturate(<Intensity)`는 인텐시티가 INF를 가지더라도,
 0~255 사이의 값을 나오도록 하는 함수임을 의미하고, `add()`함수가 실제로 수행하는 공식이다.
   * `dst`는 src1, src2 각각을 행렬 합을 한 뒤의 결과물이다.
   * `mask` : 싱글 채널 매트릭스를 입력으로 받고, 이 입력은 ROI Mask Image를 말한다.
@@ -232,14 +232,14 @@ int main() {
 
 * **공식**
     ```cpp
-    dst(<Intencity>) = scale * src1(<Intencity>) + src2(<Intencity>);
+    dst(<Intensity>) = scale * src1(<Intensity>) + src2(<Intensity>);
     ```
   * 각각의 Mat에 스케일을 곱하고 더한다.
 
 #### 3). `absdiff(Mat src1, Mat src2, Mat dst)`
 * **공식**
     ```cpp
-    dst(<Intencity>) = saturate(| src1(<Intencity>) - src2(<Intencity>)|);
+    dst(<Intensity>) = saturate(| src1(<Intensity>) - src2(<Intensity>)|);
     ```
   * 각각의 Mat의 차를 구하고, 절댓값을 취한다.
 
@@ -247,7 +247,7 @@ int main() {
 #### 4). `subtract(Mat src1, Mat src2, Mat dst, Mat mask = noArray(), int dtype -1)`
 * **공식**
     ```cpp
-    dst(<Intencity>) = saturate( src1(<Intencity>) - src2(<Intencity>))` if `mask(<Intencity>) != 0
+    dst(<Intensity>) = saturate( src1(<Intensity>) - src2(<Intensity>))` if `mask(<Intensity>) != 0
     ```
   * 각각의 Mat의 차를 구하고 절갯값을 취하지 않는다.
 
@@ -277,7 +277,7 @@ int main() {
 * **maxval** 이 공식에 적용되는 형태
   ```cpp
   // THRESH_BINARY
-  dst(<Intencity>) = src(<Intencity>) > thresh ? maxval  : 0
+  dst(<Intensity>) = src(<Intensity>) > thresh ? maxval  : 0
   ```
 * Type : 스레숄드 타입을 말한다.
   * `THRESH_BINARY, THRESH_BINARY_INV, THRESH_TRUNC, THRESH_TOZERO, THRESH_TOZERO_INV`
@@ -400,7 +400,7 @@ m(x, y) = saturate_case<rType> (alpha * (*this)(x, y) + beta);
 
 * **공식**
     ```cpp
-    Dst(<Intencity>) = saturate_case<uchar>(|src(<Intencity>)| * alpha + beta)
+    Dst(<Intensity>) = saturate_case<uchar>(|src(<Intensity>)| * alpha + beta)
     ```
 
 #### 4). 코드
