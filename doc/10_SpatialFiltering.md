@@ -22,6 +22,8 @@ SpatialFilters는, SpatialMasks, Kernels, Templates, Windows
 * 의도적으로 이미지 플러링을 하는데
 * 가우시안 필터는 마스크의 사이지에 따라 필더 정도를 더 강하게, 약하게 한다.
 
+![](image/2025-04-13-17-13-36.png)
+
 #### 3). Sharpening
 
 ![](image/2025-04-12-17-56-58.png)
@@ -34,6 +36,8 @@ SpatialFilters는, SpatialMasks, Kernels, Templates, Windows
 * 평균화는 행렬 적분이고, 샤프닝은 공간 행렬 미분을 수행하는 것과 동일하다.
 * 즉, smooting과 sharpening은 서로 수학적인 관점이 있다.
 * 그리고 high-pass filter이라고 불리기도 하다.
+
+![](image/2025-04-13-17-14-34.png)
 
 #### 4). 중앙값 필터 (Median filter)
 ![](image/2025-04-12-18-14-47.png)
@@ -50,3 +54,7 @@ SpatialFilters는, SpatialMasks, Kernels, Templates, Windows
 * 장단점
   * 평균 필터에 비해 계싼 비용이 높을 수 있음
   * 하지만, 경겨면 엣지 정보를 유지해야 하는 이미지에 매우 효과적이다.
+
+![](image/2025-04-13-17-16-13.png)
+
+### [히스토그램 평활화, 필터 및 이미지 향상](https://iitmcvg.github.io/summer_school/Session2/)

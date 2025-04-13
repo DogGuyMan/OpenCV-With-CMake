@@ -20,6 +20,9 @@
 #include "chapter8/log_transformation.hpp"
 #include "chapter8/negative_transformation.hpp"
 #include "chapter8/piecewise_transformation.hpp"
+#include "chapter9/histogram_equalization.hpp"
+#include "chapter10/spatial_blur_filtering.hpp"
+#include "chapter10/spatial_median_filtering.hpp"
 
 int Chapter4() {
     chapter4::ReadAnImageInOpenCV();
@@ -68,10 +71,23 @@ int Chapter7() {
 }
 
 int Chapter8() {
-    // chapter8::NegativeTransformation();
-    // chapter8::LogTransformation();
+    chapter8::NegativeTransformation();
+    chapter8::LogTransformation();
     chapter8::GammaTransformation();
-    // chapter8::PiecewiseTransformation();
+    chapter8::PiecewiseTransformation();
+    return 1;
+}
+
+int Chapter9() {
+    chapter9::HistogramEqualization();
+    return 1;
+}
+
+int Chapter10() {
+    // chapter10::SpatialAverageFiltering();
+    // chapter10::SpatialBlurFiltering();
+    chapter10::SpatialMedianFiltering();
+    // chapter10::SpatialUnsharpMasking();
     return 1;
 }
 
@@ -81,6 +97,8 @@ int main()
     // Chapter5();
     // Chapter6();
     // Chapter7();
-    Chapter8();
+    // Chapter8();
+    // Chapter9();
+    Chapter10();
     return 1;
 }

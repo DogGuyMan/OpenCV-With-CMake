@@ -395,7 +395,10 @@ sh ./bootstrap-vcpkg.sh
   1. 컴퓨터 비전 이론 익히기
   2. C++을 통한 컴퓨터 비전 프로젝트 만들기
 
-#### 3) OpenCL CMake Cache 설정
+#### 3). [컴퓨터 비전 특강](https://www.youtube.com/watch?v=N6vP0T1Xabg&list=PLoJdZ7VvEiRNQwM3pcwHWwLQutIYMs4KK&index=1)
+* 유튜브 특강
+
+#### 4) OpenCL CMake Cache 설정
 * https://blog.naver.com/91blacksheep/221492188605
 * https://joonwooson.gitbooks.io/opencv/content/
 * https://www.youtube.com/watch?v=e7GtcsSJ51s
