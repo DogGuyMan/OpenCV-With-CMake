@@ -84,6 +84,7 @@ vcpkg_installed/
 mono_crash.*
 
 # Build results
+[Tt]utorials/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
