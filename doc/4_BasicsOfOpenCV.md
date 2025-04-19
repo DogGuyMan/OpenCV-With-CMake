@@ -1,4 +1,5 @@
 ## 4. BasicsOfOpenCV
+
 > ### 📄 1. Mat
 
 #### 1). OpenCV에서 이미지를 표현하기 위한 기본 데이터 타입

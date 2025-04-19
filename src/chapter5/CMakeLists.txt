@@ -4,6 +4,7 @@ set(CHAPTER5_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/roi_image_mask.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/addition_and_subtraction.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/threshold_operations.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/extra_matrix_operation.cpp
     PARENT_SCOPE
 )
 
@@ -14,5 +15,6 @@ set(CHAPTER5_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/roi_image_mask.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/addition_and_subtraction.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/threshold_operations.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/extra_matrix_operation.hpp
     PARENT_SCOPE
 )

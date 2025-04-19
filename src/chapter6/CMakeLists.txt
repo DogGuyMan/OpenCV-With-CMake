@@ -4,6 +4,7 @@ set(CHAPTER6_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/drawing_circle.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/drawing_polygon.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/drawing_text.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_others.cpp
     PARENT_SCOPE
 )
 
@@ -14,5 +15,6 @@ set(CHAPTER6_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/drawing_circle.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/drawing_polygon.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/drawing_text.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/drawing_others.hpp
     PARENT_SCOPE
 )

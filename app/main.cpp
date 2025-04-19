@@ -9,11 +9,13 @@
 #include "chapter5/roi_image_mask.hpp"
 #include "chapter5/addition_and_subtraction.hpp"
 #include "chapter5/threshold_operations.hpp"
+#include "chapter5/extra_matrix_operation.hpp"
 #include "chapter6/drawing_rectangle.hpp"
 #include "chapter6/drawing_line.hpp"
 #include "chapter6/drawing_circle.hpp"
 #include "chapter6/drawing_polygon.hpp"
 #include "chapter6/drawing_text.hpp"
+#include "chapter6/drawing_others.hpp"
 #include "chapter7/deepcopy_vs_shallowcopy.hpp"
 #include "chapter7/pixel_access.hpp"
 #include "chapter8/gamma_transformation.hpp"
@@ -33,32 +35,38 @@ int Chapter4() {
 }
 
 int Chapter5() {
-    chapter5::ColorSpaceConversionCvt();
-    chapter5::SplitAndMerge();
-    chapter5::RectROIImageMask(); chapter5::PolygonROIImageMask();
-    chapter5::MatOriginal();
-    chapter5::MatAdd();
-    chapter5::MatScaleadd();
-    chapter5::MatAbsdiff();
-    chapter5::MatSubtract();
-    chapter5::Threshold();
-    chapter5::AdaptiveThreshold();
-    chapter5::InRange();
+    // chapter5::ColorSpaceConversionCvt();
+    // chapter5::SplitAndMerge();
+    // chapter5::RectROIImageMask(); chapter5::PolygonROIImageMask();
+    // chapter5::MatOriginal();
+    // chapter5::MatAdd();
+    // chapter5::MatScaleadd();
+    // chapter5::MatAbsdiff();
+    // chapter5::MatSubtract();
+    // chapter5::Threshold();
+    // chapter5::AdaptiveThreshold();
+    // chapter5::InRange();
+    // chapter5::MatrixConsturct();
+    // chapter5::MatrixBitwise();
+    // chapter5::MatrixInverted();
     return 1;
 }
 
 int Chapter6() {
-    chapter6::DrawingRectangleWithPoints();
-    chapter6::DrawingRectangleWithRect();
-    chapter6::FillRectangleWithRect();
-    chapter6::DrawingLine();
-    chapter6::DrawingCircle();
-    chapter6::FillCircle();
-    chapter6::DrawingPolygon();
-    chapter6::DrawingMultiplePoly();
-    chapter6::DrawingPolyLine();
-    chapter6::DrawingText();
-    chapter6::DrawingDateTime();
+    // chapter6::DrawingRectangleWithPoints();
+    // chapter6::DrawingRectangleWithRect();
+    // chapter6::FillRectangleWithRect();
+    // chapter6::DrawingLine();
+    // chapter6::DrawingCircle();
+    // chapter6::FillCircle();
+    // chapter6::DrawingPolygon();
+    // chapter6::DrawingMultiplePoly();
+    // chapter6::DrawingPolyLine();
+    // chapter6::DrawingText();
+    // chapter6::DrawingDateTime();
+    // chapter6::DrawingArrow();
+    // chapter6::DrawingMarker();
+    chapter6::DrawingTrackbar();
     return 1;
 }
 
@@ -84,10 +92,10 @@ int Chapter9() {
 }
 
 int Chapter10() {
-    // chapter10::SpatialAverageFiltering();
-    // chapter10::SpatialBlurFiltering();
+    chapter10::SpatialAverageFiltering();
+    chapter10::SpatialBlurFiltering();
     chapter10::SpatialMedianFiltering();
-    // chapter10::SpatialUnsharpMasking();
+    chapter10::SpatialUnsharpMasking();
     return 1;
 }
 
@@ -95,10 +103,10 @@ int main()
 {
     // Chapter4();
     // Chapter5();
-    // Chapter6();
+    Chapter6();
     // Chapter7();
     // Chapter8();
     // Chapter9();
-    Chapter10();
+    // Chapter10();
     return 1;
 }

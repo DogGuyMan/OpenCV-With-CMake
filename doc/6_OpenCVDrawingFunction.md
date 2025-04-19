@@ -350,3 +350,63 @@ int chapter6::DrawingDateTime() {
     <img src="image/2025-04-12-14-23-44.gif" width=45%>
     <h5></h5>
 </div>
+
+---
+
+> ### 📄 기타 등등..(Arrow, Marker, Trackbar, setMouseCallback)
+
+#### 1). `arrowedLine()`
+
+<div align=center>
+    <img src="image/2025-04-19-17-28-52.png" width=80%>
+    <h5></h5>
+</div>
+
+#### 2). `drawMarker()`
+
+<div align=center>
+    <img src="image/2025-04-19-17-28-30.png" width=80%>
+    <h5></h5>
+</div>
+
+#### 3). `createTrackbar()`, `getTrackbarPos()`, `setTrackbarPos()`
+
+<div align=center>
+    <img src="./image/TrackBar.gif" width=80%>
+    <h5></h5>
+</div>
+
+* createTrackbar() : 트랙바 생성
+* getTrackbarPos() : 현재 위치를 알고 싶을 때
+* setTrackbarPos() : 특정 위치로 옮기고 싶을 때
+
+#### 4). `setMouseCallback()`
+
+```cpp
+// 제네릭 포인터(Generic Pointer)  void* userdata
+void onMouse(int event, int x, int y, int flags, void* userdata) {
+    // 나 데이터의 실제 타입을 알지 못하므로 직접 역참조는 불가능.
+    // 따라서 reinterpret_cast 또는 static_cast를 사용하여 올바른 타입으로 변환함.
+    bool* isOnceClicked = reinterpret_cast<bool*>(userdata);
+
+    // cv내부에 인풋 이벤트가 있다.
+    if (event == cv::EVENT_LBUTTONDOWN) {
+        cout << "Mouse clicked at (" << x << ", " << y << "). Exiting program." << endl;
+        *isOnceClicked = true;
+    }
+}
+
+void WaitForMouseInput(const string& windowName) {
+    bool IsOnceClicked = false;
+    // 레퍼런스 전달을 해도 문제가 없다.
+    setMouseCallback(windowName, onMouse, &IsOnceClicked);
+
+    while(true){
+        if(IsOnceClicked) {
+            cout << "Exiting program as isOnceClicked is true." << endl;
+            break;
+        }
+        waitKey(10);
+    }
+}
+```

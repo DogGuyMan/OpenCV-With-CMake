@@ -4,8 +4,153 @@
 
 > ### 📄 사전 정보
 
-#### 1). `InputArray`
-#### 2). `OutputArray`
+#### 1). `cv::Mat` VS `cv::Mat_`
+
+##### OpenCV에서 `cv::Mat`과 `cv::Mat_`은 모두 행렬을 표현하는 클래스 지만.
+
+##### ① `cv::Mat` – 범용 행렬 클래스
+
+* **유연성**: 다양한 데이터 타입과 채널 수를 지원하며, 이미지 처리에서 가장 널리 사용.
+* **데이터 타입 지정**: 생성 시 `CV_8UC3`, `CV_32FC1` 등의 상수를 사용하여 데이터 타입과 채널 수를 지정할 수 있음
+* **예시**:
+    ```cpp
+    cv::Mat img = cv::imread("image.jpg", cv::IMREAD_COLOR); // 컬러 이미지 로드
+    ```
+
+##### ② `cv::Mat_<_Tp>` – 템플릿 기반 행렬 클래스
+
+- **템플릿 클래스**: 특정 데이터 타입을 컴파일 타임에 명시할 수 있어 타입 안정성이 높습니다.
+- **편리한 요소 접근**: `at<T>()` 대신 `()` 연산자를 사용하여 코드가 간결해집니다.
+- **예시**:
+    ```cpp
+    cv::Mat_<float> mat(2, 2); // 2x2 float 행렬 생성
+    mat(0, 0) = 1.0f;
+    mat(0, 1) = 2.0f;
+    mat(1, 0) = 3.0f;
+    mat(1, 1) = 4.0f;
+    ```
+
+| 항목             | `cv::Mat`                            | `cv::Mat_<_Tp>`                          |
+|------------------|--------------------------------------|------------------------------------------|
+| 타입 지정 방식   | 런타임에 상수로 지정 (`CV_8UC3` 등) | 컴파일 타임에 템플릿으로 지정 (`float` 등) |
+| 요소 접근 방식   | `at<T>(y, x)`                        | `(y, x)` 연산자 사용                     |
+| 사용 용도        | 다양한 데이터 타입과 채널 수 지원    | 특정 데이터 타입에 대해 간결한 코드 작성 |
+| 변환 가능 여부   | `cv::Mat_`으로 변환 가능             | `cv::Mat`으로 변환 가능                  |
+
+#### 2). `cv::Mat` Construct
+
+##### ① `Mat::zeros()`
+* 새로운 행렬을 생성할 때 모든 원소 값을 0으로 초기화하는 경우에 사용된다. 파라미터로 행과 열 또는 size, 그리고 type이 들어간다.
+
+##### ② `Mat::ones()`
+* 모든 원소가 1로 초기화된 행렬을 생성하는 경우에 사용된다.
+
+##### ③ `Mat::eye()`
+* 단위 행렬을 생성할때 사용된다.
+
+#### 3). Algebric Matrix Baisc Operation
+
+##### ① `Mat::mul()`
+* 같은 위치에 있는 원소끼리 곱셈 연산을 할때 사용한다.
+
+##### ② `Mat::inv()`
+* 행렬의 역행렬을 구할 때 사용한다.
+
+##### ③ `Mat::t()`
+* 행과 열을 뒤집는 전치행렬을 구할 때 사용한다.
+* 동의어로는 transpose, swapaxes 가 있다.
+
+##### ④ `Mat::reshape`
+
+* 배열의 모양만 변경, 데이터 순서는 그대로.
+* 데이터 순서를 그대로 유지하면서 지정된 모양으로 배열을 재구성합니다.
+```cpp
+cv::Mat original = (cv::Mat_<int>(2, 3) << 1, 2, 3, 4, 5, 6);
+```
+
+##### ⑤ `Mat::inversed` `Mat::operator~`
+* 반전 처리
+
+#### 4). [Matrix Concatination](https://www.geeksforgeeks.org/concatenate-images-using-opencv-in-python/)
+
+##### ① `Mat::vconcat`
+* 수직으로 이어붙이기 (카톡 이어붙이기)
+
+##### ② `Mat::hconcat`
+* 수평으로 이어붙이기 (파노라마 이어붙이기)
+
+##### ③ `Mat::concat_vh`
+* 그리드로 반복하기
+
+#### 5). Matrix Boolean
+
+##### ① `Mat::empty()`
+
+* Returns true if the array has no elements.
+
+##### ② `Mat:countNonZero`
+
+```cpp
+return cv::countNonZero(mat) == mat.total();
+```
+
+##### ③ `Mat::total()`
+
+```cpp
+bool areAllPixelsTrueCustom(const cv::Mat& mat) {
+    const uchar* data = mat.ptr<uchar>();
+    for (size_t i = 0; i < mat.total(); ++i) {
+        if (data[i] == 0) { // False condition
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+##### ④ `Mat::compare()`
+
+```cpp
+bool areAllPixels255(const cv::Mat& mat) {
+    cv::Mat compareResult;
+    cv::compare(mat, 255, compareResult, cv::CMP_EQ);
+    return cv::countNonZero(compareResult) == mat.total();
+}
+```
+
+##### ⑤ Bitwise `bitwise_and` `bitwise_or` `bitwise_xor` `bitwise_not`
+```cpp
+bitwise_and(img, img_mask, res);     imshow("AND", res);
+bitwise_or(img, img_mask, res);      imshow("OR", res);
+bitwise_xor(img, img_mask, res);     imshow("XOR", res);
+bitwise_not(img, res);               imshow("NOT", res);
+```
+
+#### 5). [Mat::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
+
+* 행렬 연산을 지연(Lazy) 평가하는 데 사용되는 클래스로,
+이 클래스는 cv::Mat 객체와 밀접하게 관련되며, 행렬 연산 결과를 효율적으로 표현하고 처리하는 데 중요한 역할을함
+
+* **장점**
+  1. **Lazy Evaluation**
+  `cv::MatExpr`는 행렬 연산의 결과를 즉시 계산하지 않고, 계산에 필요한 정보를 저장함.
+  필요할 때만 계산을 수행하여 메모리 사용량을 줄이고 계산을 최적화함.
+
+  2. **연산 체인 최적화**
+  여러 연산이 연속적으로 연결된 경우(A + B - C 등), 중간 결과를 저장하지 않고 한 번에 계산함.
+  불필요한 메모리 할당과 복사를 줄임.
+
+  3. **효율적 표현**
+  행렬 연산의 결과를 `cv::Mat`로 변환하지 않고, 연산 자체를 표현하는 객체로 유지함.
+
+  4. **연산자 오버로딩**
+     * Mat에 암시적 변환을 허용하고 `MatExpr::explicit MatExpr(const Mat& m);`
+        * 산술 연산 오버로딩 : `+`, `-`, `*`, `/`
+        * 비트 연산 오버로딩 : `&`, `|`, `^`, `~`
+            ```cpp
+            Mat image = imread("./data/lena.jpg");
+            Mat imageInverted = ~(image.clone());
+            ```
 
 > ### 📄 Color Space Conversion
 

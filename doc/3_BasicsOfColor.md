@@ -3,7 +3,7 @@
 > ### 📄 빛의 3원색
 
 <div align=center>
-    <img src="image/2025-03-08-16-55-33.png" width=60%>
+    <img src="image/2025-03-08-16-55-33.png" width=80%>
     <h5></h5>
 </div>
 
@@ -26,19 +26,18 @@
 #### 1). RGB
 
 <div align=center>
-    <img src="image/2025-03-08-16-58-27.png" width=60%>
+    <img src="image/2025-03-08-16-58-27.png" width=80%>
     <h5></h5>
 </div>
+
+* 게임 그래픽에서 스프라이트, 렌더링에 유리한 모델
 
 #### 2). HSI
 
 <div align=center>
-    <img src="image/2025-03-08-16-59-20.png" width=80%>
-    <h5></h5>
-</div>
-
-<div align=center>
-    <img src="image/2025-03-08-17-00-03.png" width=80%>
+    <img src="image/2025-03-08-16-59-20.png" width=40%>
+    <img src="image/2025-03-08-17-00-03.png" width=40%>
+    <img src="image/2025-04-19-15-46-02.png" width=80%>
     <h5></h5>
 </div>
 
@@ -52,17 +51,25 @@
   * 높이가 인텐시티
   * $0 \lt V \lt 1$,
 
+* 사람의 시각적 인지와 가장 유사하게 설계됨,
+* Hue(색상)과 Intencity(명도)와 서로 독립적인 차원이라 조명 변화가 있어도 색상 정보를 유지할 수 있음.
+* 색상 기반 객체 추적
+
 #### 3). YCbCr
 
 <div align=center>
-    <img src="image/2025-03-08-17-03-53.png" width=60%>
+    <img src="image/2025-03-08-17-03-53.png" width=80%>
     <h5>다음 경치 이미지는 Y, Cb, Cr별로 Chennel을 나눈 모습이다.</h5>
 </div>
 
+* 인간의 눈은 밝기 Y에 더 민감하므로, Cb와, Cr채널의 해상도를 줄여도, 시각적으로 차이가 없음.
+따라서 영상 압축 포맷에서 사용하기도 한다.
+* 즉 조명 변화에 분석을 집중하고 싶을때,
+  조명 변화에 민감한 객체와 / 조명 변화에 민감하지 않는 객체(얼굴, 피부색) 검출에 유리하다.
 
 #### 4). Grayscale Image
 
 <div align=center>
-    <img src="image/2025-03-08-17-04-44.png" width=60%>
+    <img src="image/2025-03-08-17-04-44.png" width=80%>
     <h5>각각의 픽셀은 밝기만 표현하는 이미지.</h5>
 </div>
