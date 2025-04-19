@@ -5,6 +5,7 @@
 
 ### 📄 목차
 
+#### 1). OpenCV
 1. [Intro](./doc/1_Intro.md)
 2. [BasicsOfADigitalImageAndVideo](./doc/2_BasicsOfADigitalImageAndVideo.md)
 3. [BasicsOfColor](./doc/3_BasicsOfColor.md)
@@ -15,6 +16,10 @@
 8. [IntensityTransformation](./doc/8_IntensityTransformation.md)
 9. [HistogramEqualization](./doc/9_HistogramEqualization.md)
 10. [SpatialFiltering](./doc/10_SpatialFiltering.md)
+
+#### 2). 그 외..
+
+1. [Matirx Calculus](./doc/Extra/MatrixCalculus.md)
 
 ---
 
