@@ -8,6 +8,7 @@ using namespace cv;
 namespace chapter9 {
     Mat DrawHistogram(Mat image);
     int HistogramEqualization();
+    int HistogramNormalization();
 }
 
 #endif//__HISTOGRAM_EQUALIZATION__

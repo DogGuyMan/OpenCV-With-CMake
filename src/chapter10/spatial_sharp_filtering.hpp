@@ -6,6 +6,7 @@
 using namespace cv;
 
 namespace chapter10 {
+    int SpatialUnsharpMasking();
     int SpatialSharpFiltering();
 }
 

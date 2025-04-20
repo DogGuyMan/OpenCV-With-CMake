@@ -6,9 +6,8 @@
 using namespace cv;
 
 namespace chapter10 {
-    int SpatialBlurFiltering();
-    int SpatialUnsharpMasking();
     int SpatialAverageFiltering();
+    int SpatialGaussianFiltering();
 }
 
 #endif//__SPATIAL_BLUR_FILTERING__

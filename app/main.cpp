@@ -22,7 +22,7 @@
 #include "chapter8/log_transformation.hpp"
 #include "chapter8/negative_transformation.hpp"
 #include "chapter8/piecewise_transformation.hpp"
-#include "chapter9/histogram_equalization.hpp"
+#include "chapter9/drawing_histogram.hpp"
 #include "chapter10/spatial_blur_filtering.hpp"
 #include "chapter10/spatial_median_filtering.hpp"
 
@@ -66,7 +66,7 @@ int Chapter6() {
     // chapter6::DrawingDateTime();
     // chapter6::DrawingArrow();
     // chapter6::DrawingMarker();
-    chapter6::DrawingTrackbar();
+    // chapter6::DrawingTrackbar();
     return 1;
 }
 
@@ -87,7 +87,8 @@ int Chapter8() {
 }
 
 int Chapter9() {
-    chapter9::HistogramEqualization();
+    // chapter9::HistogramEqualization();
+    chapter9::HistogramNormalization();
     return 1;
 }
 
@@ -103,10 +104,10 @@ int main()
 {
     // Chapter4();
     // Chapter5();
-    Chapter6();
+    // Chapter6();
     // Chapter7();
     // Chapter8();
-    // Chapter9();
+    Chapter9();
     // Chapter10();
     return 1;
 }

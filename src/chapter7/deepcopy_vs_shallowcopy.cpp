@@ -24,7 +24,7 @@ shallow m1 =
     4, 5, 6;
     7, 8, 9]
 
-clone m1 =
+deep m1 =
    [1, 2, 3;
     4, 5, 6;
     7, 8, 9]
@@ -40,7 +40,7 @@ void DebugMat(string title, Mat& mat) {
 int chapter7::DeepCopyVsShallowCopy() {
     Mat m1 = (Mat_<double>(3,3) << 1,2,3,4,5,6,7,8,9); // Mat_ ???
     Mat m_shallow = m1;
-    Mat m_clone = m1.clone();
+    Mat m_deep = m1.clone();
 
     // 원본 매트릭스 출력
     DebugMat("original m1", m1);
@@ -53,7 +53,7 @@ int chapter7::DeepCopyVsShallowCopy() {
     // 얕은 복사 매트릭스 출력
     DebugMat("shallow m1", m_shallow);
     // 원본 매트릭스 출력
-    DebugMat("clone m1", m_clone);
+    DebugMat("deep m1", m_deep);
 
     waitKey(0);
     return 1;

@@ -23,7 +23,7 @@
 
 * Single-channel : 채널이 1개일떄 Intensity만 존재
   전처리, Edge 검출에 따라 다른거 사용 가능.
-    * `CV_8U`: 8-bit unsigned integer: uchar ( 0~255 )
+    * `CV_8U`: 8-bit unsigned integer: uchar ( 0~255 ) "일명 GrayScale"
     * `CV_8S`: 8-bit signed integer: schar (-128~127 )
     * `CV_16U`: 16-bit unsigned integer: ushort (0~65535)
     * `CV_16S`: 16-bit signed integer: short (-32768~32767)
@@ -81,11 +81,11 @@ int BaisicDataStructureInOpenCV() {
 int ReadAnImageInOpenCV() {
     Mat gray_image, color_image;
 
-    // 두번쨰 파라미터의 0이 들어가 있다.
+    // 두번째 파라미터의 0이 들어가 있다.
     // 이것이 뜻하는 바는 이미지를 GrayScale 로 읽겠다는 것 이다.
     gray_image = imread("./data/lena.png", 0);
 
-    // 두번쨰 파라미터에 1이 들어가 있거나
+    // 두번째 파라미터에 1이 들어가 있거나
     // 아무 값도 작성하지 않는 다면 Color로 읽겠다는 것 이다.
     color_image = imread("./data/lena.png", 0);
 
