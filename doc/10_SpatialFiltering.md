@@ -58,6 +58,11 @@ N, M 각각 1,3,5 등등 홀수를 가지고 있다.
 * 가우시안 필터는 마스크의 사이지에 따라 필더 정도를 더 강하게, 약하게 한다.
 
 <div align=center>
+    <img src="image/2025-04-12-18-21-25.png" width=80%>
+    <h5></h5>
+</div>
+
+<div align=center>
     <img src="image/2025-04-13-17-13-36.png" width=80%>
     <h5></h5>
 </div>
@@ -68,31 +73,30 @@ N, M 각각 1,3,5 등등 홀수를 가지고 있다.
     <img src="image/2025-04-12-17-56-58.png" width=80%>
     <h5></h5>
 </div>
-<div align=center>
-    <img src="image/2025-04-12-18-00-57.png" width=80%>
-    <h5>1차미분과 2차미분의 결과</h5>
-</div>
-<div align=center>
-    <img src="image/2025-04-12-18-01-59.png" width=80%>
-    <h5>위 마스크를 사용하면 2차 미분을 구할 수 있다.</h5>
-</div>
-<div align=center>
-    <img src="image/2025-04-12-18-14-26.png" width=80%>
-    <h5>언샤프 마스크를 오리지널 이미지에 더한 결과가 Sharpened signal이 나타난다.</h5>
-</div>
-<div align=center>
-    <img src="image/2025-04-12-18-21-50.png" width=80%>
-    <h5></h5>
-</div>
-<div align=center>
-    <img src="image/2025-04-12-18-22-07.png" width=80%>
-    <h5></h5>
-</div>
 
 * 인텐시티값의 하이라이팅
   밝기값의 차이가 나는 부분을 더 강조시키는 원리다.
   값의 변화를 알고 싶다면, "미분 계수가 큰지 작은지 알아내는 것이다"
 * high-pass filter이라고 불리기도 하다.
+
+##### ① 2차 미분을 통한 샤프닝
+
+<div align=center>
+    <img src="image/2025-04-12-18-00-57.png" width=80%>
+    <h5>1차미분과 2차미분의 결과</h5>
+</div>
+
+<div align=center>
+    <img src="image/2025-04-12-18-01-59.png" width=80%>
+    <h5>위 마스크를 사용하면 2차 미분을 구할 수 있다.</h5>
+</div>
+
+<div align=center>
+    <img src="image/2025-04-12-18-21-50.png" width=80%>
+    <h5></h5>
+</div>
+
+
 * 평균화는 행렬 적분이고, 샤프닝은 공간 행렬 미분을 수행하는 것과 동일하다.
   즉, smooting과 sharpening은 서로 수학적인 관점이 있다.
   * 1차미분과 2차미분의 결과
@@ -106,15 +110,29 @@ N, M 각각 1,3,5 등등 홀수를 가지고 있다.
     <h5></h5>
 </div>
 
+
+##### ② 언샤프 마스크를 통한 샤프닝
+
+<div align=center>
+    <img src="image/2025-04-12-18-14-26.png" width=80%>
+    <h5>언샤프 마스크를 오리지널 이미지에 더한 결과가 Sharpened signal이 나타난다.</h5>
+</div>
+
+<div align=center>
+    <img src="image/2025-04-12-18-22-07.png" width=80%>
+    <h5></h5>
+</div>
+
+* 혹은 블러를 수행할 때, 사용되었던 언샤프 마스크를 역으로 획득해,
+* 원본 이미지에 적용함으로 샤프닝을 적용할 수도 있다.
+
+
 #### 4). 중앙값 필터 (Median filter)
 <div align=center>
     <img src="image/2025-04-12-18-14-47.png" width=80%>
     <h5></h5>
 </div>
-<div align=center>
-    <img src="image/2025-04-12-18-21-25.png" width=80%>
-    <h5></h5>
-</div>
+
 <div align=center>
     <img src="image/2025-04-12-18-22-13.png" width=80%>
     <h5></h5>
