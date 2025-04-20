@@ -56,6 +56,7 @@ N, M 각각 1,3,5 등등 홀수를 가지고 있다.
 * 이것도 가중치 평균을 두고 수행한다.
 * 의도적으로 이미지 플러링을 하는데
 * 가우시안 필터는 마스크의 사이지에 따라 필더 정도를 더 강하게, 약하게 한다.
+* `getGaussianKernel()`을 사용하면 `filter2D()`에서도 응용할 수 있음.
 
 <div align=center>
     <img src="image/2025-04-12-18-21-25.png" width=80%>
@@ -95,7 +96,6 @@ N, M 각각 1,3,5 등등 홀수를 가지고 있다.
     <img src="image/2025-04-12-18-21-50.png" width=80%>
     <h5></h5>
 </div>
-
 
 * 평균화는 행렬 적분이고, 샤프닝은 공간 행렬 미분을 수행하는 것과 동일하다.
   즉, smooting과 sharpening은 서로 수학적인 관점이 있다.
@@ -152,6 +152,50 @@ N, M 각각 1,3,5 등등 홀수를 가지고 있다.
 
 <div align=center>
     <img src="image/2025-04-13-17-16-13.png" width=80%>
+    <h5></h5>
+</div>
+
+#### 5). 앰보싱 필터링
+
+* 픽셀값 변화가 적은, 기울기가 가파르지 않은 영역을 회색처리를 하는 것이다.
+* 엠보싱을 수행하는 커널
+    |-1|-1| 0|  |-2|-1| 0|
+    |--|--|--|--|--|--|--|
+    |-1| 0| 1|또|-1| 1| 1|
+    | 0| 1| 1|는| 0| 1| 2|
+
+* 엠보싱 필터는 커널 값이 음수와 양수를 모두 포함하고
+    * 필터링 연산 과정에서 픽셀 값이 음수가 될 수 있습니다.
+    * OpenCV에서 기본 CV_8U(0~255 범위) 타입은 음수 값을 저장할 수 없으므로, 음수 값은 0으로 클램핑됩니다.
+    * 결과: 일부 경계 정보가 손실됩니다.
+
+```cpp
+int chapter10::SpatialEmbossFiltering() {
+    Mat image = imread("./data/lena.jpg", 0);
+    Mat embossKernal = (Mat_<int>(3, 3) <<  -2 ,-1 ,0,
+                                            -1 ,1 ,1,
+                                             0 ,1 ,2);
+    Mat embossed_float_image, embossed_delta_image;
+
+    // filter2D 함수의 delta 파라미터에 128을 추가하는 것은,
+    // 필터 연산 후 손실을 방지하는 다른 방법으로,
+    // 필터링 결과에서 발생할 수 있는 음수 값을 중간 값(예: 128)을 기준으로 이동시켜,
+    filter2D(image, embossed_delta_image, -1, embossKernal, Point(1, 1), 128);
+
+    // 또한 CV_32F로 결과를 저장하여 필터 연산 후 손실을 방지하는 다른 방법으로 쓸 수 있다.
+    filter2D(image, embossed_float_image, CV_32F , embossKernal);
+    embossed_float_image.convertTo(embossed_float_image, CV_8U);
+
+    imshow("origial image", image);
+    imshow("emboss delat image", embossed_delta_image);
+    imshow("emboss float image", embossed_float_image);
+    waitKey(0);
+    return 1;
+}
+```
+
+<div align=center>
+    <img src="image/2025-04-20-18-15-53.png" width=80%>
     <h5></h5>
 </div>
 

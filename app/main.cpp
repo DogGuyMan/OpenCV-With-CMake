@@ -24,7 +24,9 @@
 #include "chapter8/piecewise_transformation.hpp"
 #include "chapter9/drawing_histogram.hpp"
 #include "chapter10/spatial_blur_filtering.hpp"
+#include "chapter10/spatial_sharp_filtering.hpp"
 #include "chapter10/spatial_median_filtering.hpp"
+#include "chapter10/spatial_emboss_filtering.hpp"
 
 int Chapter4() {
     chapter4::ReadAnImageInOpenCV();
@@ -93,10 +95,12 @@ int Chapter9() {
 }
 
 int Chapter10() {
-    chapter10::SpatialAverageFiltering();
-    chapter10::SpatialBlurFiltering();
-    chapter10::SpatialMedianFiltering();
-    chapter10::SpatialUnsharpMasking();
+    // chapter10::SpatialAverageFiltering();
+    // chapter10::SpatialGaussianFiltering();
+    // chapter10::SpatialSharpFiltering();
+    // chapter10::SpatialUnsharpMasking();
+    // chapter10::SpatialMedianFiltering();
+    chapter10::SpatialEmbossFiltering();
     return 1;
 }
 
@@ -107,7 +111,7 @@ int main()
     // Chapter6();
     // Chapter7();
     // Chapter8();
-    Chapter9();
-    // Chapter10();
+    // Chapter9();
+    Chapter10();
     return 1;
 }
