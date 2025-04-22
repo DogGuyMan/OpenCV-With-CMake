@@ -16,6 +16,7 @@
 8. [IntensityTransformation](./doc/8_IntensityTransformation.md)
 9. [HistogramEqualization](./doc/9_HistogramEqualization.md)
 10. [SpatialFiltering](./doc/10_SpatialFiltering.md)
+11. [ColorProcessing](./doc/11_ColorProcessing.md)
 
 #### 2). 그 외..
 
