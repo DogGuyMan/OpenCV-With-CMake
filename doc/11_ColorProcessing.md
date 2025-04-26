@@ -25,7 +25,8 @@ Intiecity에 영향을 끼치지 않는 것이 장점이다.
 * 특정 색을 다른 색으로 치환시키는 기법을 사용할 수 있고, Hue Channel을 이용하면 된다.
 
 <div align=center>
-    <img src="image/2025-04-22-22-40-35.png" width=80%>
+    <img src="./image/2025-04-22-22-40-35.png" width=80%>
+    <img src="./image/2025-04-26-17-54-28.png" width=80%>
     <h5>1번 : 원본 이미지<br>2번 : Intencity를 낮춘것<br> 3번 : 주황값을 제외하고 Saturation을 0으로 만든것<br>4번 : Hue 채널을 조정시킨것</h5>
 </div>
 
@@ -48,6 +49,11 @@ Intiecity에 영향을 끼치지 않는 것이 장점이다.
     <img src="image/2025-04-22-22-47-45.png" width=80%>
     <img src="image/2025-04-22-23-24-31.png" width=80%>
     <h5></h5>
+</div>
+<div align=center>
+    <img src="image/2025-04-26-18-37-11.png" width=40%>
+    <img src="image/2025-04-26-18-20-28.png" width=40%>
+    <h5>좌 : JET Color Map을 Invert한것 포함, 우 : HSV Color Map</h5>
 </div>
 
 > ### 📄 3. Color Balancing
@@ -111,6 +117,11 @@ $[0, 1]$ 의 범위로 정규화(normalize)한 뒤에,
 ##### ① Gary World Assumption
 * 이론상, 사진의 모~~~든 픽셀 생상을 뽑아서 평균을 내보면 회색인 128에 가깝게 나타날 것이다 라고 가정하고, 이때, 실제 128이 나타나지 않는다면?
 * 그 만큼을 보정해 준다
+
+<div align=center>
+    <img src="image/2025-04-26-19-33-38.png" width=80%>
+    <h5></h5>
+</div>
 
 ##### ② White Pixel Are also brightest
 * 사진에서 가장 밝은 부분이 곧 255 라고 가정하고, 보정을 하는것 이다.

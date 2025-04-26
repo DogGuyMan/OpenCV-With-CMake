@@ -68,4 +68,5 @@ int chapter5::MatrixInverted() {
         if(key == 'q')
             break;
     }
+    return 1;
 }

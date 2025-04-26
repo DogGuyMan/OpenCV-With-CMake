@@ -80,26 +80,37 @@ vscode에서 파일이 열릴때, 등등 이벤트에 수행할 커맨드를 추
     따라서 다음과 같은 절차가 필요하다.
 
 ##### ① `CMakePreset.json` 설정하기
-```json
-/* 최상단 루트 현재 디렉토리에 CMakePreset.json 만들기*/
-{
-    "version": 2,
-    "configurePresets": [
-        {
-            "name": "opencv-project",
-            "displayName": "도구 체인 파일을 사용하여 사전 설정 구성",
-            "description": "Unix Makefiles 생성기, 빌드 및 설치 디렉터리 설정",
-            "generator": "Unix Makefiles",
-            "binaryDir": "${workspaceFolder}/build/",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_TOOLCHAIN_FILE": "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_INSTALL_PREFIX": "$ENV{VCPKG_ROOT}/installed/arm64-osx"
-            }
-        }
-    ]
-}
-```
+
+* **`Invalid macro expansion in <name>`** 문제 해결하기
+  * 다음과 같은 에러가 발생한다면 프리셋에서 사용한 환경변수 매크로가 잘못되었는지 확인하면 된다.
+    ```bash
+    CMake Error: Could not read presets from <현재_열려있는_프로젝트>
+    Invalid macro expansion in <프리셋_이름>
+    ```
+  * `"binaryDir"` 주소 수정하기!
+      ```json
+      /* 최상단 루트 현재 디렉토리에 CMakePreset.json 만들기*/
+      {
+          "version": 2,
+          "configurePresets": [
+              {
+                  "name": "opencv-project",
+                  "displayName": "도구 체인 파일을 사용하여 사전 설정 구성",
+                  "description": "Unix Makefiles 생성기, 빌드 및 설치 디렉터리 설정",
+                  "generator": "Unix Makefiles",
+                  // ${workspaceFolder}는 vscode에서만 이해하는 환경 변수다! 따라서 "${sourceDir}/build/" 로 바꿔야 한다!!
+                  "binaryDir": "${workspaceFolder}/build/", // ❌
+                  "cacheVariables": {
+                      "CMAKE_BUILD_TYPE": "Debug",
+                      // ENV{VCPKG_ROOT} 이렇게 ENV를 대문자로 쓰면 안된다, 따라서 env{VCPKG_ROOT} 와 같이 작성해야 한다.
+                      "CMAKE_TOOLCHAIN_FILE": "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake", // ❌
+                      // ENV{VCPKG_ROOT} 이렇게 ENV를 대문자로 쓰면 안된다, 따라서 env{VCPKG_ROOT} 와 같이 작성해야 한다.
+                      "CMAKE_INSTALL_PREFIX": "$ENV{VCPKG_ROOT}/installed/arm64-osx" // ❌
+                  }
+              }
+          ]
+      }
+      ```
 
 ##### ② CMake : 디버그
 

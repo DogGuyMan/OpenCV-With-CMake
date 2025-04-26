@@ -26,4 +26,5 @@ int chapter8::LogTransformation() {
     imshow("log image", log_image);
 
     waitKey(0);
+    return 1;
 }

@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
+cmake_policy(SET CMP0003 NEW)
 set(PROJECT_NAME opencv-project)
 project(${PROJECT_NAME} VERSION 1.0.0 LANGUAGES CXX)
 
@@ -7,14 +8,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
-message(STATUS "CMAKE_TOOLCHAIN_FILE" ${CMAKE_TOOLCHAIN_FILE}) # 환경 변수를 가져오려면 $ENV{VAL}
+message(STATUS "CMAKE_TOOLCHAIN_FILE" "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake") # 환경 변수를 가져오려면 $ENV{VAL}
 
 # VCPKG_INSTALLED_DIR:PATH=~/Develop Projects/CXXProject/OpenCV-With-CMake/build/vcpkg_installed
-set(VCPKG_INCLUDE_DIR ${VCPKG_INSTALLED_DIR}/arm64-osx/include)
-set(VCPKG_LIB_DIR ${VCPKG_INSTALLED_DIR}/arm64-osx/lib)
 set(CONFIG_INCLUDE_DIR ${CMAKE_BINARY_DIR}/configured_files/include)
-set(CMAKE_INSTALL_PREFIX ${DEP_INSTALL_DIR})
 
 find_package(fmt REQUIRED)
 set(DEP_LIBS ${DEP_LIBS} fmt::fmt)
@@ -72,6 +69,7 @@ add_subdirectory(src/chapter7)
 add_subdirectory(src/chapter8)
 add_subdirectory(src/chapter9)
 add_subdirectory(src/chapter10)
+add_subdirectory(src/chapter11)
 
 message(STATUS "PROJECT_SOURCES " ${PROJECT_SOURCES})
 message(STATUS "PROJECT_HEADERS " ${PROJECT_HEADERS})
@@ -86,13 +84,13 @@ add_executable(${PROJECT_NAME}
     ${CHAPTER8_SOURCES} ${CHAPTER8_HEADERS}
     ${CHAPTER9_SOURCES} ${CHAPTER9_HEADERS}
     ${CHAPTER10_SOURCES} ${CHAPTER10_HEADERS}
+    ${CHAPTER11_SOURCES} ${CHAPTER11_HEADERS}
 )
 
 # 의존성 헤더 경로 추가
 target_include_directories(${PROJECT_NAME} PUBLIC
     ${DEP_SOURCE_DIR}
     ${DEP_INCLUDE_DIR}
-    ${VCPKG_INCLUDE_DIR}
     ${CONFIG_INCLUDE_DIR}
     src
 )

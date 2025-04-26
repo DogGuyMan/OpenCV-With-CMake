@@ -1,12 +1,7 @@
 #include "drawing_others.hpp"
-#include <iostream>
-#include <opencv2/opencv.hpp>
-
-using namespace std;
-using namespace cv;
 
 // 제네릭 포인터(Generic Pointer)  void* userdata
-void onMouse(int event, int x, int y, int flags, void* userdata) {
+void chapter6::onMouse(int event, int x, int y, int flags, void* userdata) {
     // 나 데이터의 실제 타입을 알지 못하므로 직접 역참조는 불가능.
     // 따라서 reinterpret_cast 또는 static_cast를 사용하여 올바른 타입으로 변환함.
     bool* isOnceClicked = reinterpret_cast<bool*>(userdata);
@@ -18,7 +13,7 @@ void onMouse(int event, int x, int y, int flags, void* userdata) {
     }
 }
 
-void WaitForMouseInput(const string& windowName) {
+void chapter6::WaitForMouseInput(const string& windowName) {
     bool IsOnceClicked = false;
     // 레퍼런스 전달을 해도 문제가 없다.
     setMouseCallback(windowName, onMouse, &IsOnceClicked);
@@ -38,7 +33,7 @@ struct TrackBarData {
     Mat* maskImage;
 };
 
-void onTrackbar(int intencity, void* userdata) {
+void chapter6::onTrackbar(int intencity, void* userdata) {
     TrackBarData* data = reinterpret_cast<TrackBarData*>(userdata);
     Mat* targetImage = data->targetImage;
     Mat* maskImage = data->maskImage;

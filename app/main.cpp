@@ -27,6 +27,9 @@
 #include "chapter10/spatial_sharp_filtering.hpp"
 #include "chapter10/spatial_median_filtering.hpp"
 #include "chapter10/spatial_emboss_filtering.hpp"
+#include "chapter11/usage_of_hsl.hpp"
+#include "chapter11/pseudo_coloring.hpp"
+#include "chapter11/color_balancing.hpp"
 
 int Chapter4() {
     chapter4::ReadAnImageInOpenCV();
@@ -104,6 +107,13 @@ int Chapter10() {
     return 1;
 }
 
+int Chapter11() {
+    // chapter11::UsageOfHSL();
+    // chapter11::PseudoColoring();
+    chapter11::ColorBalancing();
+    return 1;
+}
+
 int main()
 {
     // Chapter4();
@@ -112,6 +122,7 @@ int main()
     // Chapter7();
     // Chapter8();
     // Chapter9();
-    Chapter10();
+    // Chapter10();
+    Chapter11();
     return 1;
 }
