@@ -19,6 +19,10 @@
 9. [HistogramEqualization](./doc/9_HistogramEqualization.md)
 10. [SpatialFiltering](./doc/10_SpatialFiltering.md)
 11. [ColorProcessing](./doc/11_ColorProcessing.md)
+12. [ImageSegmentation](./doc/12_ImageSegmentation.md)
+13. [VideoSegmentation](./doc/13_VideoSegmentation.md)
+14. [MorphologicalOperation](./doc/14_MorphologicalOperation.md)
+
 
 #### 2). 그 외..
 
