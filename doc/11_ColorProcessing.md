@@ -1,4 +1,4 @@
-## 11 Color Processing
+상## 11 Color Processing
 
 #### 컬러 영상을 Preprocessing하는 작엄.
 * 이전까지는 모두 GrayScale에 대해서 작업었다 (Average Filter, Intencity Transformation, Histogram Equlization)
