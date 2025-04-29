@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
-cmake_policy(SET CMP0003 NEW)
 set(PROJECT_NAME opencv-project)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(${PROJECT_NAME} VERSION 1.0.0 LANGUAGES CXX)
 
 # C++ 표준 설정
@@ -61,31 +61,30 @@ set(PROJECT_HEADERS
     # src/buffer.h src/common.h src/context.h src/image.h src/program.h
     # src/shader.h src/vertex_layout.h src/texture.h
 )
+
+set(PROJECT_CHAPTER_DEFINES)
+
 add_subdirectory(config)
-add_subdirectory(src/chapter4)
-add_subdirectory(src/chapter5)
-add_subdirectory(src/chapter6)
-add_subdirectory(src/chapter7)
-add_subdirectory(src/chapter8)
-add_subdirectory(src/chapter9)
-add_subdirectory(src/chapter10)
+# add_subdirectory(src/chapter4)
+# add_subdirectory(src/chapter5)
+# add_subdirectory(src/chapter6)
+# add_subdirectory(src/chapter7)
+# add_subdirectory(src/chapter8)
+# add_subdirectory(src/chapter9)
+# add_subdirectory(src/chapter10)
 add_subdirectory(src/chapter11)
 
-message(STATUS "PROJECT_SOURCES " ${PROJECT_SOURCES})
-message(STATUS "PROJECT_HEADERS " ${PROJECT_HEADERS})
+add_compile_definitions(${PROJECT_CHAPTER_DEFINES})
+
+get_directory_property(_defs COMPILE_DEFINITIONS)
+message(STATUS "defs = ${_defs}")
 
 add_executable(${PROJECT_NAME}
     app/main.cpp
     ${PROJECT_SOURCES} ${PROJECT_HEADERS}
-    ${CHAPTER4_SOURCES} ${CHAPTER4_HEADERS}
-    ${CHAPTER5_SOURCES} ${CHAPTER5_HEADERS}
-    ${CHAPTER6_SOURCES} ${CHAPTER6_HEADERS}
-    ${CHAPTER7_SOURCES} ${CHAPTER7_HEADERS}
-    ${CHAPTER8_SOURCES} ${CHAPTER8_HEADERS}
-    ${CHAPTER9_SOURCES} ${CHAPTER9_HEADERS}
-    ${CHAPTER10_SOURCES} ${CHAPTER10_HEADERS}
-    ${CHAPTER11_SOURCES} ${CHAPTER11_HEADERS}
 )
+message(STATUS "PROJECT_SOURCES " ${PROJECT_SOURCES})
+message(STATUS "PROJECT_HEADERS " ${PROJECT_SOURCES})
 
 # 의존성 헤더 경로 추가
 target_include_directories(${PROJECT_NAME} PUBLIC

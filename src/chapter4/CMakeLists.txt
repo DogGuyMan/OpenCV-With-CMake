@@ -14,7 +14,9 @@
 # 부모 scope로 변수 전달 방법
 # 자식 scope에서 변경되거나 추가된 변수가 부모 scope에서 필요한 경우가 있습니다.
 # 예를 들어, 서브 디렉토리의 소스 파일 목록을 생성하고 상위 디렉토리에 다시 전달하는 경우가 있습니다.
-# 이는 set() 명령에서 PARENT_SCOPE 라는 키워드
+# 이는 set() 명령에서  라는 키워드
+
+set(CHAPTER4)
 
 set(CHAPTER4_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/baisic_data_structure_in_openCV.cpp
@@ -22,21 +24,25 @@ set(CHAPTER4_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/read_a_video_from_a_file.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_a_video_from_a_webcam.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/play_with_video_capture.cpp
-    PARENT_SCOPE
+
 )
 
 # message(STATUS "baisic data source path " ${CMAKE_CURRENT_SOURCE_DIR}/baisic_data_structure_in_openCV.cpp)
 # message(STATUS "read an image source path" ${CMAKE_CURRENT_SOURCE_DIR}/read_an_image_in_openCV.cpp)
 
 set(CHAPTER4_HEADERS
-    ${PROJECT_HEADERS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/chapter4_headers.h
     ${CMAKE_CURRENT_SOURCE_DIR}/baisic_data_structure_in_openCV.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_an_image_in_openCV.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_a_video_from_a_file.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_a_video_from_a_webcam.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/play_with_video_capture.hpp
-    PARENT_SCOPE
+
 )
+
+set(PROJECT_SOURCES ${PROJECT_SOURCES} ${CHAPTER4_SOURCES} PARENT_SCOPE)
+set(PROJECT_HEADERS ${PROJECT_HEADERS} ${CHAPTER4_SOURCES} PARENT_SCOPE)
+set(PROJECT_CHAPTER_DEFINES ${PROJECT_CHAPTER_DEFINES} CHAPTER4 PARENT_SCOPE)
 
 # message(STATUS "baisic data header path" ${CMAKE_CURRENT_SOURCE_DIR}/baisic_data_structure_in_openCV.hpp)
 # message(STATUS "read an image header path" ${CMAKE_CURRENT_SOURCE_DIR}/read_an_image_in_openCV.hpp)

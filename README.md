@@ -392,9 +392,14 @@ sh ./bootstrap-vcpkg.sh
   ```
 
 > ### 📄 `add_subdirectory()`의 변수들의 Scope
+
+> ### 📄 `XXX_compile_definitions()`와 VSCode `"compileCommands": "*/compile_commands.json"` 추가
+* 이걸 해야지 에디터 Linter에서 CMake에 의해 정의된 Define에 빨간줄이 안그어진다.
+
 ---
 
 > ### 📄 실행
+
 <div align=center>
     <img src="image/2025-03-16-23-23-41.png">
     <h5>FetchContent를 버리니 병이 나았습니다. 🥰</h5>

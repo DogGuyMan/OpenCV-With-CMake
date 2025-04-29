@@ -125,3 +125,15 @@ $[0, 1]$ 의 범위로 정규화(normalize)한 뒤에,
 
 ##### ② White Pixel Are also brightest
 * 사진에서 가장 밝은 부분이 곧 255 라고 가정하고, 보정을 하는것 이다.
+
+> ### 📄 4. 컬러 히스토그램
+
+#### 꼭 GaryScale만 가능한것은 아니다<br>대표적으로 YCrCb 모델에서 Y(휘도, 밝기)에 대하여 히스토그램 평탄화가 가능하다.
+
+#### 1). YCrCb And HSI Equalize
+```
+```
+
+#### 2). Back Project
+```
+```
