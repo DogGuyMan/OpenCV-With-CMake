@@ -19,7 +19,7 @@ int chapter11::HistogramEqualizeYCrCbAndHSV() {
     split(hsv_image, splited_hsv);
 
     equalizeHist(splited_ycrcb[0], splited_ycrcb[0]);
-    equalizeHist(splited_hsv[0], splited_hsv[0]);
+    equalizeHist(splited_hsv[2], splited_hsv[2]);
 
     merge(splited_ycrcb, equalized_ycrcb_image);
     merge(splited_hsv, equalized_hsv_image);

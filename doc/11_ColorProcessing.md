@@ -130,9 +130,14 @@ $[0, 1]$ 의 범위로 정규화(normalize)한 뒤에,
 
 #### 꼭 GaryScale만 가능한것은 아니다<br>대표적으로 YCrCb 모델에서 Y(휘도, 밝기)에 대하여 히스토그램 평탄화가 가능하다.
 
-#### 1). YCrCb And HSI Equalize
+#### 1). YCrCb And HSV Equalize
 ```
 ```
+
+<div align=center>
+    <img src="image/2025-04-30-10-08-15.png" width=80%>
+    <h5></h5>
+</div>
 
 #### 2). Back Project
 ```
