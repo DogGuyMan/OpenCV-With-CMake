@@ -34,4 +34,42 @@ int chapter11::HistogramEqualizeYCrCbAndHSV() {
     return 1;
 }
 
-int chapter11::HistogramBackProject(){return 1;}
+int chapter11::HistogramBackProject(){
+    Mat image = imread("./data/img5_6.png");
+    Mat ycrcb_image;
+    cvtColor(image, ycrcb_image, COLOR_BGR2YCrCb);
+    /* DrawRect */
+    Rect rect(0,0, 200, 800);
+    /* Rect로 Mask 생성 */
+    Mat mask_image = Mat::zeros(image.size(), CV_8UC1);
+    rectangle(mask_image, rect, Scalar(255), FILLED);
+
+    /* 어디가 마스크인지 디버그*/
+    rectangle(image, rect, Scalar(0,0,255), 4, LINE_AA);
+
+    /* calcHist에 마스크를 넣어주자. */
+    Mat hist;
+
+    vector<int> channels = {1, 2};
+    vector<int> histSize = {128, 128};
+    vector<float> ranges = {0, 256, 0, 256};
+
+    calcHist(vector<Mat>{ycrcb_image}, channels, mask_image, hist, histSize, ranges);
+
+    /*
+    vector<Mat>{ycrcb_image}는 calcHist에 적합하며,
+    멀티채널 이미지를 직접 처리할 수 있어 추가적인 채널 분리가 필요 없습니다.
+    */
+    Mat backProj;
+    calcBackProject(vector<Mat>{ycrcb_image}, channels, hist, backProj, ranges, 1);
+    medianBlur(backProj, backProj, 13);
+
+    threshold(backProj, backProj, 1, 255, THRESH_BINARY);
+
+    imshow("original image", image);
+    imshow("backProjected image", backProj);
+
+    waitKey(0);
+
+    return 1;
+}

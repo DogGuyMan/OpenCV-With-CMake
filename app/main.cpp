@@ -10,6 +10,8 @@
 
 int main()
 {
-    chapter11::HistogramEqualizeYCrCbAndHSV();
+    // chapter11::HistogramEqualizeYCrCbAndHSV();
+    chapter11::HistogramBackProject();
+
     return 1;
 }
