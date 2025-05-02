@@ -7,11 +7,12 @@
 #include "chapter9/chapter9_headers.h"
 #include "chapter10/chapter10_headers.h"
 #include "chapter11/chapter11_headers.h"
+#include "chapter12/chapter12_headers.h"
 
 int main()
 {
-    // chapter11::HistogramEqualizeYCrCbAndHSV();
-    chapter11::HistogramBackProject();
-
+    // chapter12::BasicMethod();
+    // chapter12::OtusMethod();
+    chapter12::AdaptiveThresholding();
     return 1;
 }
