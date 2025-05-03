@@ -21,11 +21,10 @@ namespace chapter4 {
             if(frame.empty()) break;
             time_in_msec = cap.get(CAP_PROP_POS_MSEC);
             curr_frame = cap.get(CAP_PROP_POS_FRAMES);
-            // 현재 프레임을 하나하나 씩 출력하며 전체 프레임 을 리턴한다
+
             cout << "frames: " << curr_frame << "/" << total_frames << endl;
             imshow("video", frame);
 
-            // 현재 fps를 통해 딜레이를 계산하고, WaitKey()에 fps에 해당하는 대기 시간을 넣어 준다.
             waitKey(1000 / fps);
         }
 

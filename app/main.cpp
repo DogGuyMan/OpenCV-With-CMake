@@ -16,5 +16,6 @@ int main()
     // chapter12::OtusMethod();
     // chapter12::AdaptiveThresholding();
     chapter13::MeanFilterSubtraction();
+    chapter13::MedianFilterSubtraction();
     return 1;
 }
