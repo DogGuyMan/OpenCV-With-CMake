@@ -8,11 +8,13 @@
 #include "chapter10/chapter10_headers.h"
 #include "chapter11/chapter11_headers.h"
 #include "chapter12/chapter12_headers.h"
+#include "chapter13/chapter13_headers.h"
 
 int main()
 {
     // chapter12::BasicMethod();
     // chapter12::OtusMethod();
-    chapter12::AdaptiveThresholding();
+    // chapter12::AdaptiveThresholding();
+    chapter13::MeanFilterSubtraction();
     return 1;
 }
