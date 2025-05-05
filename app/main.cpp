@@ -9,13 +9,11 @@
 #include "chapter11/chapter11_headers.h"
 #include "chapter12/chapter12_headers.h"
 #include "chapter13/chapter13_headers.h"
+#include "chapter14/chapter14_headers.h"
 
 int main()
 {
-    // chapter12::BasicMethod();
-    // chapter12::OtusMethod();
-    // chapter12::AdaptiveThresholding();
-    chapter13::MeanFilterSubtraction();
-    chapter13::MedianFilterSubtraction();
+    // chapter14::ErosionAndDilation();
+    chapter14::OpeningAndClosing();
     return 1;
 }

@@ -94,4 +94,28 @@
 
 > ### 📄 응용
 
-#### 1). 컨투어 개수 카운트
+#### 1). AbsDiff 마스킹
+
+<div align=center>
+    <img src="./image/absdiff.gif" width=80%>
+    <h5></h5>
+</div>
+
+#### 2). 배경 추정 모델 사용 "MoG2"
+
+<div align=center>
+    <img src="./image/mog2.gif" width=80%>
+    <h5></h5>
+</div>
+
+#### 3). 컨투어 개수 카운트
+
+##### ① 클러스터링
+* 히스토그램에서 봉우리에서 가장 피크가 높은것을 검출하고,
+그 피크 주변부의 픽셀을 마치 모래속 개미 귀신과 같이 빨아들이는 작업을 수행한다.
+* 그런데.. 이같은 방법이 사싱 Otus Method랑 거희 비슷하다는 것이다..
+
+<div align=center>
+    <img src="./image/2025-05-05-17-54-22.png" width=80%>
+    <h5>상단 : 100을 스레숄딩한 결과 <br>하단 : kmean 클러스터링한 결과 </h5>
+</div>
