@@ -21,7 +21,7 @@
 
 #### 2). 픽셀의 타입
 
-* Single-channel : 채널이 1개일떄 Intensity만 존재
+* Single-channel : 채널이 1개일때 Intensity만 존재
   전처리, Edge 검출에 따라 다른거 사용 가능.
     * `CV_8U`: 8-bit unsigned integer: uchar ( 0~255 ) "일명 GrayScale"
     * `CV_8S`: 8-bit signed integer: schar (-128~127 )

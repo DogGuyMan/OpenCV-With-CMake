@@ -8,6 +8,7 @@
 > ### 📄 목차
 
 #### 1). OpenCV
+
 1. [Intro](./doc/1_Intro.md)
 2. [BasicsOfADigitalImageAndVideo](./doc/2_BasicsOfADigitalImageAndVideo.md)
 3. [BasicsOfColor](./doc/3_BasicsOfColor.md)
@@ -22,11 +23,14 @@
 12. [ImageSegmentation](./doc/12_ImageSegmentation.md)
 13. [VideoSegmentation](./doc/13_VideoSegmentation.md)
 14. [MorphologicalOperation](./doc/14_MorphologicalOperation.md)
-
+15. [EdgeDetection](./doc/15_EdgeDetection.md)
+16. [LineDetection](./doc/16_LineDetection.md)
+17. [FaceDetection](./doc/17_FaceDetection.md)
+18. [PedestrianDetection](./doc/18_PedestrianDetection.md)
 
 #### 2). 그 외..
 
-1. [Matirx Calculus](./doc/Extra/MatrixCalculus.md)
+1. [Vector Calculus](./doc/Extra/VectorCalculus.md)
 
 ---
 
@@ -76,7 +80,7 @@ vscode에서 파일이 열릴때, 등등 이벤트에 수행할 커맨드를 추
 #### 3). CMake Debug vcpkg 환경에서 사용하기
 
 #### 만약 VCPKG 를 사용했다면, 특수한 설정을 하지 않으면 디버깅을 할 수 없다.
-* 왜냐하면 VCPKG를 사용한 이상 앞으로 다음과 같은 쉘을 사용해서 Configure 해줘야 하기 떄문이다.
+* 왜냐하면 VCPKG를 사용한 이상 앞으로 다음과 같은 쉘을 사용해서 Configure 해줘야 하기 때문이다.
   ```shell
   cmake -B build -DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake
   ```
@@ -145,7 +149,7 @@ vscode에서 파일이 열릴때, 등등 이벤트에 수행할 커맨드를 추
 
 ---
 
-> ### 3. 📄 VSCode에서 라이브러리를 못찾아 올떄,
+> ### 3. 📄 VSCode에서 라이브러리를 못찾아 올때,
 
 <div align=center>
     <img src="./image/스크린샷 2025-03-16 22.01.21.png">

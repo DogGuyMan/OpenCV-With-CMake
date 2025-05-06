@@ -52,7 +52,7 @@
 
 * `<T>`는 Mat 데이터 타입의 템플릿 자료
   * 가로, 세로는 Mat 템플릿의 가로 세로 배열 길이
-  * `at<T>(y, x)`는 접근과 추가로, validity check를 하기 떄문에 조금 느리지만, 안전하다.
+  * `at<T>(y, x)`는 접근과 추가로, validity check를 하기 때문에 조금 느리지만, 안전하다.
 
 #### 2). `Pixel Pointer`
 <div align=center>
