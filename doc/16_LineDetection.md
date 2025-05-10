@@ -115,9 +115,17 @@
 > ### 📄 4. OpenCV에서의 사용
 
 * OpenCV에서는 `cv::HoughLines()` 함수로 구현되어 있다.
-  * Standard Hough Transform: `HoughLines()`
-    ```
-    입력: 에지 이미지, 𝜌와 𝜃의 해상도, 임계값 등
-    출력: 검출된 직선의 (𝜌, 𝜃) 파라미터
-    ```
-  * Probabilistic Hough Transform: `HoughLinesP()`
+
+##### ① Standard Hough Transform: `HoughLines()`
+
+```
+입력: 에지 이미지, 𝜌와 𝜃의 해상도, 임계값 등
+출력: 검출된 직선의 (𝜌, 𝜃) 파라미터
+```
+
+<div align=center>
+    <img src="image/2025-05-11-02-17-32.png" width=80%>
+    <h5></h5>
+</div>
+
+##### ② Probabilistic Hough Transform: `HoughLinesP()`

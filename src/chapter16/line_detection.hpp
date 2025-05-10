@@ -5,7 +5,7 @@
 
 namespace chapter16 {
     int HoughLineDetection();
-    int HoughLineSpDetection();
+    int HoughLinesPDetection();
 }
 
 #endif//__LINE_DETECTION__

@@ -27,14 +27,14 @@ void chapter6::WaitForMouseInput(const string& windowName) {
     }
 }
 
-struct TrackBarData {
+struct EdgeTrackBarData {
     string windowName;
     Mat* targetImage;
     Mat* maskImage;
 };
 
 void chapter6::onTrackbar(int intencity, void* userdata) {
-    TrackBarData* data = reinterpret_cast<TrackBarData*>(userdata);
+    EdgeTrackBarData* data = reinterpret_cast<EdgeTrackBarData*>(userdata);
     Mat* targetImage = data->targetImage;
     Mat* maskImage = data->maskImage;
     imshow("targetImage", *targetImage);
@@ -91,7 +91,7 @@ int chapter6::DrawingTrackbar(){
     Mat circleMat = Mat::zeros(Size(400,400), CV_8UC3);
     circle(circleMat, Point(200, 200), 200, Scalar(255,255,255), -1, LINE_AA, 0);
 
-    TrackBarData userData = {
+    EdgeTrackBarData userData = {
         WINDOW_NAME,
         &image,
         &circleMat

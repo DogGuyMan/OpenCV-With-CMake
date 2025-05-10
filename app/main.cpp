@@ -15,6 +15,7 @@
 
 int main()
 {
-    chapter16::HoughLineDetection();
+    // chapter16::HoughLineDetection();
+    chapter16::HoughLinesPDetection();
     return 1;
 }
