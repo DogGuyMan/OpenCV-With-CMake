@@ -212,3 +212,4 @@
 > ### 📄 7. 참고
 
 * [Finding the Edges (Sobel Operator)](https://www.youtube.com/watch?v=uihBwtPIBxM)
+* [Image-Kernels을 실습해 볼 수 있는 사이트](https://setosa.io/ev/image-kernels/)

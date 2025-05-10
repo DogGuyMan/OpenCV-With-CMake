@@ -11,12 +11,10 @@
 #include "chapter13/chapter13_headers.h"
 #include "chapter14/chapter14_headers.h"
 #include "chapter15/chapter15_headers.h"
+#include "chapter16/chapter16_headers.h"
 
 int main()
 {
-    // chapter14::ErosionAndDilation();
-    // chapter14::OpeningAndClosing();
-    chapter15::SobelEdgeDetection();
-    // chapter15::CannyEdgeDetection();
+    chapter16::HoughLineDetection();
     return 1;
 }
