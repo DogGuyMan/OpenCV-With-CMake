@@ -1,6 +1,4 @@
 #include "line_detection.hpp"
-#include <iostream>
-#include <opencv2/opencv.hpp>
 
 using namespace cv;
 using namespace std;
@@ -65,83 +63,6 @@ void static DrawEdgeModulateTrackbar(const string& window_name, Mat& image, Mat&
     waitKey(0);
 }
 
-struct LineTrackBarData {
-    double* rho;
-    double* theta;
-    int* threshold;
-    Mat* edge_image;
-    Mat* result_image;
-    int* min_line_length;
-    int* max_line_gap;
-};
-
-void static ContolMinLineLength(int, void* userdata) {
-    LineTrackBarData* data = reinterpret_cast<LineTrackBarData*>(userdata);
-    double& rho = *data->rho;
-    double& theta = *data->theta;
-    int& threshold = *data->threshold;
-    Mat& edge_image = *data->edge_image;
-    Mat& result_image = *data->result_image;
-    int minLineLength = getTrackbarPos("Min Line Length", "Hough Line P Detection result");
-    int maxLineGap = getTrackbarPos("Max Line Gap", "Hough Line P Detection result");
-    vector<Vec4i> lines;
-    HoughLinesP(edge_image, lines, rho, theta, threshold, minLineLength, maxLineGap);
-
-    result_image = Mat::zeros(result_image.size(), result_image.type()); // 결과 이미지 초기화
-    for(int i = 0; i < lines.size(); i++) {
-        Point pt1(lines[i][0], lines[i][1]);
-        Point pt2(lines[i][2], lines[i][3]);
-        line(result_image, pt1, pt2, Scalar(0, 0, 255), 3, 8);
-    }
-    imshow("Hough Line P Detection result", result_image);
-}
-
-void static ContolMaxLineGap(int, void* userdata) {
-    LineTrackBarData* data = reinterpret_cast<LineTrackBarData*>(userdata);
-    double& rho = *data->rho;
-    double& theta = *data->theta;
-    int& threshold = *data->threshold;
-    Mat& edge_image = *data->edge_image;
-    Mat& result_image = *data->result_image;
-    int minLineLength = getTrackbarPos("Min Line Length", "Hough Line P Detection result");
-    int maxLineGap = getTrackbarPos("Max Line Gap", "Hough Line P Detection result");
-    vector<Vec4i> lines;
-    HoughLinesP(edge_image, lines, rho, theta, threshold, minLineLength, maxLineGap);
-
-    result_image = Mat::zeros(result_image.size(), result_image.type()); // 결과 이미지 초기화
-    for(int i = 0; i < lines.size(); i++) {
-        Point pt1(lines[i][0], lines[i][1]);
-        Point pt2(lines[i][2], lines[i][3]);
-        line(result_image, pt1, pt2, Scalar(0, 0, 255), 3, 8);
-    }
-    imshow("Hough Line P Detection result", result_image);
-}
-
-void static DrawLineModulateTrackbar(const string& window_name, Mat& edge_image, Mat& result_image) {
-    double rho = 1;
-    double theta = CV_PI/180;
-    int threshold = 150;
-
-    // HoughLinesP 에 추가로 사용될 변수
-    int minLineLength = 0;
-    int maxLineGap = 0;
-
-    LineTrackBarData data = {
-        &rho,
-        &theta,
-        &threshold,
-        &edge_image,
-        &result_image,
-        &minLineLength,
-        &maxLineGap
-    };
-
-    createTrackbar("Min Line Length", window_name, nullptr, 1000, ContolMinLineLength, &data);
-    createTrackbar("Max Line Gap", window_name, nullptr, 1000, ContolMaxLineGap, &data);
-
-    waitKey(0);
-}
-
 int chapter16::HoughLineDetection() {
     Mat image, edge_image, result_image;
     image = imread("./data/board5.png");
@@ -189,24 +110,75 @@ int chapter16::HoughLineDetection() {
     return 1;
 }
 
+struct LineTrackBarData {
+    Mat* image;
+    Mat* edge_image;
+    Mat* result_image;
+};
+
+void static DrawLine(Mat& image, Mat& result_image, const vector<Vec4i>& lines) {
+    Point pt[2] = { {0,0}, {0,0} };
+    result_image = image.clone();
+    for(int i = 0; i < lines.size(); i++) {
+        pt[0].x = lines[i][0]; pt[0].y = lines[i][1];
+        pt[1].x = lines[i][2]; pt[1].y = lines[i][3];
+        line(result_image, pt[0], pt[0], Scalar(0, 0, 255), 3, 8);
+    }
+}
+
+void static ContolTrackBar(int, void* userdata) {
+    LineTrackBarData* data = reinterpret_cast<LineTrackBarData*>(userdata);
+
+    Mat& image          = *(data->image);
+    Mat& edge_image     = *(data->edge_image);
+    Mat& result_image   = *(data->result_image);
+    int threshold       = getTrackbarPos("Line Threshold",  chapter16::HOUGH_LINE_P_RESULT);
+    int minLineLength   = getTrackbarPos("Min Line Length", chapter16::HOUGH_LINE_P_RESULT);
+    int maxLineGap      = getTrackbarPos("Max Line Gap",    chapter16::HOUGH_LINE_P_RESULT);
+
+    vector<Vec4i> lines;
+    HoughLinesP(edge_image, lines, 1, CV_PI/180, threshold, minLineLength, maxLineGap);
+    DrawLine(image, result_image, lines);
+    imshow(chapter16::HOUGH_LINE_P_RESULT, result_image);
+    cout << "threshold : " << threshold << " ";
+    cout << "minLineLength : " << minLineLength << " ";
+    cout << "maxLineGap : " << maxLineGap << endl;
+}
+
+void static DrawLineModulateTrackbar(const string& window_name, Mat& image, Mat& edge_image, Mat& result_image) {
+    int threshold = 150;
+
+    LineTrackBarData data = { &image, &edge_image, &result_image };
+
+    createTrackbar(chapter16::HOUGH_LINE_P_MIN_LINE_LENGTH,    window_name, nullptr, 1000, ContolTrackBar, &data);
+    createTrackbar(chapter16::HOUGH_LINE_P_MAX_LINE_GAP,       window_name, nullptr, 1000, ContolTrackBar, &data);
+    createTrackbar(chapter16::HOUGH_LINE_P_LINE_THRESHOLD,     window_name, nullptr, 255, ContolTrackBar, &data);
+
+    waitKey(0);
+}
+
 int chapter16::HoughLinesPDetection() {
-        Mat image, edge_image, result_image;
+    Mat image, gray_image, edge_image, result_image;
     image = imread("./data/board5.png");
     result_image = image.clone();
-    Canny(image, edge_image, 0, 255, 3);
 
-    cvtColor(image, image, COLOR_BGR2GRAY);
+    cvtColor(image, gray_image, COLOR_BGR2GRAY);
+    Canny(gray_image, edge_image, 0, 255, 3);
+    vector<Vec4i> lines;
+    HoughLinesP(edge_image, lines, 1, CV_PI/180, 50, 10, 300);
+    DrawLine(image, result_image, lines);
 
-    imshow("Hough Line P Detection Input image", image);
-    imshow("Hough Line P Detection edge", edge_image);
+    imshow(chapter16::HOUGH_LINE_P_IMAGE,  gray_image);
+    imshow(chapter16::HOUGH_LINE_P_EDGE,   edge_image);
+    imshow(chapter16::HOUGH_LINE_P_RESULT, result_image);
 
     // 에지 이미지 생성
-    DrawEdgeModulateTrackbar("Hough Line P Detection edge", image, edge_image);
-    DrawLineModulateTrackbar("Hough Line P Detection result", edge_image, result_image);
+    DrawEdgeModulateTrackbar(chapter16::HOUGH_LINE_P_EDGE,     gray_image, edge_image);
+    DrawLineModulateTrackbar(chapter16::HOUGH_LINE_P_RESULT,   image, edge_image, result_image);
 
-    imshow("Hough Line P Detection Input image", image);
-    imshow("Hough Line P Detection edge", edge_image);
-    imshow("Hough Line P Detection result", result_image);
+    imshow(chapter16::HOUGH_LINE_P_IMAGE,  gray_image);
+    imshow(chapter16::HOUGH_LINE_P_EDGE,   edge_image);
+    imshow(chapter16::HOUGH_LINE_P_RESULT, result_image);
     waitKey(0);
 
     return 1;
