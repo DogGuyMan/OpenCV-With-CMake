@@ -81,7 +81,7 @@ int chapter16::HoughLineDetection() {
     vector<Vec2f> lines;
     double rho = 1;
     double theta = CV_PI/180;
-    int threshold = 150;
+    int threshold = 150;        // 150번 활용 되었을떄, 선이라고 한다.
 
     /*
     InputArray image, OutputArray lines,
@@ -96,8 +96,8 @@ int chapter16::HoughLineDetection() {
         PolarCoord pos = {lines[i][0], lines[i][1]};
         a = cos(pos.theta);
         b = sin(pos.theta);
-        x0 = a * pos.rho;
-        y0 = b * pos.rho;
+        x0 = a * pos.rho; // 점
+        y0 = b * pos.rho; // 점
         pt[0] = Point(cvRound(x0 + 1000*(-b)), cvRound(y0 + 1000*a));
         pt[1] = Point(cvRound(x0 - 1000*(-b)), cvRound(y0 - 1000*a));
         line(result_image, pt[0], pt[1], Scalar(0, 0, 255), 3, 8);
@@ -158,14 +158,22 @@ void static DrawLineModulateTrackbar(const string& window_name, Mat& image, Mat&
 }
 
 int chapter16::HoughLinesPDetection() {
-    Mat image, gray_image, edge_image, result_image;
+    Mat image, blurred_image, gray_image, edge_image, result_image;
     image = imread("./data/board5.png");
+
+    bilateralFilter(    image,      // src: 입력 이미지 (Mat)
+                        blurred_image,      // dst: 결과 이미지 (Mat)
+                        5,          // d: 필터링에 사용할 이웃 픽셀의 지름(보통 5~15 정도 사용)
+                        50,         // sigmaColor: 색상 차이에 대한 표준편차(값이 클수록 색상 차이가 커도 영향을 받음)
+                        50          // sigmaSpace: 공간적 거리(좌표) 표준편차(값이 클수록 멀리 있는 픽셀도 영향을 줌)
+                    );
+    image = blurred_image.clone();
     result_image = image.clone();
 
     cvtColor(image, gray_image, COLOR_BGR2GRAY);
     Canny(gray_image, edge_image, 0, 255, 3);
     vector<Vec4i> lines;
-    HoughLinesP(edge_image, lines, 1, CV_PI/180, 50, 10, 300);
+    HoughLinesP(edge_image, lines, 1, CV_PI/180, 50, 10, 300); //길이가 10 이상이 아니면 버리기, 간격이 300 이상이면 버리기
     DrawLine(image, result_image, lines);
 
     imshow(chapter16::HOUGH_LINE_P_IMAGE,  gray_image);
