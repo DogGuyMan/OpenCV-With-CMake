@@ -12,10 +12,10 @@
 #include "chapter14/chapter14_headers.h"
 #include "chapter15/chapter15_headers.h"
 #include "chapter16/chapter16_headers.h"
+#include "chapter17/chapter17_headers.h"
 
 int main()
 {
-    // chapter16::HoughLineDetection();
-    chapter16::HoughLinesPDetection();
+    chapter17::FaceDetection();
     return 1;
 }

@@ -77,7 +77,8 @@ add_subdirectory(config)
 # add_subdirectory(src/chapter13)
 # add_subdirectory(src/chapter14)
 # add_subdirectory(src/chapter15)
-add_subdirectory(src/chapter16)
+# add_subdirectory(src/chapter16)
+add_subdirectory(src/chapter17)
 
 add_compile_definitions(${PROJECT_CHAPTER_DEFINES})
 

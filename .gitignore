@@ -76,6 +76,8 @@ vcpkg_installed/
 *.user
 *.userosscache
 *.sln.docstates
+*.cursor
+*.vscode
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -148,3 +150,4 @@ ipch/
 
 # Visual Studio Trace Files
 *.e2e
+*[가-힣]*.md
