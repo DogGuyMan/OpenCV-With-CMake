@@ -1,4 +1,4 @@
-## LineDetection
+## Line Detection
 
 ---
 

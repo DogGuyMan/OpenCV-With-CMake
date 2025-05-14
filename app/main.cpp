@@ -13,9 +13,12 @@
 #include "chapter15/chapter15_headers.h"
 #include "chapter16/chapter16_headers.h"
 #include "chapter17/chapter17_headers.h"
+#include "chapter18/chapter18_headers.h"
 
 int main()
 {
-    chapter17::FaceDetection();
+    // chapter17::FaceDetection();
+    chapter18::PedestrianDetection();
+
     return 1;
 }
