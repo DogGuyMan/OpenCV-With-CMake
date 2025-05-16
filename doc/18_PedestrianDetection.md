@@ -36,7 +36,7 @@
     <img src="image/2025-05-12-22-56-49.png" width=80%>
     <h5>경계 방향 계산및, 방향 히스토그램 생성</h5>
     <img src="image/2025-05-12-22-57-22.png" width=80%>
-    <h5>특징 벡터 생성 (우측이 고차원 특징 벡터임)</h5>
+    <h5>특징 벡터 생성 (우측이 vectorization 혹은, concatenatnation인 "고차원 특징 벡터")</h5>
 </div>
 
 #### 2). Feature
@@ -56,7 +56,8 @@ HoG 특징 벡터를 입력으로 받아, 보행자일 확률이 높은 영역�
 
 <div align=center>
     <img src="image/2025-05-12-22-58-48.png" width=80%>
-    <h5>세로로 하면 마진이 작지만, 여기서 각도를 돌려가면 거리가 최대가 되는 마진을 찾을 수 있다.</h5>
+    <h5>파란색 원 : 보행자에서 추출한 HoG Feature<br>하얀 원 : 보행자가 아닌 HoG Featuure</h5>
+    <h5>여기서 빨간 선이 "식별기 (Classifier)"이다. <br>세로로 하면 마진이 작지만, 여기서 각도를 돌려가면 거리가 최대가 되는 마진을 찾을 수 있다.</h5>
 </div>
 
 ---
@@ -174,7 +175,7 @@ hog.detectMultiScale(
 
 ##### ② `hitThreshold (float)`
 
-* SVM T/F를 결정하는 스레숄드 값
+* SVM T/F를 결정하는 스레숄드 값 (하필 찍힌 점이 SVM 이미지에서 빨간색 직선 "Classifier"위에 있으면? 애매하겠지. 그걸 이분법하기 위한 임계 Padding이다.)
     * **값이 커지면** 더 엄격하게 탐지하여 오탐(false positive)이 줄지만, 놓치는 경우가 많아짐.
     * **값이 작아지면** 더 많이 탐지하지만, 오탐지를 할 가능성이 높음
 

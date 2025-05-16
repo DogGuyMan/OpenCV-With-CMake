@@ -18,6 +18,7 @@ int chapter17::FaceDetection() {
         return -1;
     }
 
+    // 이 XML 파일에 들어있는 내용은 정멸 얼굴을 검출하기 위해 필요한 학습 결과 파일이라고 생각하면 된다.
     face_classifier.load("./data/haarcascade_frontalface_alt.xml");
 
     while(true) {
