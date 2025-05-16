@@ -67,8 +67,12 @@ N번째 행 $y$, M번째 열 $x$ 를 투입하면
 
 > ### 📄 3. 다변수 함수의 편미분
 
-$$f_x(x_0, y_0) = \lim_{h→0} \frac{f(x_0 + h, y_0) - f(x_0, y_0)}{h}$$
-$$f_y(x_0, y_0) = \lim_{h→0} \frac{f(x_0, y_0  +h) - f(x_0, y_0)}{h}$$
+$$
+f_x(x_0, y_0) = \lim_{h→0} \frac{f(x_0 + h, y_0) - f(x_0, y_0)}{h}
+$$
+$$
+f_y(x_0, y_0) = \lim_{h→0} \frac{f(x_0, y_0  +h) - f(x_0, y_0)}{h}
+$$
 
 
 * 자, 이제 이산적인 데이터 셋에 대해 미분을 하는 방법을 알게 되었다.
@@ -99,7 +103,10 @@ $$
 
 * If $f$ is a function of two variables $x$ and $y$,
 then the gradient of $f$ is the vector function $\nabla f$ defined by
-$$\nabla f(x,y) = \langle f_x(x, y), f_y(x, y) \rangle = \frac{\delta f}{\delta x} i + \frac{\delta f}{\delta y} j $$
+
+$$
+\nabla f(x,y) = \langle f_x(x, y), f_y(x, y) \rangle = \frac{\delta f}{\delta x} i + \frac{\delta f}{\delta y} j
+$$
 
 * 예시
 $$
