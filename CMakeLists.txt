@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.16)
 set(PROJECT_NAME opencv-project)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(${PROJECT_NAME} VERSION 1.0.0 LANGUAGES CXX)
@@ -7,8 +7,6 @@ project(${PROJECT_NAME} VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_BUILD_TYPE Debug)
-message(STATUS "CMAKE_TOOLCHAIN_FILE" "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake") # 환경 변수를 가져오려면 $ENV{VAL}
 
 # VCPKG_INSTALLED_DIR:PATH=~/Develop Projects/CXXProject/OpenCV-With-CMake/build/vcpkg_installed
 set(CONFIG_INCLUDE_DIR ${CMAKE_BINARY_DIR}/configured_files/include)
@@ -51,15 +49,10 @@ set(DEP_LIBS ${DEP_LIBS} spdlog::spdlog)
 # Executable에 사용하는 Source들과 Header 모음
 set(PROJECT_SOURCES
     src/my_demo_opencv.cpp
-
-    # src/buffer.cpp src/common.cpp src/context.cpp src/image.cpp src/program.cpp
-    # src/shader.cpp src/vertex_layout.cpp src/texture.cpp
 )
 
 set(PROJECT_HEADERS
     src/my_demo_opencv.hpp
-    # src/buffer.h src/common.h src/context.h src/image.h src/program.h
-    # src/shader.h src/vertex_layout.h src/texture.h
 )
 
 set(PROJECT_CHAPTER_DEFINES)
@@ -79,7 +72,7 @@ add_subdirectory(config)
 # add_subdirectory(src/chapter15)
 # add_subdirectory(src/chapter16)
 # add_subdirectory(src/chapter17)
-add_subdirectory(src/chapter18)
+# add_subdirectory(src/chapter18)
 
 
 add_compile_definitions(${PROJECT_CHAPTER_DEFINES})
@@ -106,3 +99,25 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_link_libraries(${PROJECT_NAME} PUBLIC
     ${DEP_LIBS}
 )
+
+set(RESOURCE_DIR ${CMAKE_SOURCE_DIR}/resources)
+# Generator Expression은 빌드 시스템 생성 이후(빌드 타임)에 지연 평가된다. 따라서 다음줄에 OutPut을 사용할 수 없다..
+set(OUTPUT_DIR $<TARGET_FILE_DIR:${PROJECT_NAME}>)
+
+# file(COPY "${RESOURCE_DIR}" DESTINATION ${CMAKE_BINARY_DIR})
+add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND
+        ${CMAKE_COMMAND} -E copy_directory "${RESOURCE_DIR}" "${OUTPUT_DIR}/resources"
+        # 다음 커맨드를 쉘에 실행하는것과 동치
+        # /usr/local/bin/cmake -E copy_directory "${RESOURCE_DIR}" "${OUTPUT_DIR}/resources"
+    COMMENT "${PROJECT_NAME} 프로젝트 빌드 후 리소스를 build 디렉터리에 복사"
+)
+
+# 애플이며, XCode를 빌드 제너레이터로 설정시 수행할 커맨드로, Xcode에 리소스 디렉토리를 참조할 수 있도록 함.
+if(APPLE AND CMAKE_GENERATOR STREQUAL "Xcode")
+    set_source_files_properties("${RESOURCE_DIR}" PROPERTIES
+        MACOSX_PACKAGE_LOCATION "resources"
+    )
+    target_sources(${PROJECT_NAME} PRIVATE "${RESOURCE_DIR}")
+endif()

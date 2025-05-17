@@ -5,7 +5,7 @@
 ## 실습
 
 ---
-> ### 📄 목차
+> ### 📄 목
 
 #### 1). OpenCV
 
@@ -149,7 +149,7 @@ vscode에서 파일이 열릴때, 등등 이벤트에 수행할 커맨드를 추
 
 ---
 
-> ### 3. 📄 VSCode에서 라이브러리를 못찾아 올때,
+> ### 📄 3.  VSCode에서 라이브러리를 못찾아 올때,
 
 <div align=center>
     <img src="./image/스크린샷 2025-03-16 22.01.21.png">
@@ -370,7 +370,7 @@ sh ./bootstrap-vcpkg.sh
 ---
 
 
-> ### 📄 `cmake -B build --fresh`이후 발생하는 문제
+> ### 📄 5. `cmake -B build --fresh`이후 발생하는 문제
 
 * 갑자기 `spdlog`가 문제다.
     ```bash
@@ -395,25 +395,33 @@ sh ./bootstrap-vcpkg.sh
   mkdir build
   ```
 
-> ### 📄 `add_subdirectory()`의 변수들의 Scope
+> ### 📄 6. `add_subdirectory()`의 변수들의 Scope
 
-> ### 📄 `XXX_compile_definitions()`와 VSCode `"compileCommands": "*/compile_commands.json"` 추가
-* 이걸 해야지 에디터 Linter에서 CMake에 의해 정의된 Define에 빨간줄이 안그어진다.
+> ### 📄 7. .vscode/settings.json 수정
+
+* 다음을 해야지 에디터 Linter에서 CMake에 의해 정의된 Define에 빨간줄이 안그어진다.
+    1. `XXX_compile_definitions()` 추가
+    2. `"compileCommands": "*/compile_commands.json"` 추가
 
 ---
 
-> ### 📄 실행
+> ### 📄 8. 실행
 
 <div align=center>
     <img src="image/2025-03-16-23-23-41.png">
     <h5>FetchContent를 버리니 병이 나았습니다. 🥰</h5>
 </div>
 
+> ### 📄 9. 실행
+
+<div align=center>
+    <img src="image/2025-05-18-03-03-01.png">
+    <h5>XCode Resources 폴더 경로 추가?</h5>
+</div>
+
 ---
 
-> ### 📄 참고
-
----
+> ## 📄 참고
 
 #### 1). [삼각형의 실전! CMake 초급](https://inf.run/og3Jm)
 * 이 강의를 통해 ...
@@ -421,7 +429,6 @@ sh ./bootstrap-vcpkg.sh
     2. C/C++ 라이브러리 의존성 관리
     3. 모던 CMake의 모듈러 디자인에 대해 이해했고, 확장성 있는 빌드 시스템 작성법을 배웠음
 
----
 
 #### 2). [컴퓨터 비전 한동대 황성수 교수님](http://www.kocw.net/home/m/cview.do?lid=f879dfef45031db6)
 
@@ -438,3 +445,22 @@ sh ./bootstrap-vcpkg.sh
 * https://www.youtube.com/watch?v=e7GtcsSJ51s
 * https://www.youtube.com/watch?v=yccbaXqRtNU
 * https://velog.io/@jinhasong/OpenCV-4.4
+
+#### 5). 사용해 봄직한 패키지
+
+* `pkg-config`
+  * 여러 라이브러리의 컴파일 및 링크에 필요한 플래그(경로, 라이브러리 등)를 자동으로 관리해주는 도구입니다.
+  * 보통 C/C++ 프로젝트에서 외부 라이브러리 의존성을 쉽게 처리할 때 사용합니다.
+  * https://github.com/jacking75/examples_CMake/blob/master/find_package_And_pkg_check_modules.md
+
+* `sdl2`
+  * Simple DirectMedia Layer 2의 약자입니다.
+  * 멀티미디어, 게임, 에뮬레이터 등에서 그래픽, 오디오, 입력장치(키보드, 마우스, 게임패드 등) 처리를 위한 크로스플랫폼 라이브러리입니다.
+
+* `enet`
+  * 신뢰성 있는 UDP 네트워킹을 위한 경량 네트워크 라이브러리입니다.
+  * 주로 게임이나 실시간 애플리케이션에서 빠르고 효율적인 네트워크 통신을 위해 사용됩니다.
+
+* `qt@6`
+  * Qt 프레임워크의 6버전입니다.
+  * 데스크탑 및 임베디드 시스템용 GUI(그래픽 사용자 인터페이스) 애플리케이션 개발에 널리 사용되는 크로스플랫폼 C++ 프레임워크입니다.

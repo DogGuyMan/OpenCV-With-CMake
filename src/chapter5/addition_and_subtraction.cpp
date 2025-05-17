@@ -6,9 +6,9 @@ using namespace cv;
 using namespace std;
 
 int chapter5::MatOriginal() {
-    Mat image1 = imread("./data/lena.jpg");
+    Mat image1 = imread("./resources/lena.jpg");
     resize(image1, image1, Size(300, 300), IMREAD_COLOR);
-    Mat image2 = imread("./data/gradient.png");
+    Mat image2 = imread("./resources/gradient.png");
     imshow("Mat Original", image1);
     imshow("Mat Gradient", image2);
     waitKey(0);
@@ -16,9 +16,9 @@ int chapter5::MatOriginal() {
 }
 
 int chapter5::MatAdd() {
-    Mat image1 = imread("./data/lena.jpg");
+    Mat image1 = imread("./resources/lena.jpg");
     resize(image1, image1, Size(300, 300), IMREAD_COLOR);
-    Mat image2 = imread("./data/gradient.png");
+    Mat image2 = imread("./resources/gradient.png");
     Mat dst;
 
     add(image1, image2, dst);
@@ -28,9 +28,9 @@ int chapter5::MatAdd() {
 }
 
 int chapter5::MatScaleadd() {
-    Mat image1 = imread("./data/lena.jpg");
+    Mat image1 = imread("./resources/lena.jpg");
     resize(image1, image1, Size(300, 300), IMREAD_COLOR);
-    Mat image2 = imread("./data/gradient.png");
+    Mat image2 = imread("./resources/gradient.png");
     Mat dst;
 
     scaleAdd(image1, 0.25, image2, dst);
@@ -40,9 +40,9 @@ int chapter5::MatScaleadd() {
 }
 
 int chapter5::MatAbsdiff() {
-    Mat image1 = imread("./data/lena.jpg");
+    Mat image1 = imread("./resources/lena.jpg");
     resize(image1, image1, Size(300, 300), IMREAD_COLOR);
-    Mat image2 = imread("./data/gradient.png");
+    Mat image2 = imread("./resources/gradient.png");
     Mat dst;
     absdiff(image1, image2, dst);
     imshow("Mat Abs Diff", dst);
@@ -51,9 +51,9 @@ int chapter5::MatAbsdiff() {
 }
 
 int chapter5::MatSubtract() {
-    Mat image1 = imread("./data/lena.jpg");
+    Mat image1 = imread("./resources/lena.jpg");
     resize(image1, image1, Size(300, 300), IMREAD_COLOR);
-    Mat image2 = imread("./data/gradient.png");
+    Mat image2 = imread("./resources/gradient.png");
     Mat dst;
     subtract(image1, image2, dst);
     imshow("Mat Subtract", dst);

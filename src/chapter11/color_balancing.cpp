@@ -52,7 +52,7 @@ int chapter11::GrayWorldAssumsptionBalancing(vector<Mat> &ch, const::Vec3i &bgrA
 }
 
 int chapter11::ColorBalancing() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     Mat balanced_image;
 
     vector<Mat> ch(3);

@@ -10,7 +10,7 @@ using namespace cv;
 int chapter13::MeanFilterSubtraction() {
     Mat frame, sum, avg;
     VideoCapture capture;
-    if(capture.open("./data/vtest.avi") == false) return -1;
+    if(capture.open("./resources/vtest.avi") == false) return -1;
     double fps = capture.get(CAP_PROP_FPS);
     int total_frames = capture.get(CAP_PROP_FRAME_COUNT);
     int cnt = 2;
@@ -25,7 +25,7 @@ int chapter13::MeanFilterSubtraction() {
     capture.release();
     imshow("avg background", avg);
     // avg background 이미지를 PNG 파일로 저장
-    imwrite("./data/vtest_avg_background.png", avg);
+    imwrite("./resources/vtest_avg_background.png", avg);
     waitKey(0);
     return 1;
 }
@@ -37,7 +37,7 @@ uchar static GetMedianWithVector(vector<uchar>& v) {
 
 int chapter13::MedianFilterSubtraction() {
     /* Video Capture 열기 */
-    VideoCapture cap("./data/vtest.avi");
+    VideoCapture cap("./resources/vtest.avi");
 
     Mat frame;
     vector<Mat> frames;
@@ -83,7 +83,7 @@ int chapter13::MedianFilterSubtraction() {
 
     imshow("median Background", background);
     // median background 이미지를 PNG 파일로 저장
-    // imwrite("./data/vtest_median_background.png", background);
+    // imwrite("./resources/vtest_median_background.png", background);
 
     waitKey(0);
     return 1;
@@ -92,12 +92,12 @@ int chapter13::MedianFilterSubtraction() {
 int chapter13::AbsDiffSubtraction() {
     Mat background, frame, gray, result, foregroundMask, foregroundImg;
     VideoCapture capture;
-    if(capture.open("./data/vtest.avi") == false) return -1;
+    if(capture.open("./resources/vtest.avi") == false) return -1;
     double fps = capture.get(CAP_PROP_FPS);
     int total_frames = capture.get(CAP_PROP_FRAME_COUNT);
 
     /* 배경 프레임 캡쳐 */
-    background = imread("./data/vtest_real_background.png");
+    background = imread("./resources/vtest_real_background.png");
 
     /* 배경 프레임을 그레이 스케일로 변환 */
     cvtColor(background, background, COLOR_BGR2GRAY);
@@ -144,7 +144,7 @@ int chapter13::MoG2ModelSubtraction() {
     Ptr<BackgroundSubtractor> bg_model = createBackgroundSubtractorMOG2();
     Mat image, foregroundMask, background, foregroundImg;
 
-    VideoCapture cap("./data/vtest.avi");
+    VideoCapture cap("./resources/vtest.avi");
 
     while(true) {
         cap >> image;

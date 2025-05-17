@@ -6,7 +6,7 @@ using namespace std;
 using namespace cv;
 
 int chapter12::AdaptiveThresholding() {
-    Mat image = imread("./data/sudoku.png", IMREAD_GRAYSCALE);
+    Mat image = imread("./resources/sudoku.png", IMREAD_GRAYSCALE);
     Mat global_thresholded_image;
     Mat adaptive_thresholded_image;
 

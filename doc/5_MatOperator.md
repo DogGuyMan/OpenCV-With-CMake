@@ -148,7 +148,7 @@ bitwise_not(img, res);               imshow("NOT", res);
         * 산술 연산 오버로딩 : `+`, `-`, `*`, `/`cvt
         * 비트 연산 오버로딩 : `&`, `|`, `^`, `~`
             ```cpp
-            Mat image = imread("./data/lena.jpg");
+            Mat image = imread("./resources/lena.jpg");
             Mat imageInverted = ~(image.clone());
             ```
 
@@ -167,7 +167,7 @@ bitwise_not(img, res);               imshow("NOT", res);
 ```cpp
 int main() {
     int w = 512, h = 512;
-    Mat imageOrigin = imread("./data/lena.jpg", IMREAD_COLOR);
+    Mat imageOrigin = imread("./resources/lena.jpg", IMREAD_COLOR);
     resize(imageOrigin, imageOrigin, Size(w, h), INTER_LINEAR);
     Mat GaryImage, HSVImage, YCrCvImage, LabIamge, YUVImage;
     cvtColor(imageOrigin, GaryImage, COLOR_BGR2GRAY);
@@ -213,7 +213,7 @@ int main() {
     Mat image, image_YUV, dst;
     vector<Mat> yuv_channels(3);
 
-    image = imread("./data/lena.jpg");
+    image = imread("./resources/lena.jpg");
     resize(image, image, Size(w, h), IMREAD_COLOR);
 
     cvtColor(image, image_YUV, COLOR_BGR2YUV);
@@ -271,7 +271,7 @@ int main() {
     Mat image, rect_roi;
     Rect rect(100, 30, 250, 300);
 
-    image = imread("./data/lena.jpg");
+    image = imread("./resources/lena.jpg");
     rect_roi = image(rect);
 
     imshow("rect ROI image", rect_roi);
@@ -285,7 +285,7 @@ int main() {
 ```cpp
 int main() {
     Mat image, poly_roi, poly_mask;
-    image = imread("./data/lena.jpg");
+    image = imread("./resources/lena.jpg");
     Point polys[1][4] = {
         Point(255, 100), Point(286, 100), Point(316, 300), Point(196, 300)
     };
@@ -433,7 +433,7 @@ int main() {
 
     ```cpp
     int main() {
-        Mat image = imread("./data/lena.jpg");
+        Mat image = imread("./resources/lena.jpg");
         cvtColor(image, image, CV_BGR2GRAY);
         Mat dst;
         threshold(image, dst, 100, 255, THREASH_BINARY);

@@ -62,7 +62,7 @@ Mat static PerformClustering(Mat &srcImage) {
 }
 
 int chapter13::ContourCounting() {
-    Mat coins_img = imread("./data/coins.png", 0);
+    Mat coins_img = imread("./resources/coins.png", 0);
     Mat clusterd = PerformClustering(coins_img);
     Mat result;
 

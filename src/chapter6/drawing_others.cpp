@@ -85,7 +85,7 @@ int chapter6::DrawingMarker(){
 int chapter6::DrawingTrackbar(){
     const string WINDOW_NAME = "drawing xor mask change trackbar on image";
     int intensity = 128;
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     resize(image, image, Size(400, 400), IMREAD_COLOR);
 
     Mat circleMat = Mat::zeros(Size(400,400), CV_8UC3);

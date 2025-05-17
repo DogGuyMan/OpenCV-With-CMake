@@ -11,7 +11,7 @@ using namespace cv;
 const double C = 1.5f;
 
 int chapter8::LogTransformation() {
-    Mat image = imread("./data/lena.jpg", 0);
+    Mat image = imread("./resources/lena.jpg", 0);
     Mat float_image, log_image;
     // 로그 변환에서 사용할 수 있으려면, Float형의 데이터 타입을 써야 하므로 그렇다.
     image.convertTo(float_image, CV_32F);

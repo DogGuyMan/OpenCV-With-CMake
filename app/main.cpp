@@ -17,8 +17,7 @@
 
 int main()
 {
-    // chapter17::FaceDetection();
-    chapter18::PedestrianDetection();
+    OpenCVDemo();
 
     return 1;
 }

@@ -8,7 +8,7 @@ using namespace cv;
 int chapter14::ErosionAndDilation() {
     Mat image, erosion, dilation;
     Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(16, 16));
-    image = imread("./data/coins.png", 0);
+    image = imread("./resources/coins.png", 0);
     resize(image, image, Size(0,0), 1.5, 1.5);
     threshold(image, image, 0, 255, THRESH_BINARY | THRESH_OTSU);
 

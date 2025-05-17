@@ -19,7 +19,7 @@ namespace chapter4 {
 
          ************************************/
 
-        VideoCapture cap("./data/Megamind.avi");
+        VideoCapture cap("./resources/Megamind.avi");
 
         // check if file exists. if none program ends
         if(cap.isOpened() == 0) {

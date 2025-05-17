@@ -6,7 +6,7 @@ using namespace std;
 using namespace cv;
 
 int chapter6::DrawingCircle() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
 
     Point center(100,60);
     int radius = 40;
@@ -18,7 +18,7 @@ int chapter6::DrawingCircle() {
 
 
 int chapter6::FillCircle() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
 
     Point center(image.size().width / 2, image.size().height / 2);
     int radius = 150;

@@ -57,7 +57,7 @@ int static GetGlobalThreshold(const Mat& image, const int init_thresh, const int
 }
 
 int chapter12::BasicMethod() {
-    Mat image = imread("./data/lena.jpg", IMREAD_GRAYSCALE);
+    Mat image = imread("./resources/lena.jpg", IMREAD_GRAYSCALE);
     Mat threshed_image;
     int thresh_T = 200;
     int mean_gap = 10;
@@ -73,7 +73,7 @@ int chapter12::BasicMethod() {
 }
 
 int chapter12::OtusMethod() {
-    Mat image = imread("./data/lena.jpg", IMREAD_GRAYSCALE);
+    Mat image = imread("./resources/lena.jpg", IMREAD_GRAYSCALE);
     Mat threshed_image;
 
     // 오.. 비트셋으로 스레숄드 옵션을 정하는구나.

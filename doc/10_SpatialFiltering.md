@@ -171,7 +171,7 @@ N, M 각각 1,3,5 등등 홀수를 가지고 있다.
 
 ```cpp
 int chapter10::SpatialEmbossFiltering() {
-    Mat image = imread("./data/lena.jpg", 0);
+    Mat image = imread("./resources/lena.jpg", 0);
     Mat embossKernal = (Mat_<int>(3, 3) <<  -2 ,-1 ,0,
                                             -1 ,1 ,1,
                                              0 ,1 ,2);

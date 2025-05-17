@@ -12,7 +12,7 @@ int chapter15::SobelEdgeDetection() {
 
     Mat g_edge_image, b_edge_image;
 
-    image = imread("./data/lena.jpg", IMREAD_GRAYSCALE);
+    image = imread("./resources/lena.jpg", IMREAD_GRAYSCALE);
     resize(image, image, Size(0, 0), 0.75, 0.75);
 
     // 노이즈 제거.

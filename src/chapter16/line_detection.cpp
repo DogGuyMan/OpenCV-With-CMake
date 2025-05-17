@@ -65,7 +65,7 @@ void static DrawEdgeModulateTrackbar(const string& window_name, Mat& image, Mat&
 
 int chapter16::HoughLineDetection() {
     Mat image, edge_image, result_image;
-    image = imread("./data/board5.png");
+    image = imread("./resources/board.png");
     result_image = image.clone();
     Canny(image, edge_image, 0, 255, 3);
 
@@ -159,7 +159,7 @@ void static DrawLineModulateTrackbar(const string& window_name, Mat& image, Mat&
 
 int chapter16::HoughLinesPDetection() {
     Mat image, blurred_image, gray_image, edge_image, result_image;
-    image = imread("./data/board5.png");
+    image = imread("./resources/board.png");
 
     bilateralFilter(    image,      // src: 입력 이미지 (Mat)
                         blurred_image,      // dst: 결과 이미지 (Mat)

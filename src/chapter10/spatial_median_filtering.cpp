@@ -1,7 +1,7 @@
 #include "spatial_median_filtering.hpp"
 
 int chapter10::SpatialMedianFiltering() {
-    Mat image = imread("./data/Noise_salt_and_pepper.png");
+    Mat image = imread("./resources/noise_salt_and_pepper.png");
     imshow("Salt And Pepper", image);
     Mat mf1, mf2;
 

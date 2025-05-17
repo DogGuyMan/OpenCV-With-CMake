@@ -15,7 +15,7 @@ void chapter11::WaitForMouseInput(const string& windowName, void* isOnceClickedF
 }
 
 int chapter11::UsageOfHSL() {
-    Mat image = imread("./data/colorful.jpeg");
+    Mat image = imread("./resources/colorful.jpeg");
     double aspect_ratio = (double)image.cols/ image.rows;
     resize(image, image, Size(), 0.25, 0.25);
     Mat HSV, intensity_change, mask_out, change_color;

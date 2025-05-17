@@ -34,7 +34,7 @@ int chapter5::MatrixConcatination() {
     return 1;
 }
 int chapter5::MatrixBitwise() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     resize(image, image, Size(200, 200), IMREAD_COLOR);
     Mat circleMat = Mat::zeros(Size(200,200), CV_8UC3);
     circle(circleMat, Point(100, 100), 100, Scalar(255,255,255), -1, LINE_AA, 0);
@@ -57,7 +57,7 @@ int chapter5::MatrixBitwise() {
 }
 
 int chapter5::MatrixInverted() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     MatExpr imageInverted = ~(image.clone());
 
     imshow("Original Image", image);

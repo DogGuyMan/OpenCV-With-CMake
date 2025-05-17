@@ -9,7 +9,7 @@ int chapter5::RectROIImageMask() {
     Mat image, rect_roi;
     Rect rect(100, 30, 250, 300);
 
-    image = imread("./data/lena.jpg");
+    image = imread("./resources/lena.jpg");
     rect_roi = image(rect);
 
     imshow("rect ROI image", rect_roi);
@@ -19,7 +19,7 @@ int chapter5::RectROIImageMask() {
 
 int chapter5::PolygonROIImageMask() {
     Mat image, poly_roi, poly_mask;
-    image = imread("./data/lena.jpg");
+    image = imread("./resources/lena.jpg");
     Point polys[1][4] = {
         Point(255, 100), Point(286, 100), Point(316, 300), Point(196, 300)
     };

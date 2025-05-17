@@ -7,7 +7,7 @@ using namespace std;
 
 int chapter15::CannyEdgeDetection() {
     Mat image, canny;
-    image = imread("./data/lena.jpg", IMREAD_GRAYSCALE);
+    image = imread("./resources/lena.jpg", IMREAD_GRAYSCALE);
 
     Canny(image, canny, 190, 200, 3);
 

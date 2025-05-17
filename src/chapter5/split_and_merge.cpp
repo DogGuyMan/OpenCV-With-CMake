@@ -11,7 +11,7 @@ int chapter5::SplitAndMerge() {
     Mat image, image_YUV, dst;
     vector<Mat> yuv_channels(3);
 
-    image = imread("./data/lena.jpg");
+    image = imread("./resources/lena.jpg");
     resize(image, image, Size(w, h), IMREAD_COLOR);
 
     cvtColor(image, image_YUV, COLOR_BGR2YUV);

@@ -7,7 +7,7 @@ using namespace std;
 using namespace cv;
 
 int chapter11::HistogramEqualizeYCrCbAndHSV() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     Mat ycrcb_image, hsv_image;
     Mat equalized_ycrcb_image, equalized_hsv_image;
     cvtColor(image, ycrcb_image, COLOR_BGR2YCrCb);
@@ -35,7 +35,7 @@ int chapter11::HistogramEqualizeYCrCbAndHSV() {
 }
 
 int chapter11::HistogramBackProject(){
-    Mat image = imread("./data/img5_6.png");
+    Mat image = imread("./resources/dice.png");
     Mat ycrcb_image;
     cvtColor(image, ycrcb_image, COLOR_BGR2YCrCb);
     /* DrawRect */

@@ -2,7 +2,7 @@
 
 int chapter10::SpatialSharpFiltering() {
     Mat image, laplacian, abs_laplacian, sharpening;
-    image = imread("./data/moon.jpeg", 0);
+    image = imread("./resources/moon.jpeg", 0);
 
     GaussianBlur(image, image, Size(3,3), 0, 0, BORDER_DEFAULT);
 
@@ -36,7 +36,7 @@ int chapter10::SpatialSharpFiltering() {
 // 언샤프 마스킹을 얻어서 언샤프닝이 가능하다.
 // 그렇게 하기위해서는 가우시안 블러 취하고 난 뒤에, 연샤프 마스크를 역으로 계산할 수 있다.
 int chapter10::SpatialUnsharpMasking() {
-    Mat input = imread("./data/lena.jpg");
+    Mat input = imread("./resources/lena.jpg");
     Mat gray, blur, sharp;
     cvtColor(input, gray, COLOR_BGR2GRAY);
     GaussianBlur(gray, blur, Size(5,5), 3);

@@ -16,8 +16,8 @@ int chapter7::PixelAccessByAt() {
     Mat image, image_gray;
     int value, value_B, value_G, value_R, channels;
 
-    image = imread("./data/lena.jpg");
-    image_gray = imread("./data/lena.jpg", 0);
+    image = imread("./resources/lena.jpg");
+    image_gray = imread("./resources/lena.jpg", 0);
 
     channels = image.channels();
 
@@ -42,7 +42,7 @@ int chapter7::PixelAccessByAt() {
 }
 
 int chapter7::PixelAccessByPointer() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     int value, value_B, value_G, value_R, channels;
     channels = image.channels();
 
@@ -72,8 +72,8 @@ int chapter7::PixelAccessByIterator() {
     Mat image, image_gray;
     int value, value_B, value_G, value_R, channels;
 
-    image = imread("./data/lena.jpg");
-    image_gray = imread("./data/lena.jpg", 0);
+    image = imread("./resources/lena.jpg");
+    image_gray = imread("./resources/lena.jpg", 0);
 
     channels = image.channels();
 

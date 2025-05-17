@@ -73,6 +73,6 @@
         * 산술 연산 오버로딩 : `+`, `-`, `*`, `/`cvt
         * 비트 연산 오버로딩 : `&`, `|`, `^`, `~`
             ```cpp
-            Mat image = imread("./data/lena.jpg");
+            Mat image = imread("./resources/lena.jpg");
             Mat imageInverted = ~(image.clone());
             ```

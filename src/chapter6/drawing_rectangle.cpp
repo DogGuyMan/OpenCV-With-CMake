@@ -6,7 +6,7 @@ using namespace cv;
 using namespace std;
 
 int chapter6::DrawingRectangleWithRect() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     Rect rect1 = Rect(10, 10, 100, 100);
     Rect rect2 = Rect(200, 10, 100, 100);
     Rect rect3 = Rect(10, 200, 100, 100);
@@ -19,7 +19,7 @@ int chapter6::DrawingRectangleWithRect() {
 }
 
 int chapter6::DrawingRectangleWithPoints() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     Point points1[1][2] = {Point(10, 10), Point(100, 100)};
     Point points2[1][2] = {Point(200, 10), Point(100, 100)};
     Point points3[1][2] = {Point(10, 200), Point(100, 100)};
@@ -32,7 +32,7 @@ int chapter6::DrawingRectangleWithPoints() {
 }
 
 int chapter6::FillRectangleWithRect() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     Point points1[1][2] = {Point(10, 10), Point(100, 100)};
     Point points2[1][2] = {Point(200, 10), Point(100, 100)};
     Point points3[1][2] = {Point(10, 200), Point(100, 100)};

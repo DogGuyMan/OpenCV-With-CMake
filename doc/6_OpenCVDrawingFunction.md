@@ -47,7 +47,7 @@ void rectangle( Mat& img,
 
 ```cpp
 int chapter6::DrawingRectangleWithRect() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     Rect rect1 = Rect(10, 10, 100, 100);
     Rect rect2 = Rect(200, 10, 100, 100);
     Rect rect3 = Rect(10, 200, 100, 100);
@@ -60,7 +60,7 @@ int chapter6::DrawingRectangleWithRect() {
 }
 
 int chapter6::DrawingRectangleWithPoints() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     Point points1[1][2] = {Point(10, 10), Point(100, 100)};
     Point points2[1][2] = {Point(200, 10), Point(100, 100)};
     Point points3[1][2] = {Point(10, 200), Point(100, 100)};
@@ -73,7 +73,7 @@ int chapter6::DrawingRectangleWithPoints() {
 }
 
 int chapter6::FillRectangleWithRect() {
-    Mat image = imread("./data/lena.jpg");
+    Mat image = imread("./resources/lena.jpg");
     Point points1[1][2] = {Point(10, 10), Point(100, 100)};
     Point points2[1][2] = {Point(200, 10), Point(100, 100)};
     Point points3[1][2] = {Point(10, 200), Point(100, 100)};
@@ -114,7 +114,7 @@ int chapter6::FillRectangleWithRect() {
 ##### p1, p2를 사용해서 선분의 시작점, 끝점 정의
   ```cpp
    int chapter6::DrawingLine() {
-       Mat image = imread("./data/lena.jpg");
+       Mat image = imread("./resources/lena.jpg");
 
        Point p1(25,25), p2(100, 50);
        line(image, p1, p2, Scalar(0,255,255), 8, 4, 0);
@@ -127,7 +127,7 @@ int chapter6::FillRectangleWithRect() {
 ##### center와, radious를 사용해 원을 그리고, 채움
    ```cpp
    int chapter6::DrawingCircle() {
-       Mat image = imread("./data/lena.jpg");
+       Mat image = imread("./resources/lena.jpg");
 
        Point center(100,60);
        int radius = 40;
@@ -138,7 +138,7 @@ int chapter6::FillRectangleWithRect() {
    }
 
    int chapter6::FillCircle() {
-       Mat image = imread("./data/lena.jpg");
+       Mat image = imread("./resources/lena.jpg");
 
        Point center(image.size().width / 2, image.size().height / 2);
        int radius = 150;

@@ -6,8 +6,8 @@ using namespace std;
 using namespace cv;
 
 int chapter11::PseudoColoring() {
-    Mat sad_dog_image = imread("./data/SadDog.jpg");
-    Mat xray_image = imread("./data/Xray.png");
+    Mat sad_dog_image = imread("./resources/sad_dog.jpg");
+    Mat xray_image = imread("./resources/x_ray.png");
     Mat colored_sad_dog_image, colored_xray_image;
     Mat invert_colored_sad_dog_image, invert_colored_xray_image;
     int target_height = 400;

@@ -47,7 +47,7 @@ int chapter9::HistogramEqualization() {
     Mat image, hist_equalized_image;
     Mat hist_graph, hist_normed_graph;
 
-    image = imread("./data/lena.jpg", 0);
+    image = imread("./resources/lena.jpg", 0);
 
     equalizeHist(image, hist_equalized_image);
 
@@ -67,7 +67,7 @@ int chapter9::HistogramNormalization() {
     Mat image, hist_normed_image;
     Mat hist_graph, hist_normed_graph;
 
-    image = imread("./data/lena.jpg", 0);
+    image = imread("./resources/lena.jpg", 0);
     normalize(image, hist_normed_image, 0, 255, NORM_MINMAX);
 
     hist_graph = DrawHistogram(image);

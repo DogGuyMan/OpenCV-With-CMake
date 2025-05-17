@@ -7,7 +7,7 @@ using namespace std;
 using namespace cv;
 
 int chapter8::GammaTransformation() {
-    Mat image = imread("./data/lena.jpg", 0);
+    Mat image = imread("./resources/lena.jpg", 0);
     Mat gamma_image;
     MatIterator_<uchar> it, end;
     const float gamma = 0.5;

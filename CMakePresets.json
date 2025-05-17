@@ -1,11 +1,27 @@
 {
-    "version": 2,
+    "version": 4,
     "configurePresets": [
         {
-            "name": "opencv-project",
+            "name": "unix-makefiles-opencv-project-debug",
             "displayName": "도구 체인 파일을 사용하여 사전 설정 구성",
             "description": "Unix Makefiles 생성기, 빌드 및 설치 디렉터리 설정",
             "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                },
+                "CMAKE_INSTALL_PREFIX": "$env{VCPKG_ROOT}/installed/arm64-osx",
+                "VCPKG_TARGET_TRIPLET": "$env{VCPKG_DEFAULT_TRIPLET}"
+            }
+        },
+        {
+            "name": "xcode-opencv-project-debug",
+            "displayName": "도구 체인 파일을 사용하여 사전 설정 구성",
+            "description": "Xcode 생성기, 빌드 및 설치 디렉터리 설정",
+            "generator": "Xcode",
             "binaryDir": "${sourceDir}/build/",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
@@ -20,8 +36,12 @@
     ],
     "buildPresets": [
         {
-            "name": "opencv-project",
-            "configurePreset": "opencv-project"
+            "name": "unix-makefiles-opencv-project-debug",
+            "configurePreset": "unix-makefiles-opencv-project-debug"
+        },
+        {
+            "name": "xcode-opencv-project-debug",
+            "configurePreset": "xcode-opencv-project-debug"
         }
     ]
 }

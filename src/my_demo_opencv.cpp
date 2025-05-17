@@ -14,7 +14,7 @@ int OpenCVDemo() {
     cout << "Hello " << project_name << endl;
 
     //! [imread]
-    std::string image_path = samples::findFile("./data/starry_night.jpg");
+    std::string image_path = samples::findFile("./resources/starry_night.jpg");
     Mat img = imread(image_path, IMREAD_COLOR);
     //! [imread]
 
@@ -34,7 +34,7 @@ int OpenCVDemo() {
     //! [imsave]
     if(k == 's')
     {
-        imwrite("./data/starry_night.png", img);
+        imwrite("./resources/starry_night.png", img);
     }
     //! [imsave]
 

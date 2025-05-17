@@ -9,7 +9,7 @@ int chapter18::PedestrianDetection() {
     int i;
     char ch;
 
-    VideoCapture cap("./data/vtest.avi");
+    VideoCapture cap("./resources/vtest.avi");
 
     if(!cap.isOpened()) {
         cout << "영상을 찾을 수 없습니다." << endl;

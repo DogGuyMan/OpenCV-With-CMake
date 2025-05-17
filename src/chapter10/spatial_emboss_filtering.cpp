@@ -6,7 +6,7 @@ using namespace std;
 using namespace cv;
 
 int chapter10::SpatialEmbossFiltering() {
-    Mat image = imread("./data/lena.jpg", 0);
+    Mat image = imread("./resources/lena.jpg", 0);
     Mat embossKernal = (Mat_<int>(3, 3) <<  -2 ,-1 ,0,
                                             -1 ,1 ,1,
                                              0 ,1 ,2);

@@ -7,7 +7,7 @@ using namespace std;
 
 int chapter5::ColorSpaceConversionCvt() {
     int w = 512, h = 512;
-    Mat imageOrigin = imread("./data/lena.jpg", IMREAD_COLOR);
+    Mat imageOrigin = imread("./resources/lena.jpg", IMREAD_COLOR);
     resize(imageOrigin, imageOrigin, Size(w, h), INTER_LINEAR);
     Mat GaryImage, HSVImage, YCrCvImage, LabIamge, YUVImage;
     cvtColor(imageOrigin, GaryImage, COLOR_BGR2GRAY);

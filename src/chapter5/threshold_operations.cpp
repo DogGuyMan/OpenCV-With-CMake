@@ -11,7 +11,7 @@ void ThresholdWithTruncType(Mat);
 
 int chapter5::Threshold() {
     Mat image, dst;
-    image = imread("./data/lena.jpg");
+    image = imread("./resources/lena.jpg");
     resize(image, image, Size(300, 300), IMREAD_COLOR);
     cvtColor(image, image, COLOR_BGR2GRAY);
     // ThresholdWithBinaryType(image);
@@ -56,7 +56,7 @@ void ThresholdWithTruncType(Mat image) {
 
 int chapter5::AdaptiveThreshold() {
     Mat image, dst;
-    image = imread("./data/lena.jpg");
+    image = imread("./resources/lena.jpg");
     resize(image, image, Size(300, 300), IMREAD_COLOR);
     cvtColor(image, image, COLOR_BGR2GRAY);
 
@@ -82,7 +82,7 @@ int chapter5::AdaptiveThreshold() {
 }
 
 int chapter5::InRange() {
-    Mat image = imread("./data/home.jpg");
+    Mat image = imread("./resources/home.jpg");
     cvtColor(image, image, COLOR_BGR2YCrCb);
 
     imshow("image YCrCb", image);

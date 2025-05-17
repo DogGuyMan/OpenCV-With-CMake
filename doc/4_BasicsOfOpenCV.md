@@ -83,11 +83,11 @@ int ReadAnImageInOpenCV() {
 
     // 두번째 파라미터의 0이 들어가 있다.
     // 이것이 뜻하는 바는 이미지를 GrayScale 로 읽겠다는 것 이다.
-    gray_image = imread("./data/lena.png", 0);
+    gray_image = imread("./resources/lena.png", 0);
 
     // 두번째 파라미터에 1이 들어가 있거나
     // 아무 값도 작성하지 않는 다면 Color로 읽겠다는 것 이다.
-    color_image = imread("./data/lena.png", 0);
+    color_image = imread("./resources/lena.png", 0);
 
     imshow("gray image", gray_image);
     imshow("color image", color_image);
