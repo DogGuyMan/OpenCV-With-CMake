@@ -19,7 +19,7 @@
 set(CHAPTER4)
 
 set(CHAPTER4_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/baisic_data_structure_in_openCV.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/basic_data_structure_in_openCV.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_an_image_in_openCV.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_a_video_from_a_file.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_a_video_from_a_webcam.cpp
@@ -27,22 +27,21 @@ set(CHAPTER4_SOURCES
 
 )
 
-# message(STATUS "baisic data source path " ${CMAKE_CURRENT_SOURCE_DIR}/baisic_data_structure_in_openCV.cpp)
+# message(STATUS "basic data source path " ${CMAKE_CURRENT_SOURCE_DIR}/basic_data_structure_in_openCV.cpp)
 # message(STATUS "read an image source path" ${CMAKE_CURRENT_SOURCE_DIR}/read_an_image_in_openCV.cpp)
 
 set(CHAPTER4_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/chapter4_headers.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/baisic_data_structure_in_openCV.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/basic_data_structure_in_openCV.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_an_image_in_openCV.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_a_video_from_a_file.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/read_a_video_from_a_webcam.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/play_with_video_capture.hpp
-
 )
 
 set(PROJECT_SOURCES ${PROJECT_SOURCES} ${CHAPTER4_SOURCES} PARENT_SCOPE)
 set(PROJECT_HEADERS ${PROJECT_HEADERS} ${CHAPTER4_SOURCES} PARENT_SCOPE)
 set(PROJECT_CHAPTER_DEFINES ${PROJECT_CHAPTER_DEFINES} CHAPTER4 PARENT_SCOPE)
 
-# message(STATUS "baisic data header path" ${CMAKE_CURRENT_SOURCE_DIR}/baisic_data_structure_in_openCV.hpp)
+# message(STATUS "basic data header path" ${CMAKE_CURRENT_SOURCE_DIR}/basic_data_structure_in_openCV.hpp)
 # message(STATUS "read an image header path" ${CMAKE_CURRENT_SOURCE_DIR}/read_an_image_in_openCV.hpp)

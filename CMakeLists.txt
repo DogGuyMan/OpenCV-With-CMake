@@ -1,52 +1,19 @@
+# ─── CMake 설정 ─────────────────────
 cmake_minimum_required(VERSION 3.16)
 set(PROJECT_NAME opencv-project)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(${PROJECT_NAME} VERSION 1.0.0 LANGUAGES CXX)
 
-# C++ 표준 설정
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+# ─── 의존성 라이브러리 설정 ───────────────────────
 
 # VCPKG_INSTALLED_DIR:PATH=~/Develop Projects/CXXProject/OpenCV-With-CMake/build/vcpkg_installed
-set(CONFIG_INCLUDE_DIR ${CMAKE_BINARY_DIR}/configured_files/include)
-
-find_package(fmt REQUIRED)
-set(DEP_LIBS ${DEP_LIBS} fmt::fmt)
-message(STATUS "fmt Json ${fmt_DIR}")
-
-find_package(nlohmann_json REQUIRED)
-set(DEP_LIBS ${DEP_LIBS} nlohmann_json::nlohmann_json)
-message(STATUS "nlohmann json ${nlohmann_json_DIR}")
-
-set(OPENCV_ENABLE_NONFREE ON CACHE BOOL "Enable nonfree algorithms" FORCE)
-set(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libraries" FORCE)
-set(BUILD_WITH_STATIC_CRT OFF CACHE BOOL "Use dynamic CRT instead of static" FORCE)
-set(BUILD_PACKAGE OFF CACHE BOOL "Build package" FORCE)
-set(BUILD_EXAMPLES ON CACHE BOOL "Build examples" FORCE)
-set(BUILD_TBB OFF CACHE BOOL "Build TBB from 3rdparty" FORCE)
-set(BUILD_TESTS OFF CACHE BOOL "Build tests" FORCE)
-set(BUILD_opencv_python3 OFF CACHE BOOL "Build OpenCV Python3 bindings" FORCE)
-set(BUILD_opencv_python_bindings_generator OFF CACHE BOOL "Build Python bindings generator" FORCE)
-set(BUILD_opencv_python_tests OFF CACHE BOOL "Build OpenCV Python tests" FORCE)
-set(WITH_CUDA OFF CACHE BOOL "Enable CUDA support" FORCE)
-set(WITH_DIRECTX OFF CACHE BOOL "Enable DirectX support" FORCE)
-set(WITH_IPP ON CACHE BOOL "Enable IPP optimizations" FORCE)
-set(WITH_MSMF OFF CACHE BOOL "Enable MSMF support" FORCE)
-set(WITH_OPENCL ON CACHE BOOL "Enable OpenCL support" FORCE)
-set(WITH_OPENCLAMDBLAS ON CACHE BOOL "Enable OpenCL AMD BLAS support" FORCE)
-set(WITH_OPENCLAMDFFT ON CACHE BOOL "Enable OpenCL AMD FFT support" FORCE)
-set(WITH_OPENGL OFF CACHE BOOL "Enable OpenGL support" FORCE)
-set(WITH_FFMPEG ON CACHE BOOL "Enable FFMPEG support" FORCE)
-set(OpenCV_ROOT "${VCPKG_INSTALLED_DIR}/arm64-osx/share/opencv4")
-find_package(OpenCV REQUIRED)
-set(DEP_LIBS ${DEP_LIBS} ${OpenCV_LIBS})
-
-find_package(spdlog REQUIRED)
-set(DEP_LIBS ${DEP_LIBS} spdlog::spdlog)
+# CMakePresets에 CMAKE_MODULE_PATH를 설정하지 않으면 cmake/*.cmake 파일을 찾을 수 없음
+include(Config)
+include(CppStandard)
+include(Dependency)
 
 # ─── 실행 파일 생성 및 설정 ──────────────────────────
 # Executable에 사용하는 Source들과 Header 모음
+
 set(PROJECT_SOURCES
     src/my_demo_opencv.cpp
 )
@@ -75,17 +42,16 @@ add_subdirectory(config)
 # add_subdirectory(src/chapter18)
 
 
-add_compile_definitions(${PROJECT_CHAPTER_DEFINES})
-
-get_directory_property(_defs COMPILE_DEFINITIONS)
-message(STATUS "defs = ${_defs}")
+# ─── 설정한 Define 전처리 디버깅 ──────────────────────────
+# get_directory_property(_defs COMPILE_DEFINITIONS)
+# message(STATUS "defs = ${_defs}")
 
 add_executable(${PROJECT_NAME}
     app/main.cpp
     ${PROJECT_SOURCES} ${PROJECT_HEADERS}
 )
-message(STATUS "PROJECT_SOURCES " ${PROJECT_SOURCES})
-message(STATUS "PROJECT_HEADERS " ${PROJECT_SOURCES})
+
+target_compile_definitions(${PROJECT_NAME} PUBLIC ${PROJECT_CHAPTER_DEFINES})
 
 # 의존성 헤더 경로 추가
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -100,20 +66,23 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     ${DEP_LIBS}
 )
 
+# ─── 빌드 후 리소스 복사 ──────────────────────────
 set(RESOURCE_DIR ${CMAKE_SOURCE_DIR}/resources)
 # Generator Expression은 빌드 시스템 생성 이후(빌드 타임)에 지연 평가된다. 따라서 다음줄에 OutPut을 사용할 수 없다..
 set(OUTPUT_DIR $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 
 # file(COPY "${RESOURCE_DIR}" DESTINATION ${CMAKE_BINARY_DIR})
+
 add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND
-        ${CMAKE_COMMAND} -E copy_directory "${RESOURCE_DIR}" "${OUTPUT_DIR}/resources"
-        # 다음 커맨드를 쉘에 실행하는것과 동치
-        # /usr/local/bin/cmake -E copy_directory "${RESOURCE_DIR}" "${OUTPUT_DIR}/resources"
+    ${CMAKE_COMMAND} -E copy_directory "${RESOURCE_DIR}" "${OUTPUT_DIR}/resources"
+    # 다음 커맨드를 쉘에 실행하는것과 동치
+    # /usr/local/bin/cmake -E copy_directory "${RESOURCE_DIR}" "${OUTPUT_DIR}/resources"
     COMMENT "${PROJECT_NAME} 프로젝트 빌드 후 리소스를 build 디렉터리에 복사"
-)
+    )
 
+# ─── XCode 리소스 대응 ──────────────────────────
 # 애플이며, XCode를 빌드 제너레이터로 설정시 수행할 커맨드로, Xcode에 리소스 디렉토리를 참조할 수 있도록 함.
 if(APPLE AND CMAKE_GENERATOR STREQUAL "Xcode")
     set_source_files_properties("${RESOURCE_DIR}" PROPERTIES

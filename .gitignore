@@ -151,3 +151,5 @@ ipch/
 # Visual Studio Trace Files
 *.e2e
 *[가-힣]*.md
+*[가-힣]*.mp4
+*[가-힣]*.avi

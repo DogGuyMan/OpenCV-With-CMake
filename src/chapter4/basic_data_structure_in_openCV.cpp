@@ -1,9 +1,9 @@
-#include "baisic_data_structure_in_openCV.hpp"
+#include "basic_data_structure_in_openCV.hpp"
 using namespace cv;
 using namespace std;
 
 namespace chapter4 {
-    int BaisicDataStructureInOpenCV() {
+    int BasicDataStructureInOpenCV() {
         int w = 150, h = 100;
         // 만약 pixelType 이 3 channel이라면 Scaler(double, double, double) 형태이다.
         // 🚸 Scalar(255,0,0); 는 RGB 순서일 것 같지만.. 사실 BGR 순서로 거꾸로다! 🚸

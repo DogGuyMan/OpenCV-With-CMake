@@ -9,7 +9,7 @@
 namespace chapter6 {
     void onMouse(int event, int x, int y, int flags, void* userdata);
     void WaitForMouseInput(const string& windowName);
-    void onTrackbar(int intencity, void* userdata);
+    void onTrackbar(int Intensity, void* userdata);
 
     int DrawingArrow();
     int DrawingMarker();

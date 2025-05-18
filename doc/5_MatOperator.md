@@ -48,7 +48,7 @@
 ##### ③ `Mat::eye()`
 * 단위 행렬을 생성할때 사용된다.
 
-#### 3). Algebric Matrix Baisc Operation
+#### 3). Algebric Matrix Basic Operation
 
 ##### ① `Mat::mul()`
 * 같은 위치에 있는 원소끼리 곱셈 연산을 할때 사용한다.

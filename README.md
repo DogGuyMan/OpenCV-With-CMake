@@ -5,7 +5,7 @@
 ## 실습
 
 ---
-> ### 📄 목
+> ### 📄 목차
 
 #### 1). OpenCV
 
@@ -31,10 +31,8 @@
 
 #### 2). 그 외..
 
-1. [Vector Calculus](./doc/Extra/1_VectorCalculus.md)
-2. [Geometry Coordinate System](./doc/Extra/2_Geometry_Coordinate_System.md)
-3. [Homogeneous Coordinate](./doc/Extra/3_HomogeneousCoordinate.md)
-4. [Camera Model](./doc/Extra/5_CameraModel.md)
+1. [Taylor Series](./doc/extra/1_TaylorSeries.md)
+2. [Vector Calculus](./doc/extra/2_VectorCalculus.md)
 
 ---
 

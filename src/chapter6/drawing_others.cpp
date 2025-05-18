@@ -36,7 +36,7 @@ struct EdgeTrackBarData {
     Mat* maskImage;
 };
 
-void chapter6::onTrackbar(int intencity, void* userdata) {
+void chapter6::onTrackbar(int Intensity, void* userdata) {
     EdgeTrackBarData* data = reinterpret_cast<EdgeTrackBarData*>(userdata);
     Mat* targetImage = data->targetImage;
     Mat* maskImage = data->maskImage;
@@ -46,7 +46,7 @@ void chapter6::onTrackbar(int intencity, void* userdata) {
     circle(
         *maskImage,
         Point(maskImage->rows /2 , maskImage->cols /2),
-        (maskImage->rows /2), Scalar(intencity, intencity, intencity), -1, LINE_AA, 0);
+        (maskImage->rows /2), Scalar(Intensity, Intensity, Intensity), -1, LINE_AA, 0);
     bitwise_xor(*targetImage, *maskImage, bitXorImage);
     imshow(data->windowName, bitXorImage);
 }

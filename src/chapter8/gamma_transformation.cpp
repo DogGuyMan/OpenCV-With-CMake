@@ -8,7 +8,7 @@ int chapter8::GammaTransformation() {
     Mat gamma_image;
     MatIterator_<uchar> it, end;
     const float gamma = 0.5;
-    uchar pix[256]; // 일명 룩업 테이블 픽셀 Intencity에 대응되는 값을 매핑해 주는 함수를 제작하는것이다.
+    uchar pix[256]; // 일명 룩업 테이블 픽셀 Intensity에 대응되는 값을 매핑해 주는 함수를 제작하는것이다.
     for(int i = 0; i < 256; i++) {
         // i는 0~255사이의 범위를 가진다.
         // 그리고 이걸 0~1사이의 값을 가지도록 하고 감마 제곱을 시킨다.

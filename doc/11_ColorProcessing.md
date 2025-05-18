@@ -1,7 +1,7 @@
 상## 11 Color Processing
 
 #### 컬러 영상을 Preprocessing하는 작엄.
-* 이전까지는 모두 GrayScale에 대해서 작업었다 (Average Filter, Intencity Transformation, Histogram Equlization)
+* 이전까지는 모두 GrayScale에 대해서 작업었다 (Average Filter, Intensity Transformation, Histogram Equlization)
 * 그렇다면 컬러의 프리프로세싱은 어느 컬러모델에서 진행하냐면 HSI(I를 건들던지), YCbBb(Y를 건들던지)이 있겠다.
 
 > ### 📄 1. Usage of HSI
@@ -27,7 +27,7 @@ Intiecity에 영향을 끼치지 않는 것이 장점이다.
 <div align=center>
     <img src="./image/2025-04-22-22-40-35.png" width=80%>
     <img src="./image/2025-04-26-17-54-28.png" width=80%>
-    <h5>1번 : 원본 이미지<br>2번 : Intencity를 낮춘것<br> 3번 : 주황값을 제외하고 Saturation을 0으로 만든것<br>4번 : Hue 채널을 조정시킨것</h5>
+    <h5>1번 : 원본 이미지<br>2번 : Intensity를 낮춘것<br> 3번 : 주황값을 제외하고 Saturation을 0으로 만든것<br>4번 : Hue 채널을 조정시킨것</h5>
 </div>
 
 > ### 📄 2.  Pseudo Coloring

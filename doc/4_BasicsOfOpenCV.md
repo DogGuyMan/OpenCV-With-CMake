@@ -47,7 +47,7 @@ Mat img(Size(1920, 1080), CV_8UC3);
 
 > ### 📄 2. Mat을 사용한 예제들
 
-#### 1). Baisic Data Structure In OpenCV
+#### 1). Basic Data Structure In OpenCV
 
 <div align=center>
     <img src="image/2025-03-23-01-42-40.png" width=150px>
@@ -55,7 +55,7 @@ Mat img(Size(1920, 1080), CV_8UC3);
 </div>
 
 ```cpp
-int BaisicDataStructureInOpenCV() {
+int BasicDataStructureInOpenCV() {
     int w = 150, h = 100;
     // 만약 pixelType 이 3 channel이라면 Scaler(double, double, double) 형태이다.
     // 🚸 Scalar(255,0,0); 는 RGB 순서일 것 같지만.. 사실 BGR 순서로 거꾸로다! 🚸
