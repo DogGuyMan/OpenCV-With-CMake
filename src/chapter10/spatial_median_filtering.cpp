@@ -1,4 +1,5 @@
 #include "spatial_median_filtering.hpp"
+using namespace cv;
 
 int chapter10::SpatialMedianFiltering() {
     Mat image = imread("./resources/noise_salt_and_pepper.png");

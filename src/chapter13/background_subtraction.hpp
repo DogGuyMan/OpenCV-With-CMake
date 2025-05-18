@@ -3,6 +3,11 @@
 
 #pragma once
 
+#include <opencv2/opencv.hpp>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 namespace chapter13 {
     int MeanFilterSubtraction();
     int MedianFilterSubtraction();

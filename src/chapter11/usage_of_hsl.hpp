@@ -6,9 +6,6 @@
 #include <opencv2/opencv.hpp>
 #include <algorithm>
 
-using namespace std;
-using namespace cv;
-
 namespace chapter11 {
     int UsageOfHSL();
     void onMouse(int event, int x, int y, int flags, void* userData);

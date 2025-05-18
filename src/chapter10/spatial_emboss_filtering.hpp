@@ -2,8 +2,8 @@
 #define __SPATIAL_EMBOSS_FILTERING__
 #pragma once
 
+#include <iostream>
 #include <opencv2/opencv.hpp>
-using namespace cv;
 
 namespace chapter10 {
     int SpatialEmbossFiltering();

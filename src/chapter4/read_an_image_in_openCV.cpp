@@ -1,6 +1,4 @@
 #include "read_an_image_in_openCV.hpp"
-#include <opencv2/opencv.hpp>
-#include <iostream>
 
 using namespace cv;
 using namespace std;

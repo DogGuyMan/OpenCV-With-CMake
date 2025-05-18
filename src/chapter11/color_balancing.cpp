@@ -1,5 +1,8 @@
 #include "color_balancing.hpp"
 
+using namespace std;
+using namespace cv;
+
 enum RGBKey {
     R = 2, G = 1, B = 0
 };

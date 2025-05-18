@@ -3,6 +3,10 @@
 
 #pragma once
 
+#include <opencv2/opencv.hpp>
+#include <iostream>
+#include <vector>
+
 namespace chapter12 {
     int BasicMethod();
     int OtusMethod();

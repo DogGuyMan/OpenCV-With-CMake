@@ -1,5 +1,8 @@
 #include "drawing_others.hpp"
 
+using namespace std;
+using namespace cv;
+
 // 제네릭 포인터(Generic Pointer)  void* userdata
 void chapter6::onMouse(int event, int x, int y, int flags, void* userdata) {
     // 나 데이터의 실제 타입을 알지 못하므로 직접 역참조는 불가능.

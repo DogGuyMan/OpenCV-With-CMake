@@ -1,7 +1,5 @@
 #include "spatial_blur_filtering.hpp"
-
-// addWeighted?
-
+using namespace cv;
 
 int chapter10::SpatialAverageFiltering() {
     Mat image, average_image, gaussian_image;

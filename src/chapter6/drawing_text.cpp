@@ -1,7 +1,4 @@
 #include "drawing_text.hpp"
-#include <iostream>
-#include <opencv2/opencv.hpp>
-#include <chrono>
 
 using namespace std;
 using namespace cv;

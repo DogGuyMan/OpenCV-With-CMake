@@ -2,6 +2,10 @@
 #define _PLAY_WITH_VIDEO_CAPUTRE_
 
 #pragma once
+
+#include <opencv2/opencv.hpp>
+#include <iostream>
+
 namespace chapter4 {
     int PlayWithVideoCapture();
 }

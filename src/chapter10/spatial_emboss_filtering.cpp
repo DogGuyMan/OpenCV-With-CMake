@@ -1,6 +1,4 @@
 #include "spatial_emboss_filtering.hpp"
-#include <iostream>
-#include <opencv2/opencv.hpp>
 
 using namespace std;
 using namespace cv;

@@ -1,6 +1,4 @@
 #include "drawing_histogram.hpp"
-#include <opencv2/core.hpp>
-
 
 Mat chapter9::DrawHistogram(Mat srcImage) {
     Mat hist, histImage;

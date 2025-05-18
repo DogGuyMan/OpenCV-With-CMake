@@ -1,13 +1,11 @@
 #ifndef __COLOR_BALANCING__
 #define __COLOR_BALANCING__
+
 #pragma once
 
 #include <iostream>
 #include <vector>
 #include <opencv2/opencv.hpp>
-
-using namespace std;
-using namespace cv;
 
 namespace chapter11 {
     int CalculateChannelAverage(std::vector<Mat> &, cv::Vec3i &);

@@ -3,6 +3,9 @@
 
 #pragma once
 
+#include <iostream>
+#include <opencv2/opencv.hpp>
+
 namespace chapter6 {
     int DrawingCircle();
     int FillCircle();

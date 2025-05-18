@@ -1,4 +1,6 @@
 #include "usage_of_hsl.hpp"
+using namespace std;
+using namespace cv;
 
 // 제네릭 포인터(Generic Pointer)  void* userdata
 void chapter11::onMouse(int event, int x, int y, int flags, void* userData) {

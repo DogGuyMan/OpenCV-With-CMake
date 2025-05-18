@@ -5,8 +5,6 @@
 
 #include <iostream>
 #include <opencv2/opencv.hpp>
-using namespace std;
-using namespace cv;
 
 namespace chapter6 {
     void onMouse(int event, int x, int y, int flags, void* userdata);

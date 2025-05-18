@@ -1,7 +1,4 @@
 #include "global_thresholding.hpp"
-#include <opencv2/opencv.hpp>
-#include <iostream>
-#include <vector>
 
 #define DEBUG 1
 

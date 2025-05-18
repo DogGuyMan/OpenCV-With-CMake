@@ -1,9 +1,4 @@
 #include "log_transformation.hpp"
-#include <opencv2/opencv.hpp>
-#include <iostream>
-#include <iomanip>
-#include <limits.h>
-#include <cmath>
 
 using namespace std;
 using namespace cv;

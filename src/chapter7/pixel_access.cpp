@@ -1,8 +1,4 @@
-#
 #include "pixel_access.hpp"
-#include <opencv2/opencv.hpp>
-#include <iostream>
-#include <iomanip>
 
 using namespace std;
 using namespace cv;

@@ -1,6 +1,5 @@
 #include "read_a_video_from_a_webcam.hpp"
-#include <opencv2/opencv.hpp>
-#include <iostream>
+
 using namespace cv;
 using namespace std;
 

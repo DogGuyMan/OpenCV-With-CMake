@@ -2,6 +2,8 @@
 #define __CANNY_EDGE_DETECTION__
 
 #pragma once
+#include <iostream>
+#include <opencv2/opencv.hpp>
 
 namespace chapter15 {
     int CannyEdgeDetection();

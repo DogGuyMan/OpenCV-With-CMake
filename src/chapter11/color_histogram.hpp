@@ -3,6 +3,11 @@
 
 #pragma once
 
+#include <iostream>
+#include <vector>
+#include <opencv2/opencv.hpp>
+
+
 namespace chapter11 {
     int HistogramEqualizeYCrCbAndHSV();
     int HistogramBackProject();

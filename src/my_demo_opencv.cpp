@@ -1,11 +1,4 @@
-#include <my_demo_opencv.hpp>
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
-#include <fmt/format.h>
-#include <config.hpp>
-
-#include <iostream>
+#include "my_demo_opencv.hpp"
 
 using namespace cv;
 using namespace std;
