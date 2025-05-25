@@ -79,17 +79,22 @@
    * 오브젝트의 밝기(Intensity)는 앞뒤 프레임(잇다라 연속으로 나타나는 영상의 프레임)에서
    거희 변화되지 않거나, 극도록 변화가 최소가 되도록 위치를 찾는것
 2. **스몰 모션**
-   * 움직였을때, 픽셀 하나는 주변 픽셀부와 비슷한 값을 가질것이다.
+   * 음직인 픽셀의 위치는 인접한 픽셀의 위치와 비슷하다.
+   * 만약 이 가정이 없다면, Feature를 추출하는데 있어 모든 픽셀에 대해 음직임을 추출했어야 했다.
+   따라서 최적화와 정확성 이슈로 이러한 가정이 중요하다.
 
 $$
+I는 영상 (x, y)위치에 해당하며 t시간 위치의 영상 \\
 I(x, y, y) = I(x + \Delta{x}, y + \Delta{y}, z + \Delta{z})
 $$
 
-
 $$
+테일러 급수로 전개하면.. \\
 I(x + \Delta{x}, y + \Delta{y}, z + \Delta{z}) =
 I(x, y, y) + \frac{\delta{I}}{\delta{x}}\Delta{x} + \frac{\delta{I}}{\delta{y}}\Delta{y} + \frac{\delta{I}}{\delta{z}}\Delta{z}
 $$
+
+* 따라서 아래의 식을 만족시키는 $\Delta x$와 $\Delta y$를 구하는 것이다.
 
 $$
 \frac{\delta{I}}{\delta{x}}\Delta{x} + \frac{\delta{I}}{\delta{y}}\Delta{y} + \frac{\delta{I}}{\delta{z}}\Delta{z} = 0 (x, y, z 방향의 밝기 변화율 = 미분)
@@ -99,7 +104,7 @@ $$
 ##### ② 절차
 1. 첫 프레임에 추적할 특징점 Feature를 추출한다.
 2. 다음 프레임에서 해당 특징점 주변의 밝기 패턴이 가장 비슷하거나 잘 맞는 위치를 찾는다.
-3. 미분 혹은 **[테일러 급수](./extra/TaylorSeries.md)** 를 통해 주변부 픽셀의 Intensity 변화량을 1차 근사하여, 선형 방정식으로 이동량을 계산한다.
+3. 미분 혹은 **[테일러 급수](./extra/TaylorSeries.md)** 를 통해 주변부 픽셀의 Intensity 변화량을 1차 근사(1계 도함수를 사용)하여, 선형 방정식으로 이동량을 계산한다.
 
 #### 2). KLT Algorithm with pyramids
 
@@ -109,7 +114,7 @@ $$
 
 <div align=center>
     <img src="image/2025-05-18-19-37-30.png" width=80%>
-    <h5>위에서 아래로 이동하는 것 처럼 보이는데.. 사실 downsampling하면서 아래에서 위로 올라가는거 아닐까?</h5>
+    <h5>즉, 입력 영상을 여러 사이즈로 줄여서 모은것을 이미지 피라미드라 한것.</h5>
 </div>
 
 ##### ② Image H & Image I
