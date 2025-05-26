@@ -249,7 +249,7 @@ $$
 ---
 
 * 만약 CameraCenter가 World Coordinate에서 원점이 아니라면?
-* 아까 분리해석할 행렬과 거희 비슷한데. $R$ Rotation, $C$ CameraCenter 를 알면 된다.
+* 아까 분리해석할 행렬과 거희 비슷한데. $\tilde{R}$ Rotation, $\tilde{C}$ CameraCenter 를 알면 된다.
 
 <div align=center>
     <img src="image/2025-05-27-00-54-46.png" width=80%>
