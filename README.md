@@ -36,6 +36,7 @@
 3. [Coordinate System](./doc/extra/3_Coordinate_System.md)
 4. [Homogeneous Coordinate](./doc/extra/4_HomogeneousCoordinate.md)
 5. [Transformation](./doc/extra/5_Transformation.md)
+6. [Equations Of Lines And Planes](./doc/extra/6_EquationsOfLinesAndPlanes.md)
 
 ---
 

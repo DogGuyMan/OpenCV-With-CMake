@@ -5,22 +5,20 @@
 
 ---
 
-### 개요
+> ### 개요
 
 <div align=center>
     <img src="./image/cameragen.gif" width=80%>
-    <h5></h5>
+    <h5>PinHole Camera</h5>
 </div>
-
-* 3D 공간을 2D 이미지 평면으로 투영(매핑) 하는 작업을 시뮬레이팅 해보자.
-* 이미지 프로세싱 영역에서, 가장 대표적인 "기하학적 이미지 보간"은 Pinhole Camera Model 에 기반한다.
-
-> ### 카메라 모델
 
 <div align=center>
-    <img src="image/2025-05-25-15-59-56.png" width=80%>
-    <h5></h5>
+    <h4>3D 공간을 2D 이미지 평면으로 투영(매핑) 하는 작업을 시뮬레이팅 해보자.</h4>
 </div>
+
+* 이미지 프로세싱 영역에서, 가장 대표적인 "기하학적 이미지 보간"은 Pinhole Camera Model 에 기반한다.
+
+> ### 사전 지식
 
 #### 1). 벡터를 통한 3차원 공간에서 직선의 방정식
 
@@ -46,6 +44,15 @@ $$
 $$
 ax + by + cz + d = 0
 $$
+
+
+> ### 카메라 모델
+
+<div align=center>
+    <img src="image/2025-05-25-15-59-56.png" width=80%>
+    <h5></h5>
+</div>
+
 
 #### 3. Perspective Projection
 

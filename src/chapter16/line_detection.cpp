@@ -81,7 +81,7 @@ int chapter16::HoughLineDetection() {
     vector<Vec2f> lines;
     double rho = 1;
     double theta = CV_PI/180;
-    int threshold = 150;        // 150번 활용 되었을떄, 선이라고 한다.
+    int threshold = 150;        // 150번 활용 되었을때, 선이라고 한다.
 
     /*
     InputArray image, OutputArray lines,
