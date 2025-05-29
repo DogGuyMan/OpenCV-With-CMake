@@ -40,6 +40,7 @@ add_subdirectory(config)
 # add_subdirectory(src/chapter16)
 # add_subdirectory(src/chapter17)
 # add_subdirectory(src/chapter18)
+add_subdirectory(src/chapter20)
 
 
 # ─── 설정한 Define 전처리 디버깅 ──────────────────────────
