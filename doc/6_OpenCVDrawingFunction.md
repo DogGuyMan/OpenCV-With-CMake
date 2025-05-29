@@ -1,11 +1,14 @@
 ## 6. OpenCV Drawing Function
 
 
+---
+
 > ### 📄 4각형을 그리는 함수
 
 ![](image/2025-04-07-23-54-50.png)
 
 ![](image/2025-04-07-23-56-26.png)
+
 
 #### 1). `void rectangle(Mat& img, <represent_rectangle>, const Scalar& color, int thickness, int linetype, int shift = 0)`
 
@@ -23,6 +26,8 @@
       * Antialiased line
 2. `int shift = 0` : 디폴트는 0, 사각형을 정교하게 그릴 때, 사용한다.
 
+---
+
 #### 2).`Point`를 사용하는 오버로딩
 ```cpp
 void rectangle( Mat& img,
@@ -33,6 +38,8 @@ void rectangle( Mat& img,
 )
 ```
 
+---
+
 #### 3). `Rect`를 사용하는 오버로딩
 ```cpp
 void rectangle( Mat& img,
@@ -42,6 +49,8 @@ void rectangle( Mat& img,
                 int lineType=8, int shift=0
 )
 ```
+
+---
 
 #### 4). 예제 코드
 
@@ -89,10 +98,11 @@ int chapter6::FillRectangleWithRect() {
 
 ![](image/2025-04-11-00-36-07.png)
 
+
 ---
 
-
 > ### 📄 선과 원을 그리는 함수
+
 
 #### 1). `void line(Mat& img, Point p1, Point pt2, const Scalar& color, int thickness=1, int lineType =8, int shift=0)`
 
@@ -103,11 +113,15 @@ int chapter6::FillRectangleWithRect() {
 5. `int lineType=8` : 선의 타입
 6. `int shift=0` : 정교한 선을 그리기 위한 시프트
 
+---
+
 #### 2). `void Circle(Mat* img, Point center, int radius, const Scaler& color, int thickness=1, int lineType=8, int shift = 0)`
 1. `Mat& img` : 원을 그릴 이미지(캔버스)의 레퍼런스
 2. `Point center` : 원의 중심 위치
 3. `int radius` : 원의 반지름.
 4. 나머지는 이하 동일...
+
+---
 
 #### 3). 예제 코드
 
@@ -158,6 +172,7 @@ int chapter6::FillRectangleWithRect() {
 
 ![](image/2025-04-08-00-01-01.png)
 
+
 #### 1). `void fillPoly(Mat& img, const Point** pts, const int* npts, int ncountours, const Scalar& color, int lineType=8, int shift=0, Point offset=Point())`
 
 1. `Mat& img` : 다각형을 그릴 이미지(캔버스)의 레퍼런스
@@ -173,6 +188,8 @@ int chapter6::FillRectangleWithRect() {
 6. `int lineType=8` : 선의 타입,
 7. `int shift=0` `Point offset=Point()` : 정교하게 그리기 위한 옵션 시프트와, 오프셋
 
+
+---
 
 #### 2). 코드 예제
 
@@ -263,6 +280,7 @@ int chapter6::FillRectangleWithRect() {
 
 > ### 📄 글자를 작성하자.
 
+
 #### 1). `void putText(Mat& img, const string& txt, Point org, int fontFace, double fontScale, Scalar color, int thickness=1, int lineType= 8, bool bottomLeftOrigin=false)`
 
 1. `Mat& img` : 텍스트를 그릴 이미지 혹은 영상
@@ -275,6 +293,8 @@ int chapter6::FillRectangleWithRect() {
 8. `int lineType= 8` : 선의 타입
 9. `bool bottomLeftOrigin=false`
 
+---
+
 #### 2). `string cv::format(const char *fmt, ...)`
 
 * 매 프레임마다 다른 텍스트를 그리고 싶을때, 스트링 포매팅에 사용되는 함수
@@ -282,6 +302,8 @@ int chapter6::FillRectangleWithRect() {
 
 <!-- ![](image/2025-04-08-00-57-34.png)
 ![](image/2025-04-08-00-57-37.png) -->
+
+---
 
 #### 3). 예제 코드
 ```cpp
@@ -355,6 +377,7 @@ int chapter6::DrawingDateTime() {
 
 > ### 📄 기타 등등..(Arrow, Marker, Trackbar, setMouseCallback)
 
+
 #### 1). `arrowedLine()`
 
 <div align=center>
@@ -362,12 +385,16 @@ int chapter6::DrawingDateTime() {
     <h5></h5>
 </div>
 
+---
+
 #### 2). `drawMarker()`
 
 <div align=center>
     <img src="image/2025-04-19-17-28-30.png" width=80%>
     <h5></h5>
 </div>
+
+---
 
 #### 3). `createTrackbar()`, `getTrackbarPos()`, `setTrackbarPos()`
 
@@ -379,6 +406,8 @@ int chapter6::DrawingDateTime() {
 * createTrackbar() : 트랙바 생성
 * getTrackbarPos() : 현재 위치를 알고 싶을 때
 * setTrackbarPos() : 특정 위치로 옮기고 싶을 때
+
+---
 
 #### 4). `setMouseCallback()`
 

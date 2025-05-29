@@ -1,11 +1,14 @@
 ## Coordinate System In Geometric Vision
 
+---
+
 > ### 📄 1. Coordinate System
 
 <div align=center>
     <img src="image/2025-05-25-15-39-16.png" width=80%>
     <h5></h5>
 </div>
+
 
 #### 1). World coordinate(3D)
 * 모든 물체의 위치와 방향을 통일된 기준에서 표현할 수 있게 해주는 기준 좌표계" 이다.
@@ -25,6 +28,8 @@
 * 원점 (origin)은 $(0,0,0)$
 * 월드 좌표계의 임의의 점은 대문자로 표기 $P = (X, Y,Z)$
 
+---
+
 #### 2). Camera coordinate(3D)
 
 <div align=center>
@@ -38,6 +43,8 @@
 2차원 array 형태의 x, y 우하단으로 증가
 * 렌즈의 중심을 원점(origin) $(0,0,0)$
 * 카메라 좌표계의 임의의 점은 아래첨자를 c로 표기$P_c = (X_c, Y_c, Z_c)$
+
+---
 
 #### 3). Pixel/Screen coordinate(=image plane, 2D)
 
@@ -55,6 +62,8 @@
   * 카메라의 원점이 하나의 꼭짓점이 되는 삼각형 평면이,
   스크린에 투영되는 것을 선이라 부른다.
 
+
+---
 
 #### 4). Normalized image plane (2D)
 
@@ -104,7 +113,7 @@ $$
 ---
 
 
-### 참고
+### 📄 참고
 
 https://boofcv.org/index.php?title=Tutorial_Geometric_Vision
 https://blog.naver.com/tlqor123/220543002583

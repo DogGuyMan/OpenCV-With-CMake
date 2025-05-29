@@ -1,6 +1,9 @@
 ## 4. BasicsOfOpenCV
 
+---
+
 > ### 📄 1. Mat
+
 
 #### 1). OpenCV에서 이미지를 표현하기 위한 기본 데이터 타입
 * Mat은 행렬의 약어로, 영상은 픽셀의 2차원 배열로 생각할 수 있다.
@@ -19,6 +22,8 @@
     ```
 
 
+---
+
 #### 2). 픽셀의 타입
 
 * Single-channel : 채널이 1개일때 Intensity만 존재
@@ -33,6 +38,8 @@
 * Multi-channel array: 채널이 3개 이상인 픽셀 타입 즉 RGBA
     `CV_8UC3`, `CV_8U(3)`, `CV_64FC4`, `CV_64FC(4)`
 
+---
+
 #### 3). 매트릭스 설정 예제
 ```cpp
 // Make a 3x3 floating-point matrix
@@ -45,7 +52,10 @@ Mat img(height,width, CV_8UC3);
 Mat img(Size(1920, 1080), CV_8UC3);
 ```
 
+---
+
 > ### 📄 2. Mat을 사용한 예제들
+
 
 #### 1). Basic Data Structure In OpenCV
 
@@ -69,6 +79,8 @@ int BasicDataStructureInOpenCV() {
     return 0;
 }
 ```
+
+---
 
 #### 2). Read An Image In OpenCV
 
@@ -96,6 +108,8 @@ int ReadAnImageInOpenCV() {
     return 0;
 }
 ```
+
+---
 
 > ### 📄 Video Capture
 
@@ -129,6 +143,7 @@ int ReadAnImageInOpenCV() {
     * 이 함수가 없다면 우리가 눈치채기도 전에 쭉~ 아주 빠르게 프레임을 재생하고 꺼질 것 이다.
     그래서 33ms를 기다리도록 할 수 있다.
 
+
 #### 1). Read a Video from a File
 
 ```cpp
@@ -159,6 +174,8 @@ int ReadAVideoFromAFile() {
 }
 ```
 
+---
+
 #### 2). Read a Video from a webcam
 
 ```cpp
@@ -181,6 +198,8 @@ int ReadAVideoFromAWebcam() {
     }
 }
 ```
+
+---
 
 #### 3). Play With VideoCapture
 ```cpp

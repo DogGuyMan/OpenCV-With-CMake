@@ -14,6 +14,8 @@
   * 빌드 옵션/환경 변수 적용
   * 실제 빌드 시스템에 맞는 파일 생성 (예: Makefile, .ninja, .xcodeproj 등)
 
+---
+
 > ### 📄 2. **Generate 단계**
 * **목적:**
   Configure 단계에서 설정된 내용을 바탕으로, 실제 빌드 시스템이 사용할 수 있는 파일을 생성.
@@ -24,6 +26,8 @@
     * 전통적인 방법 : `cmake -B <build-directory> -G "<generator-name>"`
     * 현대적 방식 : `cmake --preset <CMakePresets.json에 첨부한 preset name>`
   * *실제로 CMake는 Configure와 Generate를 한 번에 처리함*
+
+---
 
 > ### 📄 3. **Build 단계**
 * **목적:**

@@ -1,8 +1,13 @@
 ## 5. Matrix Operator
 
+---
+
 #### OpenCV에서 제공하는 Mat의 기본 연산자.
 
+---
+
 > ### 📄 사전 정보
+
 
 #### 1). `cv::Mat` VS `cv::Mat_`
 
@@ -37,6 +42,8 @@
 | 사용 용도        | 다양한 데이터 타입과 채널 수 지원    | 특정 데이터 타입에 대해 간결한 코드 작성 |
 | 변환 가능 여부   | `cv::Mat_`으로 변환 가능             | `cv::Mat`으로 변환 가능                  |
 
+---
+
 #### 2). `cv::Mat` Construct
 
 ##### ① `Mat::zeros()`
@@ -47,6 +54,8 @@
 
 ##### ③ `Mat::eye()`
 * 단위 행렬을 생성할때 사용된다.
+
+---
 
 #### 3). Algebric Matrix Basic Operation
 
@@ -71,6 +80,8 @@ cv::Mat original = (cv::Mat_<int>(2, 3) << 1, 2, 3, 4, 5, 6);
 ##### ⑤ `Mat::inversed` `Mat::operator~`
 * 반전 처리
 
+---
+
 #### 4). [Matrix Concatination](https://www.geeksforgeeks.org/concatenate-images-using-opencv-in-python/)
 
 ##### ① `Mat::vconcat`
@@ -81,6 +92,8 @@ cv::Mat original = (cv::Mat_<int>(2, 3) << 1, 2, 3, 4, 5, 6);
 
 ##### ③ `Mat::concat_vh`
 * 그리드로 반복하기
+
+---
 
 #### 5). Matrix Boolean
 
@@ -126,6 +139,8 @@ bitwise_xor(img, img_mask, res);     imshow("XOR", res);
 bitwise_not(img, res);               imshow("NOT", res);
 ```
 
+---
+
 #### 5). [Mat::MatExpr](https://docs.opencv.org/4.x/d1/d10/classcv_1_1MatExpr.html)
 
 * 행렬 연산을 지연(Lazy) 평가하는 데 사용되는 클래스로,
@@ -152,7 +167,10 @@ bitwise_not(img, res);               imshow("NOT", res);
             Mat imageInverted = ~(image.clone());
             ```
 
+---
+
 > ### 📄 Color Space Conversion
+
 
 #### 1). `cvtColor(Mat src, Mat dst, int code, int dstCn = 0)`
 * 색공간(Color Model) (RGB, HSI, YCrCb, Gray, Lab)으로 컨버팅 해주는 함수.
@@ -194,16 +212,22 @@ int main() {
 </div>
 
 
+---
+
 #### 2). `split(Mat src, Mat* mv)`
 
 * 입력은 Multi-channel (3컬러 같은) 매트릭스를
 single-channel 매트릭스로 분리해주는함수.
 * 아웃풋은 Mat 배열로, 각각의 단일 채널을 가지는 매트릭스를 반환한다.
 
+---
+
 #### 3). `merge(Mat* mv, Mat dest)`
 * split과 정확히 반대의 행동을 하고, 여러 단일 채널의 매트릭스를 하나의 매트릭스로 합치는 함수.
 * mv 는 반드시 size와 동일한 depth를 가지고 있어야 한다.
 * 아웃풋은 인풋으로 들어간 매트릭스와 동일한 size, depth를 가진다. 일명`mv[0]`
+
+---
 
 #### 4). 왜 split하고, merge했는데 다른 색이 나오지?
 
@@ -251,6 +275,8 @@ int main() {
 * 하지만, ROI를 변화 시키면 원본 이미지가 변조될 수 있다,
 즉, 레퍼런싱을 수행하는 연산이다.
 
+---
+
 #### `Mat ROI` VS `Mat Mask`?
 
 * 둘다 이미지의 일부만 다루기 위해 사용되는데
@@ -263,6 +289,7 @@ int main() {
     | **용도** | 이미지의 특정 영역만 작업하고 싶을 때 (`cv::Rect`로 잘라내기) | 연산 결과를 **특정 위치에만 적용**하고 싶을 때 (`bitwise_and`, `copyTo`, `findContours` 등에서 사용) |
     | **형태** | 이미지의 부분 (sub-matrix) | 흑백 이진 이미지 (`CV_8UC1`) |
     | **예시** | 얼굴만 잘라서 저장 | 동그란 영역만 복사하고 싶을 때 |
+
 
 #### 1). By `Rect` : 사각형을 사용한 마스크
 
@@ -279,6 +306,8 @@ int main() {
     return 1;
 }
 ```
+
+---
 
 #### 2). By `Polygon` : 사각형이 아닌 폴리곤을 사용한 마스크
 
@@ -318,8 +347,12 @@ int main() {
 </div>
 
 
+---
+
 #### 3). `InputArrayOfArray`
 * C 배열, `std::vector`를 묶는 하나의 공통 인터페이스
+
+---
 
 #### 4). fillPoly 함수의 파라미터와 Scalar, npt의 역할
 
@@ -344,6 +377,7 @@ int main() {
   선의 종류, 좌표값의 비트 쉬프트, 오프셋 조정 등 추가적인 옵션으로,
   다각형 그리기 시의 세부 스타일을 결정하는 역할
 
+
 ---
 
 #### 5. 왜 Mask를 만들어서 ROI에 copyTo를 하는가?
@@ -357,7 +391,10 @@ int main() {
 * 따라서, 비정형 영역(예: 다각형)의 경우 먼저 전체 이미지 크기의 mask를 만들고, 그 mask를 이용해 원하는 영역만 선택적으로 복사하는 절차가 있는것이다.
 
 
+---
+
 > ### 📄 Addition & Subtraction
+
 
 #### 1). `add(Mat src1, Mat src2, Mat dst, Mat mast=noArray(), int dtype = -1)`
 
@@ -375,6 +412,8 @@ int main() {
   * `mask` : 싱글 채널 매트릭스를 입력으로 받고, 이 입력은 ROI Mask Image를 말한다.
   * `dtype` : 인텐시티 레벨이다. 0~255의 값을 가지는, 약 -1이라면, 인텐시티 레벨을 이전과 동일하게 하겠다는 의미다.
 
+---
+
 #### 2). `sacleAdd(Mat src1, double scale, Mat src2, Mat dst)`
 
 * **공식**
@@ -383,6 +422,8 @@ int main() {
     ```
   * 각각의 Mat에 스케일을 곱하고 더한다.
 
+---
+
 #### 3). `absdiff(Mat src1, Mat src2, Mat dst)`
 * **공식**
     ```cpp
@@ -390,6 +431,8 @@ int main() {
     ```
   * 각각의 Mat의 차를 구하고, 절댓값을 취한다.
 
+
+---
 
 #### 4). `subtract(Mat src1, Mat src2, Mat dst, Mat mask = noArray(), int dtype -1)`
 * **공식**
@@ -407,6 +450,8 @@ int main() {
 
 > ### 📄 Threshold
 
+---
+
 #### 일명 영상의 "이진화"에서 사용되는 연산으로, 굉장히 중요한 연산이다!
 * 입력 영상이 있고, 각각`[N][N]`의 픽셀 값이 특정 스레숄드 이상이면, 다른 값으로 치환한다는 의미다.
 * 주로, grayscale의 인풋으로 부터 이진화 된 데이터를 얻기 위해 사용된다.
@@ -420,6 +465,7 @@ int main() {
     <img src="image/2025-04-01-23-40-43.png" width=42%>
     <h5></h5>
 </div>
+
 
 #### 1). `double threshold(Mat src, Mat dst, double thresh, double maxval, int type)`
 
@@ -449,6 +495,8 @@ int main() {
     <img src="image/2025-04-07-00-15-29.png" width=80%>
     <h5>상 : BINARY, 하 : TRUNC</h5>
 </div>
+
+---
 
 #### 2). `adaptiveThreshold(Mat src, Mat dst, double maxval, int adaptiveMethod, int thresholdType, int blockSize, double C)`
 
@@ -500,6 +548,8 @@ Adaptive는 각 주변 픽셀들 값에 따라 적응형으로 스레숄딩을 �
     <h5></h5>
 </div>
 
+---
+
 #### 3). `inRange(Mat* src, InputArray lowerb, InputArray upperb, OutputArray dst)`
 
 * Threshold와, adaptiveThreshold는 특정한 기준 이상이면 백, 이하면 흑, 이렇게 이진화 시킨다면
@@ -530,6 +580,7 @@ Adaptive는 각 주변 픽셀들 값에 따라 적응형으로 스레숄딩을 �
 ---
 
 > ### 📄 Others
+
 #### 1). `convertTo(OutputArray m, int rtype, double alpha=1, double=beta=0)`
 
 * **공식**
@@ -537,10 +588,14 @@ Adaptive는 각 주변 픽셀들 값에 따라 적응형으로 스레숄딩을 �
 m(x, y) = saturate_case<rType> (alpha * (*this)(x, y) + beta);
 ```
 
+---
+
 #### 2). `setTo(InputArray value, InputArray mask=noArray())`
 
 * 두번째 파라미터로 ROI Mask Image를 사용할 수 있다.
 * ROI 경계를 지정하고, 특정 값으로 Set 한다.
+
+---
 
 #### 3). `convertScaleAbs(InputArray src, OutputArray dst, double alpha, double beta = 0)`
 
@@ -551,6 +606,8 @@ m(x, y) = saturate_case<rType> (alpha * (*this)(x, y) + beta);
     ```cpp
     Dst(<Intensity>) = saturate_case<uchar>(|src(<Intensity>)| * alpha + beta)
     ```
+
+---
 
 #### 4). 코드
 ```cpp

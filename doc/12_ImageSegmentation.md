@@ -1,8 +1,13 @@
 ## Image Segmentation
 
+---
+
 > ### 📄 소개
 
+---
+
 #### 이미지를 다양한 구역으로 분할(파티셔닝) 하는 절차
+
 
 
 #### 1). 용례
@@ -14,11 +19,14 @@
     <h5></h5>
 </div>
 
+---
+
 > ### 📄 Segmentation
 
 * input : gray-scale image
 * output : binary image 오직 흰(255), 검(0)으로 이뤄진 이미지가 결과로 나온다
   여기서 하얀색에 해당하는 것이 분할된 객체에 해당한다.
+
 
 #### 1). 스레숄딩
 
@@ -33,6 +41,8 @@
     <img src="image/2025-04-27-15-03-13.png" width=80%>
     <h5>좌 : 이미지와, 배경이 각각 1개씩 분할<br>우 : 한개의 객체와 두개의 배경</h5>
 </div>
+
+---
 
 #### 2). 올바른 Segmentation을 방해하는 요소들
 ##### ① Noise
@@ -49,15 +59,22 @@
     <h5>광원으로 생기는 빛 반사와 그림자는<br>명, 암에 대한 그라데이션을 만들고, <br>이는 히스토그램의 Skew화를 야기한다.</h5>
 </div>
 
+---
+
 #### 3). Denoising (Smooting)
 * 노이즈를 제거하지 않고, Segmentation의 결과와
 * 노이즈제거 (Smooting) 후, Segmentation의 결과는 확연하게 차이가 난다.
 * 따라서 Spatial Smooting Filter을 적용하고 Threholding 과정을 거치는것이
 더 유의미한 결과를 얻는데 도움을 준다.
 
+---
+
 > ### 📄 영역 스레숄딩
 
+---
+
 #### 쓰레숄딩을 사용하되, 특정 영역에 따라서 다른 스레숄딩을 적용할 수 있다.
+
 
 #### 1). 전역 스레숄딩
 
@@ -158,6 +175,8 @@
      ```
   </details>
 
+---
+
 #### 2). 지역(적응형) 스레숄딩
 
 ##### 각 픽셀마다 쓰레숄드를 다르게 적용하는 것.
@@ -188,5 +207,7 @@
     <h5></h5>
 </div>
 
-> ### 참고
+---
+
+> ### 📄 참고
 1. [Linear Discriminant Analysis](https://www.dtreg.com/solution/linear-discriminant-analysis)

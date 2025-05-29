@@ -1,6 +1,9 @@
 ## Memory Management And Pixel Access
 
+---
+
 > ### 📄 1. 얕은 복사 VS 깊은 복사
+
 
 
 #### 1). Shellow copy
@@ -20,6 +23,8 @@
 * `copyTo()`를 조심해야한다 어떨때는 Deep, Shallow가 된다.
   * 입력 매트릭스와, 결과 매트릭스 데이터타입과, 크기가 같은경우, ShallowCopy가 일어난다.
 
+---
+
 #### 2). Deep copy
 
 <div align=center>
@@ -29,6 +34,8 @@
 
   * `clone()` 함수를 사용하면 깊은 복사 즉, data들이 전부 복사된다.
   * Mat 생성과, copyTo()는 대표적인 딥카피 연산이라 할 수 있다.
+
+---
 
 #### 3). 비교
 
@@ -42,7 +49,10 @@
   * A를 변경하면 B도 변경되는가? : Shellow Copy
   * A를 변경하든 말든 B는 변경에 상관없나? : Deep Copy
 
+---
+
 > ### 📄 2. Pixel Access
+
 
 #### 1). `image.at<T>(YIndex, XIndex)`
 <div align=center>
@@ -53,6 +63,8 @@
 * `<T>`는 Mat 데이터 타입의 템플릿 자료
   * 가로, 세로는 Mat 템플릿의 가로 세로 배열 길이
   * `at<T>(y, x)`는 접근과 추가로, validity check를 하기 때문에 조금 느리지만, 안전하다.
+
+---
 
 #### 2). `Pixel Pointer`
 <div align=center>
@@ -74,6 +86,8 @@
 * 따라서 Mat의 픽셀 포인터는 바로 `uchar*`을 사용한다.
 * 포인터를 쓰면 좋은점, 진~~짜 검증도 안하고 바로 접근하겠지 그러다보니
 안전하지 않아서 (오류가 안떠서) 잘못 코딩할 가능성이 매~우 높음
+
+---
 
 #### 3). `MatIterator_<T> begin, end`
 <div align=center>

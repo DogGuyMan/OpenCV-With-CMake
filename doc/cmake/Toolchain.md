@@ -7,6 +7,8 @@
 
 툴체인 : **컴파일러, 링커, 관련 도구, 그리고 타겟 플랫폼에 맞는 경로/설정 등을 한 번에 지정하는 설정 파일**
 
+
+
 ---
 
 > ### 📄 1. 툴체인(toolchain)이란?
@@ -16,6 +18,8 @@
   - GCC, Clang, MSVC 등 컴파일러
   - ARM, x86, M1 등 타겟 아키텍처
   - cross-compiling(크로스 컴파일) 환경에서 특히 중요
+
+
 
 ---
 
@@ -28,15 +32,20 @@
   - 크로스 컴파일(예: mac에서 라즈베리파이용 바이너리 빌드)
   - vcpkg, conan 등 패키지 매니저와 연동
 
+
+
 ---
 
 > ### 📄 3. 사용 예시
+
 
 #### 1). toolchain 파일 지정
 
 ```sh
 cmake -B build -DCMAKE_TOOLCHAIN_FILE=/path/to/toolchain.cmake
 ```
+
+---
 
 #### 2). vcpkg toolchain 예시
 
@@ -45,6 +54,8 @@ cmake -B build -DCMAKE_TOOLCHAIN_FILE=/path/to/toolchain.cmake
   cmake -B build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
   ```
 - 이 파일이 vcpkg에서 설치한 라이브러리, 헤더 경로 등을 자동으로 CMake에 알려줌.
+
+---
 
 #### 3). CMakePreset.json 에서 사용하기
 ```json
@@ -68,6 +79,8 @@ cmake -B build -DCMAKE_TOOLCHAIN_FILE=/path/to/toolchain.cmake
         }
 ...
 ```
+
+
 ---
 
 > ### 📄 4. toolchain 파일 내부 예시
@@ -81,6 +94,8 @@ set(CMAKE_CXX_COMPILER arm-linux-gnueabihf-g++)
 set(CMAKE_SYSROOT /opt/arm-sysroot)
 ```
 - 위 예시는 ARM 리눅스용 크로스 컴파일을 위한 toolchain 파일
+
+
 
 ---
 

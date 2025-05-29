@@ -1,6 +1,10 @@
 ## 2 Basics of a Digital Image And Video
 
+---
+
 > ### 📄 디지털 이미지와 영상 기초
+
+---
 
 #### Pixel : 모든 디지털 이미지는 픽셀들로 이뤄져 있다.
 <div align=center>
@@ -14,12 +18,16 @@
   * 픽셀의 좌표는 "좌상" -> "우하" 순서로 x, y가 커진다.
   * 행렬의 컴퓨터상 좌표 표현은 `MAT(row_y, col_x)`
 
+---
+
 #### Frame Rate : Frame per Second간 촬영된 이미지 수
 <div align=center>
     <img src="image/2025-03-08-16-31-44.png" width=800px height=500px>
     <h5></h5>
 </div>
 
+
+---
 
 #### Intensity Level : 밝기와 디테일
 
@@ -33,6 +41,8 @@
     * 이 수치가 더 높다면 디테일을 더 정교하게 촬영이 가능하다
     * $(L = 2^{k}, 0 \le k \le 8)$
 
+---
+
 #### Pixel Resolution : 일명 해상도라 불리는 것이고, 한 이미지를 구성하는 픽셀 수를 의미함
 
 <div align=center>
@@ -41,11 +51,15 @@
 </div>
 
 
+---
+
 #### Total number of bits to store digital image : 하나의 영상을 구성하는데 필요한 비트수
 <div align=center>
     <img src="image/2025-03-08-16-39-29.png" width=800px height=500px>
     <h5></h5>
 </div>
+
+---
 
 #### 정리
 
@@ -53,6 +67,8 @@
 ##### ② Frame Rate : Frame per Second간 촬영된 이미지 수
 ##### ③ Intensity Level : 하나의 픽셀이 가질 수 있는 값의 Range 값의 개수 $2^{0}$~$2^{8}$
 ##### ④ Resolution : 한 이미지를 구성하는 픽셀 수를 의미함
+
+---
 
 #### 숙제
 

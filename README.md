@@ -4,8 +4,11 @@
 
 ## 실습
 
+
 ---
+
 > ### 📄 목차
+
 
 #### 1). OpenCV
 
@@ -30,6 +33,8 @@
 19. [Tracking](./doc/19_Tracking.md)
 20. [Camera Model](./doc/20_CameraModel.md)
 
+---
+
 #### 2). 그 외..
 
 1. [Taylor Series](./doc/extra/1_TaylorSeries.md)
@@ -42,6 +47,8 @@
 ---
 
 ## 세팅
+
+
 
 ---
 
@@ -59,9 +66,12 @@
 sh GNU_DirectoryStructure.sh OpenCV-With-CMake
 ```
 
+
+
 ---
 
 > ### 📄 2. VSCode 터미널이 Zsh가 아닐때,
+
 
 
 #### 1). 쉘 환경 변수에 code 명령 추가하기
@@ -69,6 +79,7 @@ sh GNU_DirectoryStructure.sh OpenCV-With-CMake
 <div align=center>
     <img src="image/2025-03-08-18-45-56.png" width=80%>
 </div>
+
 
 ---
 
@@ -84,7 +95,11 @@ vscode에서 파일이 열릴때, 등등 이벤트에 수행할 커맨드를 추
     <h5></h5>
 </div>
 
+---
+
 #### 3). CMake Debug vcpkg 환경에서 사용하기
+
+---
 
 #### 만약 VCPKG 를 사용했다면, 특수한 설정을 하지 않으면 디버깅을 할 수 없다.
 * 왜냐하면 VCPKG를 사용한 이상 앞으로 다음과 같은 쉘을 사용해서 Configure 해줘야 하기 때문이다.
@@ -154,6 +169,8 @@ vscode에서 파일이 열릴때, 등등 이벤트에 수행할 커맨드를 추
 
 ##### ④ 결과
 
+
+
 ---
 
 > ### 📄 3.  VSCode에서 라이브러리를 못찾아 올때,
@@ -174,9 +191,12 @@ vscode에서 파일이 열릴때, 등등 이벤트에 수행할 커맨드를 추
     <h5>include path를 잘 찾아온다.</h5>
 </div>
 
+
+
 ---
 
 > ### 📄 4. CMake 세팅
+
 
 #### 1). CMakeLists.txt 설정
 
@@ -226,9 +246,12 @@ set(DEP_SOURCE_DIR ${DEP_SOURCE_DIR} "${OpenCV_SOURCE_DIR}/include") # opencv_wo
     ```
 
 
+
 ---
 
 #### 2). VCPKG 클래식 모드 사용
+
+---
 
 #### FetchContent는 버리자! 화난다 진짜 VCPKG 쓰자.
 
@@ -312,6 +335,7 @@ sh ./bootstrap-vcpkg.sh
   }
   ```
 
+
 ---
 
 #### 3). VCPKG 메니페스트 모드
@@ -377,6 +401,9 @@ sh ./bootstrap-vcpkg.sh
 ---
 
 
+
+---
+
 > ### 📄 5. `cmake -B build --fresh`이후 발생하는 문제
 
 * 갑자기 `spdlog`가 문제다.
@@ -402,13 +429,21 @@ sh ./bootstrap-vcpkg.sh
   mkdir build
   ```
 
+
+---
+
 > ### 📄 6. `add_subdirectory()`의 변수들의 Scope
+
+
+---
 
 > ### 📄 7. .vscode/settings.json 수정
 
 * 다음을 해야지 에디터 Linter에서 CMake에 의해 정의된 Define에 빨간줄이 안그어진다.
     1. `XXX_compile_definitions()` 추가
     2. `"compileCommands": "*/compile_commands.json"` 추가
+
+
 
 ---
 
@@ -418,6 +453,9 @@ sh ./bootstrap-vcpkg.sh
     <img src="image/2025-03-16-23-23-41.png">
     <h5>FetchContent를 버리니 병이 나았습니다. 🥰</h5>
 </div>
+
+
+---
 
 > ### 📄 9. 실행
 
@@ -430,6 +468,7 @@ sh ./bootstrap-vcpkg.sh
 
 > ## 📄 참고
 
+
 #### 1). [삼각형의 실전! CMake 초급](https://inf.run/og3Jm)
 * 이 강의를 통해 ...
     1. CMake CLI,
@@ -437,14 +476,20 @@ sh ./bootstrap-vcpkg.sh
     3. 모던 CMake의 모듈러 디자인에 대해 이해했고, 확장성 있는 빌드 시스템 작성법을 배웠음
 
 
+---
+
 #### 2). [컴퓨터 비전 한동대 황성수 교수님](http://www.kocw.net/home/m/cview.do?lid=f879dfef45031db6)
 
 * 이 강의를 통해
   1. 컴퓨터 비전 이론 익히기
   2. C++을 통한 컴퓨터 비전 프로젝트 만들기
 
+---
+
 #### 3). [컴퓨터 비전 특강](https://www.youtube.com/watch?v=N6vP0T1Xabg&list=PLoJdZ7VvEiRNQwM3pcwHWwLQutIYMs4KK&index=1)
 * 유튜브 특강
+
+---
 
 #### 4) OpenCL CMake Cache 설정
 * https://blog.naver.com/91blacksheep/221492188605
@@ -452,6 +497,8 @@ sh ./bootstrap-vcpkg.sh
 * https://www.youtube.com/watch?v=e7GtcsSJ51s
 * https://www.youtube.com/watch?v=yccbaXqRtNU
 * https://velog.io/@jinhasong/OpenCV-4.4
+
+---
 
 #### 5). 사용해 봄직한 패키지
 

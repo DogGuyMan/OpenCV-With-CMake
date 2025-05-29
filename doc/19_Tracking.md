@@ -12,6 +12,8 @@
 * Tracking에서 ROI는 주로 이전프레임과, 다음프레임이 있는 "영상"의 문맥에서 말하는 것이고,
     그래서, 목표는 가장 최적로 매칭되는 ROI 조각(patch) 찾는것이다
 
+---
+
 > ### 📄 2. MeanShift
 
 * 이미지의 ROI의 위치를 추적할 때 사용된다.
@@ -19,6 +21,7 @@
 그 밀도의 최댓값 (peak, mode)을 찾는 절차(Procedure)
 즉, 데이터의 분포를 기반으로, 객체가 실제로 어디에 있는지(가장 밀집된 곳) 자동으로 찾는 방법이다.
 * 반복적으로 수행되어야 하는(Iterative) 함수다."
+
 
 #### 1). Histogram Back Project
 
@@ -28,6 +31,8 @@
     <h5>1. 빨간 범위의 Mask를 히스토 그램을 추출<br>
 2. BackProject, MedianBlur, Threshold를 통해 주사위를 제외한 영역 추출</h5>
 </div>
+
+---
 
 #### 2). Mean Shift Procedure
 
@@ -43,6 +48,8 @@
     <h5></h5>
 </div>
 
+---
+
 > ### 📄 2. Camshift (Continuously Adaptive Mean Shift)
 
 #### 영상에서 움직이는 객체의 크기와 방향이 변해도<br>효과적으로 추적할 수 있도록 MeanShift를 확장한 방법이다.
@@ -52,12 +59,15 @@
     <h5></h5>
 </div>
 
+
 #### 1). CamShift는 MeanShift를 어떻게 개선했는가?
 
 * **MeanShift는 Window라는 검색 영역의 크기가 항상 고정되어있다**.
 따라서 객체가 멀어지거나 가까워지면서 변하는 크기를 제대로 추적할 수 없었는데.
 * **CamShift는** MeanShift의 결과로 얻어진 윈도우(검색 영역) 내의 분포 정보를 이용해
 **각 반복마다 윈도우의 이동(Translation), 회전(Rotation), 스케일(Scaling) 변화를 동시에 추적할 수 있다.**
+
+---
 
 > ### 📄 3. Optical Flow
 
@@ -67,6 +77,7 @@
     <img src="image/2025-05-18-18-41-24.png" width=80%>
     <h5></h5>
 </div>
+
 
 #### 1). KLT(Kanade-Lucas-Tomasi) Algorithm
 
@@ -106,6 +117,8 @@ $$
 2. 다음 프레임에서 해당 특징점 주변의 밝기 패턴이 가장 비슷하거나 잘 맞는 위치를 찾는다.
 3. 미분 혹은 **[테일러 급수](./extra/TaylorSeries.md)** 를 통해 주변부 픽셀의 Intensity 변화량을 1차 근사(1계 도함수를 사용)하여, 선형 방정식으로 이동량을 계산한다.
 
+---
+
 #### 2). KLT Algorithm with pyramids
 
 ##### ① 갑자기 웬 피라미드?
@@ -133,6 +146,8 @@ $$
         * 위 레벨로 올라갈수록 반씩(또는 절반 이하) 축소된 해상도의 이미지를 생성.
   1. Warp & Upsample 은 “흐름(field)”을 coarse->fine로 옮겨가면서 보정하는 단계
 
+---
+
 #### 3). Comparesion "Motion Vector" And "Optical Flow"
 
 ##### ① 공통점
@@ -156,6 +171,8 @@ $$
   1. Vertex Motion Vector : 버텍스 정점 단위로 "오브젝트 TRS 변환 행렬"을 사용하여 이동 정보를 계산할 수 있다.
   2. Fragment(Pixel) Motion Vector : Screen Space 공간에서 픽셀 단위로 이동정보를 계산한다. Velocity Buffer, Depth Buffer을 사용해 계산하기도 한다.
 
+
+---
 
 > ### 📄 참고
 

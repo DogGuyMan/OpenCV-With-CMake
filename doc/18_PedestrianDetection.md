@@ -20,6 +20,7 @@
 
 * KeyPoint(관심점)과 Descriptor(기술자)를 사용하여 사진을 매칭한다.
 
+
 #### 1).  SIFT
 
 ##### ① 조명의 변화에 강하며, 물체의 방향에 상관없는 기술자를 생성할 수 있다.
@@ -39,6 +40,8 @@
     <h5>특징 벡터 생성 (우측이 vectorization 혹은, concatenatnation인 "고차원 특징 벡터")</h5>
 </div>
 
+---
+
 #### 2). Feature
 * 여기서 Feature란, HoG를 사용한 보행자 표현이다.
 
@@ -46,8 +49,9 @@
 
 > ### 📄 2. Training
 
-* HoG 특징을 추출 했다면, 보행자와 비보행자(배경 등) 이미지를 이용해 분류기를 학습시킨다.
+#### HoG 특징을 추출 했다면, 보행자와 비보행자(배경 등) <br> 이미지를 이용해 분류기를 학습시킨다.
 * OpenCV에서는 주로 SVM(Support Vector Machine) 분류기를 사용한다.
+
 
 #### 1).  SVM(서포트 벡터 머신)
 * SVM은 두 클래스(보행자/비보행자)를 가장 잘 구분하는
@@ -64,21 +68,29 @@ HoG 특징 벡터를 입력으로 받아, 보행자일 확률이 높은 영역�
 
 > ### 📄 3. Optimize
 
+
 #### 보행자 검출의 정확도와 속도를 높이기 위해 전처리, 후처리, 혹은 분류기 설계가 필요하다.
+
 
 #### 1). 이미지 패치 크기 조정(Image patch resizing)
 
 * 입력 이미지를 다양한 크기로 변환하여, 여러 크기의 보행자를 검출할 수 있도록 함(멀티스케일).
 
+---
+
 #### 2). 히스토그램 정규화(Histogram normalization)
 
 * 조명 변화에 강인하도록, 블록 단위로 히스토그램을 정규화함.
+
+---
 
 #### 3). 이미지 피라미드(Image pyramid)
 
 * 이미지를 여러 해상도로 축소/확대하여, 다양한 크기의 객체를 검출.
 윈도우 스트라이드(Window stride) 및 패딩(Padding)
 슬라이딩 윈도우의 이동 간격과 패딩을 조절하여, 검출 성능과 속도 균형을 맞춤.
+
+---
 
 #### 4). 후처리(Post-processing)
 
@@ -87,6 +99,7 @@ HoG 특징 벡터를 입력으로 받아, 보행자일 확률이 높은 영역�
 ---
 
 > ### 📄 4. OpenCV 함수
+
 
 #### 1). `HOGDescriptor::HOGDescriptor`
 
@@ -132,6 +145,8 @@ HOGDescriptor hog(
     * **값이 커지면** 방향 정보를 더 세밀하게 구분하지만, 계산량이 많아지고 오버피팅 위험이 있다. (최대 9)
     * **값이 작아지면** 방향 정보를 대략적으로만 구분하게된다.
 
+---
+
 #### 2). `setSVMDetector`
 
 ##### setSVMDetector는 SVM 가중치 벡터(`std::vector<float>`)를 받아 분류기를 설정함.
@@ -151,6 +166,8 @@ hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());
 * OpenCV에서 미리 학습된 사람 검출용 SVM 가중치 벡터를 반환함.
 * **반환 타입:** `std::vector<float>`
 
+
+---
 
 #### 3). `HOGDescriptor::detectMultiScale()`
 
@@ -203,6 +220,6 @@ hog.detectMultiScale(
 
 ---
 
-> ### 📄 5. 참고
+> ### 📄 참고
 
 1. [카이 제곱 : HoG Descriptor](http://vision0814.tistory.com/168)

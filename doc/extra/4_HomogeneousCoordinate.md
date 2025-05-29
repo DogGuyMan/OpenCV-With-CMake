@@ -11,12 +11,17 @@
 > 2D Point $(x, y)$
 > 3D Point $(X, Y, Z)$
 
+
 #### 1). Transformation
 
 1. **Similarity Transformation**
    * 이미지의 형태는 유지되며, R(회전), S(확대) 변환만 허용
 
+---
+
 > ### 📄 2. Homogeneous Coordinate
+
+---
 
 #### 아핀 변환 등등을 다양한 변환을 하나의 행렬로 구현하기위해 사용되는 좌표계
 
@@ -26,6 +31,7 @@
     l은 선(원점을 지나는 방사형 평면이 평면에 접하는것)<br>
     idle point는 x3에 해당하는 값이 0인것을 볼 수 있다.</h5>
 </div>
+
 
 #### 1). 성질
 
@@ -67,6 +73,8 @@
   * 왜냐하면 두 점은 스케일에도 불면하게 모두 동일한 한 점 (x, y)로 투영되기 때문.
 * 이러한 성질이 **투영선(RayCast)위의 모든 점을 하나의 Homogeneous 좌표로 표현할 수 있게 해준다**.
 
+---
+
 #### 2). 장점
 1. 평행 이동을 단일행렬의 선형 변환으로 표현할 수 있게 됨, **아핀 변환(affine)** 이라 한다.
    그래픽스에서 3D 좌표 변환(예: 변환, 회전, 스케일링)은 4x4 행렬을 사용하여 수행된다.
@@ -79,15 +87,22 @@
     * $x = l \times l'$ : 선 $l$과 $l'$이 교차하는 점은 외적으로 구할 수 있음
     * $l = x \times x'$ : 점 $x$과 $x'$이 이루는 선은 두 점을 외적으로 할 수 있다.
 
+---
+
 #### 3). Transformation
 1. **Affine Transformation**
    * 이미지의 평행선은 유지되는 한 변환이 허용됨 Shear (납작, 홀쭉), T(평행 이동)
 2. **Projection Transformation**
    * 평행한 직선이 소실점에서 만난다는 가정하에 적용되는 변환
 
+---
+
 > ### 📄 3. 사영 기하학
 
+
 #### 1). 2D 좌표의 Inhomogeneous Coordinate에서의 직선의 방정식
+
+---
 
 #### Inhomogeneous: $ax + by + c = 0$
 * Inhomogeneous(비동차) 좌표계는 우리가 일반적으로 사용하는 2차원 평면 좌표계.
@@ -107,7 +122,11 @@ $$
 y = mx + n
 $$
 
+---
+
 #### 2). 2D 좌표의 Homogeneous Coordinate에서의 직선의 방정식
+
+---
 
 #### Homogeneous: $l^T p = 0$, $l = (a, b, c)$, $p = (x, y, 1)$
 

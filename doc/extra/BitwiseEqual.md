@@ -7,6 +7,8 @@
   * GPU는 부동 소수점 데이터 유형을 다뤄서?
 
 
+---
+
 > ### 📄 참고
 
 * https://stackoverflow.com/questions/4161656/replacing-with-bitwise-operators

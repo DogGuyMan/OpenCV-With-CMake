@@ -10,6 +10,7 @@
 * 2D 변환은 두 이미지 사이의 matching 관계를 모델링할 때 사용하는 방법이다.
 * 변환에 단계가 있다면 다음 순서로 점점 자유도가 높아지거나 이전 단계를 포함하는 단계이다.
 
+
 #### 1). Rigid Transformation
 * 형태와 크기를 유지한체 위치와 방향만 바뀔 수 있는 변환
 * Ex). `X Translation`, `Y Translation`, `Rotation`
@@ -62,6 +63,8 @@ cos(\theta)  &   sin(\theta) &  0 \\
 \end{pmatrix}
 $
 
+---
+
 #### 2). Similarity Transformation
 * Rigid에 추가적으로 스케일 변환까지 허용한 변환
 * Ex). `+Scale`
@@ -78,6 +81,8 @@ W & 0 & 0 \\
 \end{pmatrix}
 $
 
+---
+
 #### 3). Affine Transformation
 * 평행성과, width, height의 비율을 보존하는 변환
 * Ex). `+Shearing/Deformation` `Reflection`
@@ -89,6 +94,8 @@ $
 ##### ② Reflection
 * 축 반전이 가능하다.
 
+---
+
 #### 4). Homography (Projective Transformation)
 * 외곡된 영상을 보정하는데 사용하기도 한다.
 * 두가지 이미지를 가지고 있고, 4쌍으로 대응되는 점들만 있으면 선형 변환식을 유도할 수 있다.
@@ -97,6 +104,8 @@ $
   * 자유도는 8
 
 ##### ①
+
+---
 
 #### 5). Homography 보완
 
