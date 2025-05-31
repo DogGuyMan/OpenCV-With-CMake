@@ -3,6 +3,8 @@
 using namespace std;
 using namespace cv;
 
+static bool isInitialized = false;
+
 int chapter19::OpticalFlow() {
     VideoCapture cap(0);
     if(!cap.isOpened()) {
@@ -38,13 +40,13 @@ int chapter19::OpticalFlow() {
         cvtColor(dst_image, cur_image, COLOR_BGR2GRAY);
 
         GaussianBlur(cur_image, cur_image, Size(5,5), 0.5);
-        if(!chapter19::isInitialized) {
+        if(!isInitialized) {
             goodFeaturesToTrack(prev_image, prev_points, max_corners,
                                 quality_level, min_distance, Mat(), block_size,
                                 use_harris_detector, k);
             cornerSubPix(prev_image, prev_points, win_size, Size(-1,-1), criteria);
             DrawTrackingPoints(prev_points, dst_image);
-            chapter19::isInitialized = true;
+            isInitialized = true;
         }
 
         if(prev_points.size() > 0) {
@@ -69,7 +71,7 @@ int chapter19::OpticalFlow() {
 
         int ch = waitKey(33);
         if (ch == 27) break; // 27 == ESC key
-        if (ch == 32) chapter19::isInitialized = false;
+        if (ch == 32) isInitialized = false;
     }
 
     return 1;

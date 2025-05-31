@@ -22,7 +22,7 @@ int main()
     // OpenCVDemo();
     // chapter20::PerspectiveTransformation();
 
-    chapter19::TrackingMeanAndCamShift();
+    chapter19::Tracking();
 
     return 1;
 }

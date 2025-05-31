@@ -3,7 +3,6 @@
 using namespace std;
 using namespace cv;
 
-
 static void onMouse(int event, int x, int y, int flags, void* userData) {
     chapter19::CallbackData* data = reinterpret_cast<chapter19::CallbackData*>(userData);
     if(event == EVENT_LBUTTONDOWN) {
@@ -39,7 +38,7 @@ static void onMouse(int event, int x, int y, int flags, void* userData) {
     }
 }
 
-int chapter19::MeanShift() {
+int chapter19::Tracking() {
     VideoCapture cap(0);
     chapter19::CallbackData data;
     Mat frame, m_backProj, hsv;
@@ -98,7 +97,7 @@ int chapter19::MeanShift() {
             CamShift(
                 m_backProj,
                 m_rc,
-                cvTermCriteria(TermCriteria::EPS | TermCriteria::COUNT, 20, 1);
+                TermCriteria(TermCriteria::EPS | TermCriteria::COUNT, 20, 1)
             );
 #else
             cout << "Please define either MEAN_SHIFT_TRACKING or CAM_SHIFT_TRACKING." << endl;
@@ -117,4 +116,6 @@ int chapter19::MeanShift() {
             if(ch == 27) break;
         }
     }
+
+    return 1;
 }

@@ -21,8 +21,6 @@ namespace chapter19 {
     constexpr std::string_view OUTPUT_WINDOW = "Output Image";
 
     int Tracking();
-    int MeanShift();
-    int CamShift();
 
     struct CallbackData {
         cv::Mat frame;

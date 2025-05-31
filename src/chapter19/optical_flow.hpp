@@ -13,8 +13,6 @@ namespace chapter19 {
         int val;
     };
 
-    bool isInitialized = false;
-
     void DrawTrackingPoints(std::vector<cv::Point2f> &points, cv::Mat &img);
     int OpticalFlow();
 }
