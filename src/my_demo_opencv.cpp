@@ -4,7 +4,7 @@ using namespace cv;
 using namespace std;
 
 int OpenCVDemo() {
-    cout << "Hello " << project_name << endl;
+    cout << "Hello " << PROJECT_NAME << endl;
 
     //! [imread]
     std::string image_path = samples::findFile("./resources/starry_night.jpg");

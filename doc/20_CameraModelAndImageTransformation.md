@@ -328,3 +328,20 @@ $$
 두개의 이미지 사이에 관계를 표현할 수 있는 변환 행렬이 계산되야 한다.
   * Homogeneous 좌표계에서 2차원 이미지의 투영 변환을 위해서는 3 X 3 행렬이 필요하다.
   * 각 이미지 마다 4개의 좌표가 필요하고, 각각 좌표는 한 쌍이 되어져야 한다.
+
+
+<div align=center>
+    <img src="image/2025-05-31-17-33-41.png" width="80%">
+    <h5>마우스 클릭을 통한 예제.</h5>
+</div>
+
+#### 1). `copyMakeBorder`
+
+* 이 코드를 사용하면 이미지 원본을 유지하며, Border을 추가할 수 있다.
+    ```cpp
+    Mat input = imread("./resources/board7.png");
+    Mat input_with_margin;
+    int top = 50, bottom = 50, left = 50, right = 50;
+    copyMakeBorder(input, input_with_margin, top, bottom, left, right, BORDER_CONSTANT);
+    imshow(chapter20::INPUT_WINDOW, input_with_margin);
+    ```

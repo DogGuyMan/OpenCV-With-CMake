@@ -31,7 +31,7 @@
 17. [FaceDetection](./doc/17_FaceDetection.md)
 18. [PedestrianDetection](./doc/18_PedestrianDetection.md)
 19. [Tracking](./doc/19_Tracking.md)
-20. [Camera Model](./doc/20_CameraModel.md)
+20. [Camera Model And Image Transformation](./doc/20_CameraModelAndImageTransformation.md)
 
 ---
 
@@ -65,8 +65,6 @@
 # 본인의 경우 다음과 같이 생성함
 sh GNU_DirectoryStructure.sh OpenCV-With-CMake
 ```
-
-
 
 ---
 
