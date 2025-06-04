@@ -32,6 +32,7 @@
 18. [PedestrianDetection](./doc/18_PedestrianDetection.md)
 19. [Tracking](./doc/19_Tracking.md)
 20. [Camera Model And Image Transformation](./doc/20_CameraModelAndImageTransformation.md)
+21. [Image Feature](./doc/21_ImageFeature.md)
 
 ---
 
@@ -43,6 +44,13 @@
 4. [Homogeneous Coordinate](./doc/extra/4_HomogeneousCoordinate.md)
 5. [Transformation](./doc/extra/5_Transformation.md)
 6. [Equations Of Lines And Planes](./doc/extra/6_EquationsOfLinesAndPlanes.md)
+
+---
+
+#### 3). 추후 목표
+
+1. 문제 해결.
+2. GPU 가속으로 시간 줄이기.
 
 ---
 
