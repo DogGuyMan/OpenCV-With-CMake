@@ -1,8 +1,10 @@
 set(CHAPTER21_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/checkerboard_image_feature.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/image_feature_extractor_descriptor.cpp
 )
 set(CHAPTER21_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/chapter21_headers.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/checkerboard_image_feature.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/image_feature_extractor_descriptor.hpp
 )
 

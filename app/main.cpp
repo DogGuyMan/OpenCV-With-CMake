@@ -23,7 +23,7 @@ int main()
     // OpenCVDemo();
     // chapter20::PerspectiveTransformation();
     // chapter19::Tracking();
-    chapter21::ImageFeatureExtractorDescriptor();
+    chapter21::CheckerBoardImageFeature();
 
     return 1;
 }

@@ -7,6 +7,8 @@ project(${PROJECT_NAME} VERSION 1.0.0 LANGUAGES CXX)
 
 # VCPKG_INSTALLED_DIR:PATH=~/Develop Projects/CXXProject/OpenCV-With-CMake/build/vcpkg_installed
 # CMakePresets에 CMAKE_MODULE_PATH를 설정하지 않으면 cmake/*.cmake 파일을 찾을 수 없음
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+
 include(Config)
 include(CppStandard)
 include(Dependency)

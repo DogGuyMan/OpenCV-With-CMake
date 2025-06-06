@@ -1,5 +1,5 @@
-#ifndef __OPTICAL_FLOW_HPP__
-#define __OPTICAL_FLOW_HPP__
+#ifndef __OPTICAL_FLOW__
+#define __OPTICAL_FLOW__
 
 #pragma once
 
@@ -17,4 +17,4 @@ namespace chapter19 {
     int OpticalFlow();
 }
 
-#endif//__OPTICAL_FLOW_HPP__
+#endif//__OPTICAL_FLOW__

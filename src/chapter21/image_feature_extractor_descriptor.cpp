@@ -1,66 +1,87 @@
 #include "image_feature_extractor_descriptor.hpp"
 
-using namespace std;
 using namespace cv;
+using namespace std;
 
 int chapter21::ImageFeatureExtractorDescriptor() {
-    Mat query, image, descriptor1, descriptor2;
-    Ptr<ORB> orbF = ORB::create(1000);
-    vector<KeyPoint> keypoints1, keypoints2;
-    vector<vector<DMatch>> matches;
-    vector<DMatch> goodMatches;
+    Mat query_image, dest_image;
+    Mat descriptor1, descriptor2;
 
-    BFMatcher matcher(NORM_HAMMING); // NORM_HAMMING2는 WTA_K=3,4일 때 사용
+    Ptr<ORB> orbF = ORB::create(1000); // ORB 특징 추출기 생성
 
-    Mat imgMatches, H; // 매칭되는 결과 // H는 뭔지 모르겠다.
-    vector<Point2f> obj, scene; // 매칭된 키포인트의 좌표를 저장할 벡터
-    vector<Point2f> objP(4), sceneP(4); // 매칭된 객체와 장면의 4개의 점들
-    float nndrRatio = 0.7f; // Nearest Neighbor Distance Ratio
+    vector<KeyPoint> keypoints1, keypoints2; // 첫 번째와 두 번째 이미지의 키포인트들
+    vector<vector<DMatch>> matches; // 매칭된 특징점들
+    vector<DMatch> goodMatches; // 좋은 매칭만 추출
 
-    // 이미지 A (Query) B (Image) 불러오기
-    query = imread("./resources/imageA.jpg");
-    image = imread("./resources/imageB.jpg");
+    BFMatcher matcher(NORM_HAMMING); // Brute Force 매처 생성
 
-    // ORB 진행
-    // KeyPoint 추출
-    resize(image, image, Size(640, 480));
-    orbF->detectAndCompute(query, noArray(), keypoints1, descriptor1); // KeyPoint 추출 및 Descriptor 계산
-    orbF->detectAndCompute(image, noArray(), keypoints2, descriptor2); // KeyPoint 추출 및 Descriptor 계산
+    Mat image_matches;
+    Mat H; // H 호모 그래피
 
-    // KNN 매칭
-    int k = 2; // KNN 매칭에서 k값 설정
-    matcher.knnMatch(descriptor1, descriptor2, matches, k); // KNN 매칭 진행
+    vector<Point2f> obj, scene; // 특징점 좌표
+    vector<Point2f> objP(4), sceneP(4); // ?
 
-    // Matches 가져오기
-    // 그중 good matches만 추출
-    // nndr 스레숄딩 진행후, goodMatched 넣기.
-    for(auto& match : matches) {
-        if(match.size() == 2 && match[0].distance <= nndrRatio * match[1].distance) {
-            goodMatches.push_back(match[0]); // 좋은 매칭만 추출
+    float nndrRatio = 0.6f;
+
+    query_image = imread("./resources/art_a.png");
+    dest_image = imread("./resources/art_b.png");
+
+    resize(query_image, query_image, Size(640, 480));
+    resize(dest_image, dest_image, Size(640, 480));
+
+    orbF->detectAndCompute(query_image, noArray(), keypoints1, descriptor1);
+    orbF->detectAndCompute(dest_image, noArray(), keypoints2, descriptor2);
+
+    int k = 2;
+    matcher.knnMatch(descriptor1, descriptor2, matches, k); // 두 discriptor 간 아까 만들었던 Brute Force 매처인 "matcher"를 사용해서 매칭 진행
+                                                            // 결과는 DMatch의 매칭된 특징점들 first match, second match... N matches의 배열로 이뤄진 것을 얻을 수 있다.
+                                                            // 그리고 first match, second match... N matches중에서 Best match를 찾는게 목표다.
+
+    // nndrRatio를 사용하여 스레숄딩 한다.
+    for(vector<DMatch> match : matches) {
+        if(match.size() < 2) continue;
+        // 오! 이거 괜찮은 트릭인것이. 이것을 nndrRatio값을 남기고 식을 전개하면
+        // match[0].distance / match[1].distance <= nndrRatio 와 동일하다.
+        // 그런데 이렇게 조건문을 작성한 이유는 나눗셈은 float point로, 어쩔수 없이 값이 손실되는 문제가 생기고 말 것이다.
+        // 따라서 이런식으로 sqrt(int) < N 이러한 식 또한, int < N * N 형태로 바꿔서 비교하는 것이 좋다.
+        DMatch& firstMatch = match[0];
+        DMatch& secondMatch = match[1];
+        if(firstMatch.distance <= nndrRatio * secondMatch.distance)
+        {
+            goodMatches.push_back(match[0]);
         }
     }
 
-    // 투영 행렬 탐색
-    for(auto& goodMatch : goodMatches) {
-        obj.push_back(keypoints1[goodMatch.queryIdx].pt); // Query 이미지의 키포인트 좌표
-        scene.push_back(keypoints2[goodMatch.trainIdx].pt); // Image 이미지의 키포인트 좌표
+    // Draw Matching
+    drawMatches(query_image, keypoints1, dest_image, keypoints2, goodMatches, image_matches,
+                Scalar::all(-1), Scalar(-1), vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
+
+    // 호모그래피 계산
+    if(goodMatches.size() < 4) {cout << "Not enough matches found." << endl; return 0; }
+
+    for(DMatch& goodMatch : goodMatches) {
+        obj.push_back(keypoints1[goodMatch.queryIdx].pt);
+        scene.push_back(keypoints2[goodMatch.trainIdx].pt);
     }
 
-    H = findHomography(obj, scene, RANSAC); // RANSAC을 이용한 투영 행렬(호모그래피) 계산
-
-    // 시계 방향으로 좌표계 형성
+    H = findHomography(obj, scene, RANSAC);
     objP = {
-        Point2f(0, 0), // 2 사분면
-        Point2f(query.cols, 0), // 1 사분면
-        Point2f(query.cols, query.rows), // 4 사분면
-        Point2f(0, query.rows) // 3 사분면
+        Point2f(0, 0),
+        Point2f(query_image.cols, 0),
+        Point2f(query_image.cols, query_image.rows),
+        Point2f(0, query_image.rows)
     };
 
-    perspectiveTransform(objP, sceneP, H); // 호모그래피 행렬을 이용하여 좌표 변환
+    perspectiveTransform(objP, sceneP, H);
 
-    for(int i = 0; i < 4; i++) sceneP[i] += Point2f(query.cols, 0); // sceneP 좌표를 query 이미지의 너비만큼 이동
-    for(int i = 0; i < 4; i++) line(imgMatches, sceneP[i], sceneP[(i + 1) % 4], Scalar(0, 255, 0), 2); // 변환된 좌표를 이용하여 이미지에 사각형 그리기
+    for(int i = 0; i < 4; i++)
+    sceneP[i] += Point2f(query_image.cols, 0);
 
-    imshow("Image Matches", imgMatches); // 매칭된 이미지 출력
+    for(int i = 0; i < 4; i++)
+        line(image_matches, sceneP[i], sceneP[(i+1) % 4], Scalar(0, 255, 0), 4);
+
+    imshow("image matches", image_matches);
+    waitKey();
+
     return 1;
 }

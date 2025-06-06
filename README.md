@@ -406,10 +406,6 @@ sh ./bootstrap-vcpkg.sh
 
 ---
 
-
-
----
-
 > ### 📄 5. `cmake -B build --fresh`이후 발생하는 문제
 
 * 갑자기 `spdlog`가 문제다.
@@ -448,8 +444,6 @@ sh ./bootstrap-vcpkg.sh
 * 다음을 해야지 에디터 Linter에서 CMake에 의해 정의된 Define에 빨간줄이 안그어진다.
     1. `XXX_compile_definitions()` 추가
     2. `"compileCommands": "*/compile_commands.json"` 추가
-
-
 
 ---
 

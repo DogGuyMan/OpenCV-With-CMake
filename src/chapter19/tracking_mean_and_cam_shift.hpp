@@ -1,5 +1,5 @@
-#ifndef __TRACKING_MEAN_AND_CAM_SHIFT_HPP__
-#define __TRACKING_MEAN_AND_CAM_SHIFT_HPP__
+#ifndef __TRACKING_MEAN_AND_CAM_SHIFT__
+#define __TRACKING_MEAN_AND_CAM_SHIFT__
 #define MEAN_SHIFT_TRACKING 1
 #define CAM_SHIFT_TRACKING 0
 
@@ -31,4 +31,4 @@ namespace chapter19 {
     };
 }
 
-#endif//__TRACKING_MEAN_AND_CAM_SHIFT_HPP__
+#endif//__TRACKING_MEAN_AND_CAM_SHIFT__
